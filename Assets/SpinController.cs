@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SpinController : MonoBehaviour {
 
-    public bool isThrown;
-    public Vector3 velocity;
-    public Vector3 Axis;
+    public bool isThrown;//投げられたかの判定
+    public Vector3 velocity;//速度
+    public Vector3 Axis;//軸の向き
 
 	// Use this for initialization
 	void Start () {
@@ -17,15 +17,15 @@ public class SpinController : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown("space"))
         {
-            velocity = new Vector3(0, 0, 5);
+            velocity = new Vector3(0, 0, 5);//変数velocityにVector3構造体をセットする。
             isThrown = true;
         }
 	}
 
-    public void ResetSpin()
+    public void ResetSpin()//初期化
     {
         isThrown = false;
-        velocity = Vector3.zero;
+        velocity = Vector3.zero;//zero = (0, 0, 0)
         Axis = Vector3.up;
     }
 }

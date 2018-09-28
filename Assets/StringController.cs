@@ -5,7 +5,7 @@ using UnityEngine;
 public class StringController : MonoBehaviour {
     public float velocity;
 
-    public void ResetString()
+    public void ResetString()//初期化
     {
         velocity = 0;
     }
@@ -18,7 +18,7 @@ public class StringController : MonoBehaviour {
 	void Update () {
 		
 	}
-    public void EliminateSlack()//弛みをなくす
+    public void EliminateSlack()//たるみを無くす
     {
 
     } 
