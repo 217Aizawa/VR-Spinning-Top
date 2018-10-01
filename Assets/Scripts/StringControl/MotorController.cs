@@ -4,27 +4,27 @@ using UnityEngine;
 
 public class MotorController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+    // Use this for initialization
+    void Start () {
+
+    }
+
+    // Update is called once per frame
+    void Update () {
+
 	}
 
-    public void wind() // wind up the string
+    public void windUpMotor(float speed)    // + で巻取り、- で繰り出し。単位は 1 をモーターフルパワーとする比率
     {
 
     }
 
-    public void stop() // stop the motor
+    public void stopMotor() // stop the motor
     {
-
+        windUpMotor(0);
     }
 
-    public void setResistance(float resistance)
+    public void setResistance(float f)  // 提示すべき抵抗。単位は [N]？←要検討
     {
 
     }
