@@ -18,7 +18,7 @@ public class BodySourceManager : MonoBehaviour
     void Start () 
     {
         _Sensor = KinectSensor.GetDefault();
-
+        
         if (_Sensor != null)
         {
             _Reader = _Sensor.BodyFrameSource.OpenReader();
@@ -32,17 +32,18 @@ public class BodySourceManager : MonoBehaviour
     
     void Update () 
     {
-        if (_Reader != null)
+        if (_Reader != null)//フレーム取得
         {
             var frame = _Reader.AcquireLatestFrame();
             
             if (frame != null)
             {
                 
-                if (_Data == null)
+                if (_Data == null)//ボディを取得
                 {
                     _Data = new Body[_Sensor.BodyFrameSource.BodyCount];
                     Debug.Log(_Data);
+
                 }
                 
                 frame.GetAndRefreshBodyData(_Data);

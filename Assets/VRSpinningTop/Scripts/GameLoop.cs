@@ -7,7 +7,7 @@ public class GameLoop : MonoBehaviour {
     public SpinController spinController;//型名 変数名 (SpinController s)。gameObjectのSpinControllerとは違う
     public StringController stringController;//世界の中にあるgameObjectをここに入れる。
     public KinectController kinectController;//そうすることで、spinControllerの変数を使用することができる。
-    public GameObject koma;//GameLoopのInspector内にオブジェクトをドラッグ＆ドロップすることで完了
+    public GameObject koma;
 
 	// Use this for initialization
 	void Start () {

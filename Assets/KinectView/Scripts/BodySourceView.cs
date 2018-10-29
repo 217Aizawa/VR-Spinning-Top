@@ -7,10 +7,28 @@ public class BodySourceView : MonoBehaviour
 {
     public Material BoneMaterial;
     public GameObject BodySourceManager;
-    
+
+    public Vector3 headPos;//追加
+    public Vector3 handLeftPos;//
+    public Vector3 handRightPos;//
+    public Vector3 wristPosition;//
+    public Vector3 handednessWristPos;//利き手の手首位置
+
+    private float leftHandTime = 0;//手を挙げている時間
+    private float rightHandTime = 0;
+
+
+    public int handedness;//追加
+    bool riseHand = true;//利き手判定用に一度だけ判定するbool。ゲームが終了したら、trueに戻す。
+
+
+    private int trackedId = -1;//-1は検出できていない状態
+    private Vector3 OffsetToWorld = Vector3.zero;//publicにすると外から参照できる
+
+
     private Dictionary<ulong, GameObject> _Bodies = new Dictionary<ulong, GameObject>();
     private BodySourceManager _BodyManager;
-    
+    //kinect.setMirror(false);
     private Dictionary<Kinect.JointType, Kinect.JointType> _BoneMap = new Dictionary<Kinect.JointType, Kinect.JointType>()
     {
         { Kinect.JointType.FootLeft, Kinect.JointType.AnkleLeft },
@@ -42,15 +60,20 @@ public class BodySourceView : MonoBehaviour
         { Kinect.JointType.SpineShoulder, Kinect.JointType.Neck },
         { Kinect.JointType.Neck, Kinect.JointType.Head },
     };
-    
-    void Update () 
+    void Start()
     {
-        
+
+    }
+
+  
+    void Update()
+    {
+
         if (BodySourceManager == null)
         {
             return;
         }
-        
+
         _BodyManager = BodySourceManager.GetComponent<BodySourceManager>();
         if (_BodyManager == null)
         {
@@ -62,53 +85,159 @@ public class BodySourceView : MonoBehaviour
         {
             return;
         }
-        Debug.Log("Update");
+
         List<ulong> trackedIds = new List<ulong>();
-        foreach (var body in data)//データの中のボディを使う
+        foreach (var body in data)
         {
             if (body == null)
             {
                 continue;
-              }
-                
-            if(body.IsTracked)
+            }
+
+            if (body.IsTracked)
             {
-                trackedIds.Add (body.TrackingId);
+                trackedIds.Add(body.TrackingId);
             }
         }
-        
+
         List<ulong> knownIds = new List<ulong>(_Bodies.Keys);
-        
+
         // First delete untracked bodies
-        foreach(ulong trackingId in knownIds)
+        foreach (ulong trackingId in knownIds)
         {
-            if(!trackedIds.Contains(trackingId))
+            if (!trackedIds.Contains(trackingId))
             {
                 Destroy(_Bodies[trackingId]);
                 _Bodies.Remove(trackingId);
             }
         }
+        Vector3 closestPosition = Vector3.zero;
+        //GameLoop gl = gameLoop.GetComponent<GameLoop>();
 
-        foreach(var body in data)
+        //foreach(var body in data) ボディ取り出し
+        for (int i = 0; i < data.Length; i++)
         {
-            if (body == null)
+            if (data[i] == null)
             {
                 continue;
             }
-            
-            if(body.IsTracked)
+
+            if (data[i].IsTracked)
             {
-                Debug.Log("Tracked");
-                if(!_Bodies.ContainsKey(body.TrackingId))
+                //get kinect coodinate without offset　[i] ボディ型、Joints{  } JointTypeからJointへの辞書　JointはVector3のようなもの
+                headPos = GetVector3FromJoint(data[i].Joints[Kinect.JointType.Head], false);
+                handLeftPos = GetVector3FromJoint(data[i].Joints[Kinect.JointType.HandLeft], false);
+                handRightPos = GetVector3FromJoint(data[i].Joints[Kinect.JointType.HandRight], false);
+
+                // found new body
+                if (!_Bodies.ContainsKey(data[i].TrackingId))
                 {
-                    _Bodies[body.TrackingId] = CreateBodyObject(body.TrackingId);
+                    _Bodies[data[i].TrackingId] = CreateBodyObject(data[i].TrackingId);
                 }
-                
-                RefreshBodyObject(body, _Bodies[body.TrackingId]);
+
+                if (Mathf.Abs(headPos.x) < 0.3f)//&& Mathf.Abs(position.z) < 1.5f)//xの絶対値が両側30センチ＆zは絶対値を取らなくてよい。人が居たら開始
+                {
+                    /*if (!gl.isHMD)
+                    {
+                        gl.NextStateWithCheckCurrentState(GameLoop.GameState.Opening);//オープニング状態なら次へ
+                    }*/
+                }
+
+                // closest player detection　人を一人選ぶ
+                if (Mathf.Abs(headPos.x) < 0.6f)//&& gl.state != GameLoop.GameState.End)(1.0f)
+                {
+                    if (closestPosition == Vector3.zero || Mathf.Abs(closestPosition.z) > Mathf.Abs(headPos.z))
+                    {
+                        trackedId = i;
+                        closestPosition = headPos;//より近くに人が来たら記憶する
+                    }
+                }
+                RefreshBodyObject(data[i], _Bodies[data[i].TrackingId]);
+
+                LeftHandCounter();//挙手時間計測
+                RightHandCounter();
+
+                //利き手判定スクリプト
+                if (riseHand == true && headPos.y < handLeftPos.y && 3 <= leftHandTime)
+                {
+                    handedness = -1;
+                    riseHand = false;
+                    Debug.Log("Handedness Left");
+                    handednessWristPos = GetVector3FromJoint(data[i].Joints[Kinect.JointType.WristLeft], false);
+
+                } else if (riseHand == true && headPos.y < handRightPos.y && 3 <= rightHandTime)
+                {
+                    handedness = 1;
+                    riseHand = false;
+                    Debug.Log("Handedness Right");
+                    handednessWristPos = GetVector3FromJoint(data[i].Joints[Kinect.JointType.WristRight], false);
+
+                }
+
+                //手首位置判定スクリプト
+                if (handedness == -1)//左利き手首を確認
+                {
+                    handednessWristPos = GetVector3FromJoint(data[i].Joints[Kinect.JointType.WristLeft], false);
+                    Debug.Log("Confirm wrist");
+
+                } else if (handedness == 1)//右利き手首確認
+                {
+                    handednessWristPos = GetVector3FromJoint(data[i].Joints[Kinect.JointType.WristRight], false);
+                    Debug.Log("Confirm wrist");
+
+                } else//それ以外なら検出不可能
+                {
+                    handedness = 0;
+                }
             }
+            else
+            {
+                if (trackedId == i)
+                    trackedId = -1;
+            }
+            //試験位置
+            
         }
+
+        //VR画面で使う
+        /*if (trackedId != -1 && data[trackedId] != null)
+        {
+            // Get the head position without offsetting to Oculus
+            // and use it to determine the offset
+            Vector3 posHeadKinect = GetVector3FromJoint(data[trackedId].Joints[Kinect.JointType.Head], false);
+            if (gl.isHMD)
+            {
+                Vector3 posOculus = MainCamera.transform.position;
+                OffsetToWorld = posOculus - posHeadKinect;//Oculusの位置を基準にKinectの座標をずらす。
+            }
+            else
+            {
+                //OffsetToWorld = Vector3.zero;
+                //OffsetToWorld.x = data[trackedId].Joints[Kinect.JointType.Head].Position.X * 10;
+                MainCamera.transform.position = posHeadKinect;
+            }
+            sendSkeleton(data[trackedId]);
+        }*/
     }
-    
+    private Vector3 GetVector3FromJoint(Kinect.Joint joint, bool applyOffet = true)//追加　Jointを持ってくる
+    {
+        Vector3 localPosition = new Vector3(joint.Position.X, joint.Position.Y, -joint.Position.Z);
+
+        //GameLoop gl = gameLoop.GetComponent<GameLoop>();
+        /*        if (!gl.isHMD)
+                {
+                    localPosition.x *= gl.SpreadFactor;
+                    localPosition.y *= gl.SpreadFactor;
+                }
+        */
+        Vector3 globalPosition = gameObject.transform.TransformPoint(localPosition);//Kinect座標をグローバル(Unity)座標に変換
+
+        if (applyOffet)
+            globalPosition += OffsetToWorld;//グローバルポジションをオフセット分ずらす。
+            
+        return globalPosition;
+    }
+
     private GameObject CreateBodyObject(ulong id)
     {
         GameObject body = new GameObject("Body:" + id);
@@ -121,10 +250,12 @@ public class BodySourceView : MonoBehaviour
             lr.SetVertexCount(2);
             lr.material = BoneMaterial;
             lr.SetWidth(0.05f, 0.05f);
-            
-            jointObj.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+
+
+            jointObj.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);//Vector3(0.3f, 0.3f, 0.3f)
             jointObj.name = jt.ToString();
-            jointObj.transform.parent = body.transform;
+            jointObj.transform.parent = body.transform;//body.transform
+
         }
         
         return body;
@@ -174,8 +305,159 @@ public class BodySourceView : MonoBehaviour
         }
     }
     
-    private static Vector3 GetVector3FromJoint(Kinect.Joint joint)
+    private static Vector3 GetVector3FromJoint(Kinect.Joint joint)//座標を返す関数 KinectのJointを受け取る
     {
-        return new Vector3(joint.Position.X * 10, joint.Position.Y * 10, joint.Position.Z * 10);
+        return new Vector3(joint.Position.X * 10, joint.Position.Y * 10, joint.Position.Z * 10);//KinectとUnityの世界は約10倍違う
+        //return new Vector3(joint.Position.X * 10, joint.Position.Y * 10, joint.Position.Z * 10);
     }
+
+    /*****************************************************************************************************************************
+     * 追加
+     * 
+     */
+     
+    public void LeftHandCounter()//左手が上がっている時間をカウントする関数
+    {
+    
+        if(headPos.y < handLeftPos.y)
+        {
+            leftHandTime += Time.deltaTime;//毎フレームの時間を加算する
+            Debug.Log("LeftCount Start");
+
+            rightHandTime -= Time.deltaTime;//もう一方の挙手時間を減らす。そうすることで両手を上げても時間を相殺しあう。
+        }
+
+    }
+
+    public void RightHandCounter()//右手が上がっている時間をカウントする関数
+    {
+        if(headPos.y < handRightPos.y)
+        {
+            rightHandTime += Time.deltaTime;//毎フレームの時間を加算する
+            Debug.Log("RightCount Start");
+            leftHandTime -= Time.deltaTime;
+        }
+
+    }
+
+
+    //追加　利き手判定スクリプト
+    /*
+    void JudgeHandedness()
+    {
+        if (headPos.y < handLeftPos.y)
+        {
+            handedness = -1;
+        }
+        else if (headPos.y < handRightPos.y)
+        {
+            handedness = 1;
+        }
+
+        switch (handedness)
+        {
+            case -1:
+                Debug.Log("Handedness Left");
+                break;
+
+            case 1:
+                Debug.Log("Handedness Right");
+                break;
+        }
+    }*/
+
+    /*void Update () 
+  {
+
+      if (BodySourceManager == null)
+      {
+          return;
+      }
+
+      _BodyManager = BodySourceManager.GetComponent<BodySourceManager>();
+      if (_BodyManager == null)
+      {
+          return;
+      }
+
+      Kinect.Body[] data = _BodyManager.GetData();
+      if (data == null)
+      {
+          return;
+      }
+      List<ulong> trackedIds = new List<ulong>();
+
+      foreach(var body in data)//データの中のボディを使う 一旦コメントアウト
+      {
+          if (body == null)
+          {
+              continue;
+          }
+
+          if(body.IsTracked)
+          {
+              trackedIds.Add (body.TrackingId);
+          }
+      }
+
+      Vector3 closestPosition = Vector3.zero;
+      //GameLoop gl = gameLoop.GetComponent<GameLoop>();
+
+      //foreach(var body in data)ボディ取り出し 追加
+      for (int i = 0; i < data.Length; i++)
+      {
+          if (data[i] == null)
+          {
+              continue;
+          }
+
+          if (data[i].IsTracked)
+          {
+              //get kinect coodinate without offset　[i] ボディ型、Joints{  } JointTypeからJointへの辞書　JointはVector3のようなもの
+              headPos = GetVector3FromJoint(data[i].Joints[Kinect.JointType.Head], false);////頭の位置をジョイントから持ってくる
+
+              // found new body
+              if (!_Bodies.ContainsKey(data[i].TrackingId))
+              {
+                  _Bodies[data[i].TrackingId] = CreateBodyObject(data[i].TrackingId);
+              }
+
+              if (Mathf.Abs(headPos.x) < 0.3f )//&& Mathf.Abs(position.z) < 1.5f)//xの絶対値が両側30センチ＆zは絶対値を取らなくてよい。人が居たら開始
+              {
+                  /*if (!gl.isHMD)
+                  {
+                      gl.NextStateWithCheckCurrentState(GameLoop.GameState.Opening);//オープニング状態なら次へ
+                  }
+              }
+
+              // closest player detection　人を一人選ぶ
+              if (Mathf.Abs(headPos.x) < 1.0f )//&& gl.state != GameLoop.GameState.End)
+              {
+                  if (closestPosition == Vector3.zero || Mathf.Abs(closestPosition.z) > Mathf.Abs(headPos.z))//より近くに人が来たら記憶する
+                  {
+                      trackedId = i;
+                      closestPosition = headPos;
+                  }
+              }
+              RefreshBodyObject(data[i], _Bodies[data[i].TrackingId]);
+          }
+          else
+          {
+              if (trackedId == i)
+                  trackedId = -1;
+          }
+      }
+
+      List<ulong> knownIds = new List<ulong>(_Bodies.Keys);
+
+      // First delete untracked bodies
+      foreach(ulong trackingId in knownIds)
+      {
+          if(!trackedIds.Contains(trackingId))
+          {
+              Destroy(_Bodies[trackingId]);
+              _Bodies.Remove(trackingId);
+          }
+      }        
+  }*/
 }
