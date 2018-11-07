@@ -21,21 +21,20 @@ public class KinectController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
         if(BodySourceView.handedness == -1) {
-            wristPosition = BodySourceView.handednessWristPos;//gameObject.transform.position;
+            wristPosition = BodySourceView.handednessWristPos;
             spinPosition = wristPosition;
-            Debug.Log("Detect LeftWrist");
+            Debug.Log("Detected LeftWrist");
 
         } else if(BodySourceView.handedness == 1)
         {
-            wristPosition = BodySourceView.handednessWristPos;//gameObject.transform.position;
+            wristPosition = BodySourceView.handednessWristPos;
             spinPosition = wristPosition;
-            Debug.Log("Detect RightWrist");
-        } else
-        {
-            Debug.Log("Not Found");
+            Debug.Log("Detected RightWrist");
         }
     }
+
     /*public int DetectHandedness()//利き腕判定　戻り値 1=右, -1=左, 0=検出失敗
     {
         return 1;

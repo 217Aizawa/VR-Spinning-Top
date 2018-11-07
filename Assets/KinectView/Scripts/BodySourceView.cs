@@ -9,16 +9,15 @@ public class BodySourceView : MonoBehaviour
     public GameObject BodySourceManager;
 
     public Vector3 headPos;//追加
-    public Vector3 handLeftPos;//
-    public Vector3 handRightPos;//
-    public Vector3 wristPosition;//
+    public Vector3 handLeftPos;//左手位置
+    public Vector3 handRightPos;//右手位置
     public Vector3 handednessWristPos;//利き手の手首位置
 
-    private float leftHandTime = 0;//手を挙げている時間
+    private float leftHandTime = 0;//左手を挙げている時間
     private float rightHandTime = 0;
 
 
-    public int handedness;//追加
+    public int handedness;//追加 public
     bool riseHand = true;//利き手判定用に一度だけ判定するbool。ゲームが終了したら、trueに戻す。
 
 
@@ -62,7 +61,7 @@ public class BodySourceView : MonoBehaviour
     };
     void Start()
     {
-
+        
     }
 
   
@@ -157,45 +156,67 @@ public class BodySourceView : MonoBehaviour
                 LeftHandCounter();//挙手時間計測
                 RightHandCounter();
 
-                //利き手判定スクリプト
+                //利き手判定スクリプト（左手）
                 if (riseHand == true && headPos.y < handLeftPos.y && 3 <= leftHandTime)
                 {
                     handedness = -1;
                     riseHand = false;
                     Debug.Log("Handedness Left");
-                    handednessWristPos = GetVector3FromJoint(data[i].Joints[Kinect.JointType.WristLeft], false);
-
-                } else if (riseHand == true && headPos.y < handRightPos.y && 3 <= rightHandTime)
+                }
+                else if (riseHand == true && headPos.y < handRightPos.y && 3 <= rightHandTime)
                 {
                     handedness = 1;
                     riseHand = false;
                     Debug.Log("Handedness Right");
-                    handednessWristPos = GetVector3FromJoint(data[i].Joints[Kinect.JointType.WristRight], false);
-
                 }
 
-                //手首位置判定スクリプト
-                if (handedness == -1)//左利き手首を確認
+                //手首位置取得スクリプト
+                if (handedness == -1)//左
                 {
                     handednessWristPos = GetVector3FromJoint(data[i].Joints[Kinect.JointType.WristLeft], false);
-                    Debug.Log("Confirm wrist");
+                    //Debug.Log("Confirm LeftWrist");
 
-                } else if (handedness == 1)//右利き手首確認
+                }
+                else if (handedness == 1)//右
                 {
                     handednessWristPos = GetVector3FromJoint(data[i].Joints[Kinect.JointType.WristRight], false);
-                    Debug.Log("Confirm wrist");
+                    //Debug.Log("Confirm RightWrist");
 
-                } else//それ以外なら検出不可能
-                {
-                    handedness = 0;
                 }
+
+                if (Input.GetKeyDown(KeyCode.KeypadEnter))//利き手強制切り替えスクリプト（テンキーのEnterキー）
+                {
+                    Debug.Log("GetKeyDown Enter");
+                    if(handedness == -1)//左手なら
+                    {
+                        handedness = 1;
+                        Debug.Log("Converted RightHandedness");
+                    }
+                    else if(handedness == 1)//右手なら
+                    {
+                        handedness = -1;
+                        Debug.Log("Converted LeftHandedness");
+                    }
+                }
+
+                //キーボードで利き手切り替え
+                if (Input.GetKeyDown(KeyCode.L))
+                {
+                    handedness = -1;
+                    //Debug.Log("Converted LeftHandedness");
+                }
+                else if (Input.GetKeyDown(KeyCode.R))
+                {
+                    handedness = 1;
+                    //Debug.Log("Converted RightHandedness");
+                }
+
             }
             else
             {
                 if (trackedId == i)
                     trackedId = -1;
             }
-            //試験位置
             
         }
 
@@ -252,7 +273,8 @@ public class BodySourceView : MonoBehaviour
             lr.SetWidth(0.05f, 0.05f);
 
 
-            jointObj.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);//Vector3(0.3f, 0.3f, 0.3f)
+            
+            jointObj.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);//KinectBodyの大きさを設定できる
             jointObj.name = jt.ToString();
             jointObj.transform.parent = body.transform;//body.transform
 
@@ -307,7 +329,7 @@ public class BodySourceView : MonoBehaviour
     
     private static Vector3 GetVector3FromJoint(Kinect.Joint joint)//座標を返す関数 KinectのJointを受け取る
     {
-        return new Vector3(joint.Position.X * 10, joint.Position.Y * 10, joint.Position.Z * 10);//KinectとUnityの世界は約10倍違う
+        return new Vector3(joint.Position.X * 10, joint.Position.Y * 10, joint.Position.Z * -1);//KinectとUnityの世界は約10倍違う(メートルに直す)
         //return new Vector3(joint.Position.X * 10, joint.Position.Y * 10, joint.Position.Z * 10);
     }
 
@@ -318,7 +340,6 @@ public class BodySourceView : MonoBehaviour
      
     public void LeftHandCounter()//左手が上がっている時間をカウントする関数
     {
-    
         if(headPos.y < handLeftPos.y)
         {
             leftHandTime += Time.deltaTime;//毎フレームの時間を加算する
@@ -326,7 +347,6 @@ public class BodySourceView : MonoBehaviour
 
             rightHandTime -= Time.deltaTime;//もう一方の挙手時間を減らす。そうすることで両手を上げても時間を相殺しあう。
         }
-
     }
 
     public void RightHandCounter()//右手が上がっている時間をカウントする関数
@@ -340,8 +360,6 @@ public class BodySourceView : MonoBehaviour
 
     }
 
-
-    //追加　利き手判定スクリプト
     /*
     void JudgeHandedness()
     {
@@ -460,4 +478,5 @@ public class BodySourceView : MonoBehaviour
           }
       }        
   }*/
+
 }
