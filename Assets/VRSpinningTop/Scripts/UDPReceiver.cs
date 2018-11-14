@@ -36,7 +36,7 @@ public class UDPReceiver : MonoBehaviour
 	public int port = 28080;
 	
     // infos
-    public string lastReceivedUDPPacket = "";
+    public static string lastReceivedUDPPacket = "";
     // public string allReceivedUDPPackets = ""; // clean up this from time to time!
 
     // start from shell
