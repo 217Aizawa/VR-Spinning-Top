@@ -203,12 +203,14 @@ public class BodySourceView : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.L))
                 {
                     handedness = -1;
-                    //Debug.Log("Converted LeftHandedness");
+                    Debug.Log("LKey Down");
+                    Debug.Log("Converted LeftHandedness");
                 }
                 else if (Input.GetKeyDown(KeyCode.R))
                 {
                     handedness = 1;
-                    //Debug.Log("Converted RightHandedness");
+                    Debug.Log("RKey Down");
+                    Debug.Log("Converted RightHandedness");
                 }
 
             }

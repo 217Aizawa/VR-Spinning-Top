@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class StringController : MonoBehaviour {
     public enum MotorMode { isTrackingHand, isShowingResistance, isRewinding, isFree };
-
+    public GameLoop gameLoop;
     public MotorMode currentMode;       // 現在のモータモード
     public float InitialStringLength;   // 体験開始時の紐繰り出し長さ[mm]
     public float Kp;                    // 比例制御係数
-
+    public float stringDist;
     float targetLength;
     EncoderController enc;
     MotorController motor;
@@ -22,6 +22,7 @@ public class StringController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        stringDist = gameLoop.dist;//糸の巻取り距離
         switch (currentMode)
         {
             case MotorMode.isTrackingHand:
@@ -65,10 +66,9 @@ public class StringController : MonoBehaviour {
         targetLength = len;
     }
 
-    public void setResistance(float resistance)     //抵抗    resistance の単位は [N]
+    public void setResistance(float resistance)//抵抗    resistance の単位は [N]
     {
         currentMode = MotorMode.isShowingResistance;
         motor.setResistance(resistance);
     }
-
 }

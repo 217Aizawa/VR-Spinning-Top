@@ -13,8 +13,12 @@ public class GameLoop : MonoBehaviour {
     private float afterTime = 0;//投げ終わってからの時間
 
     public GameObject Great;
-    public GameObject AdviseMoreFast;
-    public GameObject AdviseMoreSlow;
+    public GameObject adviseMoreFast;
+    public GameObject adviseMoreSlow;
+    public GameObject stringMachine;//Unity上のStringController
+    private Vector3 windingDevice;
+    public Vector3 wrist;
+    public float dist;
 
     // Use this for initialization
     void Start () {
@@ -25,7 +29,8 @@ public class GameLoop : MonoBehaviour {
 	void Update () {
 
         TimeCounter();
-        
+        WindingDistance();
+
         if (spinController.isThrown)//スペースキーが押されたら。
         {
             koma.GetComponent<Rigidbody>().velocity = spinController.velocity;//スピンコントローラの速度(z方向に速度5)を、コマに代入
@@ -36,13 +41,13 @@ public class GameLoop : MonoBehaviour {
             //最終的には、リザルト画面で表示させる。
         {
             Debug.Log("もう少しゆっくり投げてください！！");
-            AdviseMoreSlow.SetActive(true);//アドバイステキストをアクティブにする
+            adviseMoreSlow.SetActive(true);//アドバイステキストをアクティブにする
         }
         //コマの速度が1以上10以下かつ、投げ終わってから3秒以上経過した場合
         else if (1 <= koma.GetComponent<Rigidbody>().velocity.z && koma.GetComponent<Rigidbody>().velocity.z <= 10 && 3 <= afterTime)
         {
             Debug.Log("もう少し速く投げてください！！");
-            AdviseMoreFast.SetActive(true);//アドバイステキストをアクティブにする
+            adviseMoreFast.SetActive(true);//アドバイステキストをアクティブにする
         }
         else if (3 <= afterTime)
         {
@@ -57,5 +62,12 @@ public class GameLoop : MonoBehaviour {
         {
             afterTime += Time.deltaTime;
         }
+    }
+
+    public void WindingDistance()
+    {
+        Vector3 windingDevice = stringMachine.transform.position;
+        Vector3 wrist = kinectController.wristPosition;
+        dist = Vector3.Distance(windingDevice, wrist);
     }
 }
