@@ -17,8 +17,13 @@ public class SpinController : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown("space"))
         {
-            velocity = new Vector3(0, 0, 5);//変数velocityにVector3構造体をセットする。
+            velocity = new Vector3(0, 0, 15);//変数velocityにVector3構造体をセットする。
             isThrown = true;
+        }
+
+        if(isThrown == true)
+        {
+            ForkParticlePlugin.Instance.Test();
         }
 	}
 
