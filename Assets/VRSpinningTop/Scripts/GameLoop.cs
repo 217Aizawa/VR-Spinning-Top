@@ -53,11 +53,11 @@ public class GameLoop : MonoBehaviour {
             Debug.Log("素晴らしい");
             Great.SetActive(true);
         }
-        /*
+        
         if (Input.GetKeyDown("space"))
         {
             ForkParticlePlugin.Instance.Test();
-        }*/
+        }
     }
 
     void TimeCounter()//コマを投げ終わってからの時間を計る。
