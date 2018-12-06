@@ -210,16 +210,21 @@ public class BodySourceView : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.L))
                 {
                     handedness = -1;
+                    WristKoma = GameObject.Find("WristLeft");
                     Debug.Log("LKey Down");
                     Debug.Log("Converted LeftHandedness");
                     KomaObj.transform.parent = WristKoma.transform;
+                    KomaObj.transform.localPosition = Vector3.zero;
                 }
                 else if (Input.GetKeyDown(KeyCode.R))
                 {
                     handedness = 1;
+                    WristKoma = GameObject.Find("WristRight");
                     Debug.Log("RKey Down");
                     Debug.Log("Converted RightHandedness");
-                    KomaObj.transform.parent = WristKoma.transform;
+                    //KomaObj.transform.ResetLocal;
+                    KomaObj.transform.parent = WristKoma.transform;//正常に動作する
+                    KomaObj.transform.localPosition = Vector3.zero;
                 }
 
             }
