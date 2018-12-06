@@ -181,10 +181,7 @@ public class BodySourceView : MonoBehaviour
                     handednessWristPos = GetVector3FromJoint(data[i].Joints[Kinect.JointType.WristLeft], false);
                     //WristKoma = GameObject.Find("WristLeft");
                     //Debug.Log("Confirm LeftWrist");
-                    //子としてコマを生成する
-                    CreatePrefab();
-                    /*KomaObj = (GameObject)Instantiate(Koma, this.transform.position, Quaternion.identity);
-                    KomaObj.transform.parent = WristKoma.transform;*/
+                    CreatePrefab();//子としてコマを生成する
                 }
                 else if (handedness == 1)//右
                 {
@@ -192,8 +189,6 @@ public class BodySourceView : MonoBehaviour
                     //WristKoma = GameObject.Find("WristRight");
                     //Debug.Log("Confirm RightWrist");
                     CreatePrefab();
-                    /*KomaObj = (GameObject)Instantiate(Koma, this.transform.position, Quaternion.identity);
-                    KomaObj.transform.parent = WristKoma.transform;*/
                 }
 
                 if (Input.GetKeyDown(KeyCode.KeypadEnter))//利き手強制切り替えスクリプト（テンキーのEnterキー）
@@ -217,12 +212,14 @@ public class BodySourceView : MonoBehaviour
                     handedness = -1;
                     Debug.Log("LKey Down");
                     Debug.Log("Converted LeftHandedness");
+                    KomaObj.transform.parent = WristKoma.transform;
                 }
                 else if (Input.GetKeyDown(KeyCode.R))
                 {
                     handedness = 1;
                     Debug.Log("RKey Down");
                     Debug.Log("Converted RightHandedness");
+                    KomaObj.transform.parent = WristKoma.transform;
                 }
 
             }
@@ -378,7 +375,8 @@ public class BodySourceView : MonoBehaviour
     {
         if(GameObject.FindGameObjectsWithTag("Koma").Length == 0)//GameObject.FindWithTag("Koma")
         {
-            KomaObj = (GameObject)Instantiate(Koma, handednessWristPos, Quaternion.identity, WristKoma.transform);//Object, Vector3, Quaternion, Parent.transform ,
+            //Instantiate(Object, Vector3, Quaternion, Parent.transform)
+            KomaObj = (GameObject)Instantiate(Koma, handednessWristPos, Quaternion.identity, WristKoma.transform); 
             //KomaObj.transform.parent = WristKoma.transform; //WristKoma.transform.position
         }
         else
