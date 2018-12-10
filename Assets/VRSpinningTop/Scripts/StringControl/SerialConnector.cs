@@ -2,16 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO.Ports; // for RS-232C
+using System.Threading;
 
 public class SerialConnector : MonoBehaviour {
 
+    // 使い方：
+    //      Connect(int portNr)
+    //          portNr のシリアルポートに接続する。接続に成功したら、その旨を Debug Log に出力後、受信スレッドを起動してポートの監視を開始する。
+    //      SendChar(char c)
+    //          c をポートに送信する。チップ側で現在受け付けられるのは、＋（正回転）、ー（逆回転）、０（フリー停止）、＝（ブレーキ）
+    //          注意：正回転・逆回転・ブレーキの間には、いちどフリーを送信することが強く望まれる
+    //      public int rotationCount
+    //          現在の回転ステップ数。別スレッドで自動的に更新されている。直接書き換え可能なので注意。（Editor で監視できるので、しばらくこのまま行く） 
+
     SerialPort port;
-    byte[] buf;
+    byte[] sendbuf;
+
+    public int rotationCount;
+    Thread receivingThread;
 
 	// Use this for initialization
 	void Start () {
-        buf = new byte[1];
-        Connect(3);	
+        sendbuf = new byte[1];
+        rotationCount = 0;
+//        Connect(3); // just for test
 	}
 	
 	// Update is called once per frame
@@ -24,8 +38,35 @@ public class SerialConnector : MonoBehaviour {
             SendChar('0');
 	}
 
+    void ReadThread()
+    {
+        while( port != null && port.IsOpen )
+        {
+            char c = (char)port.ReadByte();
+            switch(c)
+            {
+                case 'a':
+                    rotationCount++;
+                    break;
+                case 'A':
+                    rotationCount += 10;
+                    break;
+                case 'b':
+                    rotationCount--;
+                    break;
+                case 'B':
+                    rotationCount -= 10;
+                    break;
+                case 'R':
+                    rotationCount = 0;
+                    break;
+            }
+        }
+    }
+
     private void OnDestroy()
     {
+        receivingThread.Abort();
         if( port != null )
             port.Close();
     }
@@ -54,14 +95,14 @@ public class SerialConnector : MonoBehaviour {
         }
 
         Debug.Log(port.PortName + ": Connected");
+
+        receivingThread = new Thread(ReadThread);
+        receivingThread.Start();
     }
 
-    private void SendChar(char c)
+    public void SendChar(char c)
     {
-        buf[0] = (byte)c;
-        port.Write(buf, 0, 1);
+        sendbuf[0] = (byte)c;
+        port.Write(sendbuf, 0, 1);
     }
-    
 }
-
-
