@@ -8,7 +8,8 @@ public class SpinController : MonoBehaviour
     public bool isThrown;//投げられたかの判定
     public Vector3 velocity;//速度
     public Vector3 Axis;//軸の向き
-    Vector3 f, old_f;   //取得してきた値
+    Vector3 f, old_f,v;   //取得してきた値
+    public Quaternion g_rotation,g; //本体とｇの回転
 
 
     // Use this for initialization
@@ -23,20 +24,32 @@ public class SpinController : MonoBehaviour
 
 
 
-        Axis = Input.acceleration;
+        Axis = old_f;
 
 
 
 
 
         f = StringToVector3(UDPReceiver.lastReceivedUDPPacket);
+       
+        //f = new Vector3( Input.acceleration.x, -Input.acceleration.z, Input.acceleration.y);
+        if ((g * v).magnitude > 1.25&&isThrown!=true) {
+            isThrown = true;
+            v = f - old_f;
+            g_rotation =g;
+            velocity = g_rotation*v;
+        }
 
-        if (f.magnitude > 1.5) { isThrown = true; velocity = f - old_f; }
 
         //        if (isThrown) velocity = f-old_f;
-        else if (f.magnitude <= 1) old_f = f;
+        //else if (f.magnitude <= 1) old_f = f;
+        else if (f.magnitude<1.1&&f.magnitude>0.9) old_f = f;
+        g = Quaternion.FromToRotation(Vector3.up, new Vector3(-old_f.x, old_f.y, -old_f.z));
+        v = f - old_f;              //ローカル方向
+        
 
-        Debug.Log(f.magnitude);
+
+        Debug.Log(velocity);
 
 
         //velocity = new Vector3(0, 0, -5);//変数velocityにVector3構造体をセットする。

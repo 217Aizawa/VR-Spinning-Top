@@ -30,9 +30,12 @@ public class GameLoop : MonoBehaviour {
         TimeCounter();
         WindingDistance();
 
+
+        koma.GetComponent<Rigidbody>().rotation = spinController.g_rotation;
         if (spinController.isThrown)//スペースキーが押されたら。
         {
             koma.GetComponent<Rigidbody>().velocity = spinController.velocity;//スピンコントローラの速度(z方向に速度5)を、コマに代入
+            
         }
 
         //コマの速度が10以上20以下かつ、投げ終わってから3秒以上経過した場合
