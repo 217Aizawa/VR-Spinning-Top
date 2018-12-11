@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,7 +31,7 @@ public class SpinController : MonoBehaviour
 
 
         f = StringToVector3(UDPReceiver.lastReceivedUDPPacket);
-       
+
         //f = new Vector3( Input.acceleration.x, -Input.acceleration.z, Input.acceleration.y);
         if ((g * v).magnitude > 1.25&&isThrown!=true) {
             isThrown = true;
@@ -46,7 +46,7 @@ public class SpinController : MonoBehaviour
         else if (f.magnitude<1.1&&f.magnitude>0.9) old_f = f;
         g = Quaternion.FromToRotation(Vector3.up, new Vector3(-old_f.x, old_f.y, -old_f.z));
         v = f - old_f;              //ローカル方向
-        
+
 
 
         Debug.Log(velocity);
