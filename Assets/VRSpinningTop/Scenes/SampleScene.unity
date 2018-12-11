@@ -322,11 +322,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 277581929}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -3}
+  m_LocalPosition: {x: 0, y: 0.08, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &528360464
 Prefab:
@@ -448,11 +448,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 550749915}
---- !u!1 &615729356 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1921186420228700, guid: 597b351db08321c47bf5dd8613fde673,
-    type: 2}
-  m_PrefabInternal: {fileID: 1343074275}
 --- !u!4 &661590828 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4629484891779650, guid: 58082c20fa9ed634c8a6569a2a345f4f,
@@ -487,6 +482,7 @@ Transform:
   m_Children:
   - {fileID: 1646389737}
   - {fileID: 2034248245}
+  - {fileID: 1186589125}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -504,7 +500,7 @@ MonoBehaviour:
   spinController: {fileID: 2034248246}
   stringController: {fileID: 1186589126}
   kinectController: {fileID: 1646389738}
-  koma: {fileID: 615729356}
+  bodySourceView: {fileID: 16153790}
   Great: {fileID: 97412}
   adviseMoreFast: {fileID: 550749915}
   adviseMoreSlow: {fileID: 1550385622}
@@ -587,7 +583,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &878014217
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -655,7 +651,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1019843573
 GameObject:
@@ -772,7 +768,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1089252036
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -834,11 +830,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1089252035}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.017897975, y: 0.779, z: -2.8302567}
+  m_LocalPosition: {x: 2.62, y: 2.68, z: -2.8302567}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1089252040
 MonoBehaviour:
@@ -848,11 +844,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1089252035}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 802c1bc813d560a47be9e8c6412a1a03, type: 3}
+  m_Script: {fileID: 11500000, guid: d08fd4bf66dd0f347884891e2039d524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  offset: {x: 0, y: 0, z: 0}
 --- !u!54 &1089252041
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -863,8 +857,8 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -958,8 +952,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 773101333}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1186589126
 MonoBehaviour:
@@ -1038,7 +1032,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4471057004425128, guid: 597b351db08321c47bf5dd8613fde673, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 136408549658956028, guid: 597b351db08321c47bf5dd8613fde673,
         type: 2}
@@ -1117,7 +1111,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1545828081
 Prefab:
@@ -1213,7 +1207,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1433638690955210, guid: 10571533df065e84e9e8197235e2a5cd, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114823478798426706, guid: 10571533df065e84e9e8197235e2a5cd,
         type: 2}

@@ -8,7 +8,7 @@ public class GameLoop : MonoBehaviour {
     public SpinController spinController;//型名 変数名 (SpinController s)。gameObjectのSpinControllerとは違う
     public StringController stringController;//世界の中にあるgameObjectをここに入れる。
     public KinectController kinectController;//そうすることで、spinControllerの変数を使用することができる。
-    public GameObject koma;
+    public BodySourceView bodySourceView;
 
     private float afterTime = 0;//投げ終わってからの時間
 
@@ -19,7 +19,6 @@ public class GameLoop : MonoBehaviour {
     private Vector3 windingDevice;
     public Vector3 wrist;
     public float dist;
-
     // Use this for initialization
     void Start () {
 		
@@ -27,16 +26,26 @@ public class GameLoop : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        GameObject koma = bodySourceView.KomaObj;
         TimeCounter();
         WindingDistance();
 
-        if (spinController.isThrown)//スペースキーが押されたら。
+        if (spinController.isThrown == true)//投げられたら。
         {
-            koma.GetComponent<Rigidbody>().velocity = spinController.velocity;//スピンコントローラの速度(z方向に速度5)を、コマに代入
+            //親子関係があると正常に動作しない
+            koma.transform.parent = null;//親子関係を解除する
+            Rigidbody rb = koma.GetComponentInChildren<Rigidbody>();
+            Debug.Log("isThrown");
+            rb.isKinematic = false;
+            rb.useGravity = true;
+            rb.velocity = spinController.velocity;
+            rb.angularVelocity = Vector3.up * 3.14f;
+
+            //koma.GetComponent<Rigidbody>().velocity = spinController.velocity;//スピンコントローラの速度を、コマに代入
         }
 
         //コマの速度が10以上20以下かつ、投げ終わってから3秒以上経過した場合
-        if(10 <= koma.GetComponent<Rigidbody>().velocity.z  && koma.GetComponent<Rigidbody>().velocity.z <= 20 && 3 <= afterTime)
+        if (10 <= koma.GetComponent<Rigidbody>().velocity.z  && koma.GetComponent<Rigidbody>().velocity.z <= 20 && 3 <= afterTime)
             //最終的には、リザルト画面で表示させる。
         {
             Debug.Log("もう少しゆっくり投げてください！！");

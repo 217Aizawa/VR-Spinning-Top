@@ -10,7 +10,7 @@ public class BodySourceView : MonoBehaviour
 
     public GameObject Koma;
     GameObject WristKoma;
-    GameObject KomaObj;
+    public GameObject KomaObj;
 
     public Vector3 headPos;//追加
     public Vector3 handLeftPos;//左手位置
@@ -375,18 +375,13 @@ public class BodySourceView : MonoBehaviour
         }
 
     }
-    
-    public void CreatePrefab()//コマプレハブ生成関数
+
+    void CreatePrefab()//コマプレハブ生成関数
     {
-        if(GameObject.FindGameObjectsWithTag("Koma").Length == 0)//GameObject.FindWithTag("Koma")
+        if(GameObject.FindGameObjectsWithTag("Koma").Length == 0)
         {
             //Instantiate(Object, Vector3, Quaternion, Parent.transform)
-            KomaObj = (GameObject)Instantiate(Koma, handednessWristPos, Quaternion.identity, WristKoma.transform); 
-            //KomaObj.transform.parent = WristKoma.transform; //WristKoma.transform.position
-        }
-        else
-        {
-
+            KomaObj = (GameObject)Instantiate(Koma, handednessWristPos, Quaternion.identity, WristKoma.transform);
         }
     }
 

@@ -36,7 +36,7 @@ public class SpinController : MonoBehaviour
         //        if (isThrown) velocity = f-old_f;
         else if (f.magnitude <= 1) old_f = f;
 
-        Debug.Log(f.magnitude);
+        //Debug.Log(f.magnitude);
 
 
         //velocity = new Vector3(0, 0, -5);//変数velocityにVector3構造体をセットする。
