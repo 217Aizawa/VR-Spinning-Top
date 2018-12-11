@@ -21,9 +21,9 @@ public class GameLoop : MonoBehaviour {
     public float dist;
     // Use this for initialization
     void Start () {
-		
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
         GameObject koma = bodySourceView.KomaObj;
@@ -62,7 +62,7 @@ public class GameLoop : MonoBehaviour {
             Debug.Log("素晴らしい");
             Great.SetActive(true);
         }
-        
+
         if (Input.GetKeyDown("space"))
         {
             ForkParticlePlugin.Instance.Test();
