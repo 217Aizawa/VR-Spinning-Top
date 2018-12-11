@@ -33,20 +33,23 @@ public class SpinController : MonoBehaviour
         f = StringToVector3(UDPReceiver.lastReceivedUDPPacket);
 
         //f = new Vector3( Input.acceleration.x, -Input.acceleration.z, Input.acceleration.y);
-        if ((g * v).magnitude > 1.25&&isThrown!=true) {
+        if ((g * v).magnitude > 1.25 && isThrown != true)
+        {
             isThrown = true;
             v = f - old_f;
-            g_rotation =g;
-            velocity = g_rotation*v;
+
+            velocity = g_rotation * v;
         }
 
 
         //        if (isThrown) velocity = f-old_f;
         //else if (f.magnitude <= 1) old_f = f;
-        else if (f.magnitude<1.1&&f.magnitude>0.9) old_f = f;
-        g = Quaternion.FromToRotation(Vector3.up, new Vector3(-old_f.x, old_f.y, -old_f.z));
-        v = f - old_f;              //ローカル方向
-
+        else if (isThrown != true)
+        {
+            if (f.magnitude < 1.1 && f.magnitude > 0.9) old_f = f;
+            g_rotation = Quaternion.FromToRotation(Vector3.up, new Vector3(-old_f.x, old_f.y, -old_f.z));
+            v = f - old_f;              //ローカル方向
+        }
 
 
         Debug.Log(velocity);

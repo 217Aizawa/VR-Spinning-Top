@@ -30,6 +30,7 @@ public class GameLoop : MonoBehaviour {
         TimeCounter();
         WindingDistance();
 
+        koma.GetComponent<Rigidbody>().rotation = spinController.g_rotation;
         if (spinController.isThrown == true)//投げられたら。
         {
             //親子関係があると正常に動作しない

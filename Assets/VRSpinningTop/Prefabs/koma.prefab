@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4861284235651590}
   m_Layer: 0
-  m_Name: Koma
+  m_Name: koma
   m_TagString: Koma
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
