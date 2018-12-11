@@ -25,17 +25,10 @@ public class SerialConnector : MonoBehaviour {
 	void Start () {
         sendbuf = new byte[1];
         rotationCount = 0;
-//        Connect(3); // just for test
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKey(KeyCode.Alpha1))
-            SendChar('+');
-        if (Input.GetKey(KeyCode.Minus))
-            SendChar('-');
-        if (Input.GetKey(KeyCode.Alpha0))
-            SendChar('0');
 	}
 
     void ReadThread()
@@ -75,6 +68,8 @@ public class SerialConnector : MonoBehaviour {
     {
         if (port != null)
             port.Close();
+
+        Debug.Log("Start connecting to port:" + portNr);
 
         port = new SerialPort();
         port.PortName = "COM" + portNr;
