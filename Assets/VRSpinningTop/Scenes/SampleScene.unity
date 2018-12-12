@@ -999,6 +999,7 @@ GameObject:
   - component: {fileID: 1186589126}
   - component: {fileID: 1186589127}
   - component: {fileID: 1186589128}
+  - component: {fileID: 1186589129}
   m_Layer: 0
   m_Name: StringController
   m_TagString: Untagged
@@ -1059,6 +1060,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItomakiRadius: 0
   EncoderCounts: 0
+  currentCount: 0
+--- !u!114 &1186589129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1186589124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56c20711481ae446b0c780fe38d55c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationCount: 0
 --- !u!1001 &1343074275
 Prefab:
   m_ObjectHideFlags: 0
