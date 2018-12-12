@@ -71,6 +71,11 @@ public class BodySourceView : MonoBehaviour
   
     void Update()
     {
+        if(GameObject.FindGameObjectsWithTag("Koma").Length == 1)
+        {
+            KomaObj = GameObject.FindWithTag("Koma");
+        }
+
         if (BodySourceManager == null)
         {
             return;
@@ -165,6 +170,8 @@ public class BodySourceView : MonoBehaviour
                     WristKoma = GameObject.Find("WristLeft");
                     handedness = -1;
                     riseHand = false;
+                    handednessWristPos = GetVector3FromJoint(data[i].Joints[Kinect.JointType.WristLeft], false);
+                    CreatePrefab();//子としてコマを生成する
                     Debug.Log("Handedness Left");
                 }
                 else if (riseHand == true && headPos.y < handRightPos.y && 3 <= rightHandTime)
@@ -172,24 +179,11 @@ public class BodySourceView : MonoBehaviour
                     WristKoma = GameObject.Find("WristRight");
                     handedness = 1;
                     riseHand = false;
+                    handednessWristPos = GetVector3FromJoint(data[i].Joints[Kinect.JointType.WristRight], false);
+                    CreatePrefab();
                     Debug.Log("Handedness Right");
                 }
 
-                //手首位置取得スクリプト
-                if (handedness == -1)//左
-                {
-                    handednessWristPos = GetVector3FromJoint(data[i].Joints[Kinect.JointType.WristLeft], false);
-                    //WristKoma = GameObject.Find("WristLeft");
-                    //Debug.Log("Confirm LeftWrist");
-                    CreatePrefab();//子としてコマを生成する
-                }
-                else if (handedness == 1)//右
-                {
-                    handednessWristPos = GetVector3FromJoint(data[i].Joints[Kinect.JointType.WristRight], false);
-                    //WristKoma = GameObject.Find("WristRight");
-                    //Debug.Log("Confirm RightWrist");
-                    CreatePrefab();
-                }
 
                 if (Input.GetKeyDown(KeyCode.KeypadEnter))//利き手強制切り替えスクリプト（テンキーのEnterキー）
                 {
@@ -226,7 +220,6 @@ public class BodySourceView : MonoBehaviour
                     KomaObj.transform.parent = WristKoma.transform;//正常に動作する
                     KomaObj.transform.localPosition = Vector3.zero;
                 }
-
             }
             else
             {
@@ -378,11 +371,12 @@ public class BodySourceView : MonoBehaviour
 
     void CreatePrefab()//コマプレハブ生成関数
     {
-        if(GameObject.FindGameObjectsWithTag("Koma").Length == 0)
-        {
-            //Instantiate(Object, Vector3, Quaternion, Parent.transform)
-            KomaObj = (GameObject)Instantiate(Koma, handednessWristPos, Quaternion.identity, WristKoma.transform);
-        }
+        GameObject obj = GameObject.FindGameObjectWithTag("Koma");
+
+        if (obj != null)
+            Destroy(obj);
+        //Instantiate(Object, Vector3, Quaternion, Parent.transform)
+        KomaObj = (GameObject)Instantiate(Koma, handednessWristPos, Quaternion.identity, WristKoma.transform);
     }
 
     /*
