@@ -14,11 +14,13 @@ public class EncoderController : MonoBehaviour {
 
     List<EncoderCount> samples;
     int formerCount;
-    int currentCount;
-
+    public int currentCount;
+    
     // 定数
     float AnglePerCount;    // １カウントあたりの角度 [rad]
     float LengthPerCount;   // １カウントあたりの繰り出し量 [mm]
+
+    SerialConnector serialPort;
     
 	// Use this for initialization
 	void Start () {
@@ -27,11 +29,13 @@ public class EncoderController : MonoBehaviour {
 
         AnglePerCount = 2 * Mathf.PI / 360 / EncoderCounts;
         LengthPerCount = AnglePerCount * ItomakiRadius;
+
+        serialPort = gameObject.GetComponent<SerialConnector>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        currentCount = updateCount(currentCount);
+        currentCount = serialPort.rotationCount;
 
         EncoderCount ec;
         ec.dt = Time.deltaTime;
@@ -59,11 +63,6 @@ public class EncoderController : MonoBehaviour {
                 break;
         }
         return sum.count / sum.dt;
-    }
-
-    int updateCount(int c)
-    {
-        return c + 2;
     }
 
     public float getTotalAngle()
