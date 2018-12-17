@@ -27,31 +27,32 @@ public class GameLoop : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         GameObject koma = bodySourceView.KomaObj;
+        Rigidbody komaBody = koma.GetComponentInChildren<Rigidbody>();
         TimeCounter();
         WindingDistance();
         if (spinController.isThrown == true)//投げられたら。
         {
             //親子関係があると正常に動作しない
             koma.transform.parent = null;//親子関係を解除する
-            Rigidbody rb = koma.GetComponentInChildren<Rigidbody>();
+
             Debug.Log("isThrown");
-            rb.isKinematic = false;
-            rb.useGravity = true;
-            rb.velocity = spinController.velocity;
-            rb.angularVelocity = Vector3.up * 3.14f;
+            komaBody.isKinematic = false;
+            komaBody.useGravity = true;
+            komaBody.velocity = spinController.velocity;
+            komaBody.angularVelocity = Vector3.up * 3.14f;
 
             //koma.GetComponent<Rigidbody>().velocity = spinController.velocity;//スピンコントローラの速度を、コマに代入
         }
 
         //コマの速度が10以上20以下かつ、投げ終わってから3秒以上経過した場合
-        /*if (10 <= koma.GetComponent<Rigidbody>().velocity.z  && koma.GetComponent<Rigidbody>().velocity.z <= 20 && 3 <= afterTime)
+        if (10 <= komaBody.velocity.z  && komaBody.velocity.z <= 20 && 3 <= afterTime)
             //最終的には、リザルト画面で表示させる。
         {
             Debug.Log("もう少しゆっくり投げてください！！");
             adviseMoreSlow.SetActive(true);//アドバイステキストをアクティブにする
         }
         //コマの速度が1以上10以下かつ、投げ終わってから3秒以上経過した場合
-        else if (1 <= koma.GetComponent<Rigidbody>().velocity.z && koma.GetComponent<Rigidbody>().velocity.z <= 10 && 3 <= afterTime)
+        else if (1 <= komaBody.velocity.z && komaBody.velocity.z <= 10 && 3 <= afterTime)
         {
             Debug.Log("もう少し速く投げてください！！");
             adviseMoreFast.SetActive(true);//アドバイステキストをアクティブにする
