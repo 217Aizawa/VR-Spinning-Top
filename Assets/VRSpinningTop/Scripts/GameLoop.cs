@@ -9,7 +9,7 @@ public class GameLoop : MonoBehaviour {
     public StringController stringController;//世界の中にあるgameObjectをここに入れる。
     public KinectController kinectController;//そうすることで、spinControllerの変数を使用することができる。
     public BodySourceView bodySourceView;
-
+    public bool isHMD = true;
     private float afterTime = 0;//投げ終わってからの時間
 
     public GameObject Great;
@@ -29,7 +29,6 @@ public class GameLoop : MonoBehaviour {
         GameObject koma = bodySourceView.KomaObj;
         TimeCounter();
         WindingDistance();
-
         if (spinController.isThrown == true)//投げられたら。
         {
             //親子関係があると正常に動作しない
@@ -45,7 +44,7 @@ public class GameLoop : MonoBehaviour {
         }
 
         //コマの速度が10以上20以下かつ、投げ終わってから3秒以上経過した場合
-        if (10 <= koma.GetComponent<Rigidbody>().velocity.z  && koma.GetComponent<Rigidbody>().velocity.z <= 20 && 3 <= afterTime)
+        /*if (10 <= koma.GetComponent<Rigidbody>().velocity.z  && koma.GetComponent<Rigidbody>().velocity.z <= 20 && 3 <= afterTime)
             //最終的には、リザルト画面で表示させる。
         {
             Debug.Log("もう少しゆっくり投げてください！！");
@@ -61,12 +60,12 @@ public class GameLoop : MonoBehaviour {
         {
             Debug.Log("素晴らしい");
             Great.SetActive(true);
-        }
+        }*/
 
-        if (Input.GetKeyDown("space"))
+        /*if (Input.GetKeyDown("space"))
         {
             ForkParticlePlugin.Instance.Test();
-        }
+        }*/
     }
 
     void TimeCounter()//コマを投げ終わってからの時間を計る。
