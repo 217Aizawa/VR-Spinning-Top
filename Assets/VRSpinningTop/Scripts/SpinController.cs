@@ -23,7 +23,6 @@ public class SpinController : MonoBehaviour
     {
 
 
-
         Axis = old_f;
 
 

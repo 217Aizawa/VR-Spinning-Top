@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameLoop : MonoBehaviour {
+public class GameLoop : MonoBehaviour
+{
 
     public SpinController spinController;//型名 変数名 (SpinController s)。gameObjectのSpinControllerとは違う
     public StringController stringController;//世界の中にあるgameObjectをここに入れる。
@@ -11,7 +12,6 @@ public class GameLoop : MonoBehaviour {
     public BodySourceView bodySourceView;
     public bool isHMD = true;
     private float afterTime = 0;//投げ終わってからの時間
-
     public GameObject Great;
     public GameObject adviseMoreFast;
     public GameObject adviseMoreSlow;
@@ -22,12 +22,14 @@ public class GameLoop : MonoBehaviour {
     public float stringLength;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
+        
+    }
 
-	}
-
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update()
+    {
         GameObject koma = bodySourceView.KomaObj;
         Rigidbody komaBody = koma.GetComponentInChildren<Rigidbody>();
         TimeCounter();
@@ -42,44 +44,56 @@ public class GameLoop : MonoBehaviour {
             komaBody.useGravity = true;
             komaBody.velocity = spinController.velocity;
             komaBody.angularVelocity = Vector3.up * 3.14f;
-
+            
             //koma.GetComponent<Rigidbody>().velocity = spinController.velocity;//スピンコントローラの速度を、コマに代入
         }
-
         //コマの速度が10以上20以下かつ、投げ終わってから3秒以上経過した場合
         if (10 <= komaBody.velocity.z  && komaBody.velocity.z <= 20 && 3 <= afterTime)
             //最終的には、リザルト画面で表示させる。
         {
-            Debug.Log("もう少しゆっくり投げてください！！");
-            adviseMoreSlow.SetActive(true);//アドバイステキストをアクティブにする
+            Debug.Log("もう速くヒモを引いてください！！");
+            adviseMoreFast.SetActive(true);//アドバイステキストをアクティブにする
         }
         //コマの速度が1以上10以下かつ、投げ終わってから3秒以上経過した場合
         else if (1 <= komaBody.velocity.z && komaBody.velocity.z <= 10 && 3 <= afterTime)
         {
-            Debug.Log("もう少し速く投げてください！！");
-            adviseMoreFast.SetActive(true);//アドバイステキストをアクティブにする
+            Debug.Log("もうゆっくりヒモを引いてください！！");
+            adviseMoreSlow.SetActive(true);//アドバイステキストをアクティブにする
         }
         else if (3 <= afterTime)
         {
             Debug.Log("素晴らしい");
             Great.SetActive(true);
-        }*/
+        }
 
         /*if (Input.GetKeyDown("space"))
         {
             ForkParticlePlugin.Instance.Test();
         }*/
-    }
+        /*if (Input.GetKeyDown(KeyCode.F))
+        {
 
+            komaBody.isKinematic = false;
+            komaBody.useGravity = true;
+            komaBody.angularVelocity = Vector3.up * 3.14f;
+        }*/
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            Debug.Log("touch Ground");
+        }
+    }
     void TimeCounter()//コマを投げ終わってからの時間を計る。
     {
-        if (spinController.isThrown)//スペースキーが押されたら。
+        if (spinController.isThrown)//投げられたら。
         {
             afterTime += Time.deltaTime;
         }
     }
 
-    public void WindingDistance()
+    public void WindingDistance()//巻取り距離
     {
         Vector3 windingDevice = stringMachine.transform.position;
         Vector3 wrist = kinectController.wristPosition;
@@ -87,3 +101,4 @@ public class GameLoop : MonoBehaviour {
         gameObject.GetComponentInChildren<StringController>().setTargetLength(stringLength);
     }
 }
+    
