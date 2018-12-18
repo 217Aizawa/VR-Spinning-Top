@@ -7,7 +7,8 @@ public class BodySourceView : MonoBehaviour
 {
     public Material BoneMaterial;
     public GameObject BodySourceManager;
-
+    public GameObject gameLoop;
+    public GameObject Camera;
     public GameObject Koma;
     GameObject WristKoma;
     public GameObject KomaObj;
@@ -26,7 +27,7 @@ public class BodySourceView : MonoBehaviour
 
 
     private int trackedId = -1;//-1は検出できていない状態
-    private Vector3 OffsetToWorld = Vector3.zero;//publicにすると外から参照できる
+    public Vector3 OffsetToWorld = Vector3.zero;//publicにすると外から参照できる
 
 
     private Dictionary<ulong, GameObject> _Bodies = new Dictionary<ulong, GameObject>();
@@ -119,7 +120,7 @@ public class BodySourceView : MonoBehaviour
             }
         }
         Vector3 closestPosition = Vector3.zero;
-        //GameLoop gl = gameLoop.GetComponent<GameLoop>();
+        GameLoop gl = gameLoop.GetComponent<GameLoop>();
 
         //foreach(var body in data) ボディ取り出し
         for (int i = 0; i < data.Length; i++)
@@ -230,30 +231,35 @@ public class BodySourceView : MonoBehaviour
         }
 
         //VR画面で使う
-        /*if (trackedId != -1 && data[trackedId] != null)
+        if (trackedId != -1 && data[trackedId] != null)
         {
             // Get the head position without offsetting to Oculus
             // and use it to determine the offset
             Vector3 posHeadKinect = GetVector3FromJoint(data[trackedId].Joints[Kinect.JointType.Head], false);
             if (gl.isHMD)
             {
-                Vector3 posOculus = MainCamera.transform.position;
+                Vector3 posOculus = Camera.transform.position;
+                Debug.Log("VR mode");
                 OffsetToWorld = posOculus - posHeadKinect;//Oculusの位置を基準にKinectの座標をずらす。
+                Debug.Log(posOculus + "/" + posHeadKinect + "/" + OffsetToWorld);
+                
             }
             else
             {
+                Debug.Log("VR mode FALSE");
                 //OffsetToWorld = Vector3.zero;
                 //OffsetToWorld.x = data[trackedId].Joints[Kinect.JointType.Head].Position.X * 10;
-                MainCamera.transform.position = posHeadKinect;
+                Camera.transform.position = posHeadKinect;
             }
-            sendSkeleton(data[trackedId]);
-        }*/
+            //sendSkeleton(data[trackedId]);
+        }
     }
-    private Vector3 GetVector3FromJoint(Kinect.Joint joint, bool applyOffet = true)//追加　Jointを持ってくる
+    //trueでOculusの頭にKinectの頭をずらしたもの falseでKinect
+    private Vector3 GetVector3FromJoint(Kinect.Joint joint, bool applyOffet = true)//追加　Jointを持ってくる 
     {
         Vector3 localPosition = new Vector3(joint.Position.X, joint.Position.Y, -joint.Position.Z);
 
-        //GameLoop gl = gameLoop.GetComponent<GameLoop>();
+        GameLoop gl = gameLoop.GetComponent<GameLoop>();
         /*        if (!gl.isHMD)
                 {
                     localPosition.x *= gl.SpreadFactor;

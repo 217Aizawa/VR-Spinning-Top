@@ -12,12 +12,15 @@ public class StringController : MonoBehaviour {
     float targetLength;
     EncoderController enc;
     MotorController motor;
+    SerialConnector serialPort;
 
     // Use this for initialization
     void Start () {
         currentMode = MotorMode.isTrackingHand;
         enc = gameObject.GetComponent<EncoderController>();
         motor = gameObject.GetComponent<MotorController>();
+        serialPort = gameObject.GetComponent<SerialConnector>();
+        serialPort.Connect(3);
     }
 	
 	// Update is called once per frame
