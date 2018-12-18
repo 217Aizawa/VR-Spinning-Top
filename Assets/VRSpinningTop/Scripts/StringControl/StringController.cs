@@ -8,8 +8,10 @@ public class StringController : MonoBehaviour {
     public MotorMode currentMode;       // 現在のモータモード
     public float InitialStringLength;   // 体験開始時の紐繰り出し長さ[mm]
     public float Kp;                    // 比例制御係数
-    public float stringDist;
-    float targetLength;
+
+    public float targetLength;          // 目標繰り出し量（参照用に public）
+    public float actualLength;          // 実際の繰り出し量（参照用）
+
     EncoderController enc;
     MotorController motor;
     SerialConnector serialPort;
@@ -25,12 +27,12 @@ public class StringController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        stringDist = gameLoop.dist;//糸の巻取り距離
         switch (currentMode)
         {
             case MotorMode.isTrackingHand:
                 // ここは実は PID 制御でなめらかに目標引き出し長さに移行したい。とりあえず P だけ入れとく。
-                float diff = enc.getTotalStringLength() - targetLength;
+                actualLength = enc.getTotalStringLength();
+                float diff = actualLength - targetLength;
                 // diff が＋　→　目標値のほうが短い　→　巻き取らなければいけない
                 motor.windUpMotor(Kp * diff);
                 break;
@@ -61,12 +63,12 @@ public class StringController : MonoBehaviour {
 
     public void setTargetLength(float len)
     // isTrackingHand, isRewinding において、紐の引き出し量の目標値を指定する。
-    // 入力：紐引き出し長さ目標値 [mm]
+    // 入力：紐引き出し長さ目標値 [m]
     {
         if (currentMode != MotorMode.isTrackingHand && currentMode != MotorMode.isRewinding)
             return;
 
-        targetLength = len;
+        targetLength = len * 1000;
     }
 
     public void setResistance(float resistance)//抵抗    resistance の単位は [N]

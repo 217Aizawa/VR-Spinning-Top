@@ -27,6 +27,7 @@ public class MotorController : MonoBehaviour {
 
     public void windUpMotor(float speed)    // + で巻取り、- で繰り出し。単位は 1 をモーターフルパワーとする比率
     {
+        Debug.Log("Motor Speed" + speed);
         if (speed > 0)
             serialPort.SendChar('+');
         else if (speed < 0)

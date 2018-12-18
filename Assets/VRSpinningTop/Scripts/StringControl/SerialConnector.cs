@@ -15,10 +15,10 @@ public class SerialConnector : MonoBehaviour {
     //      public int rotationCount
     //          現在の回転ステップ数。別スレッドで自動的に更新されている。直接書き換え可能なので注意。（Editor で監視できるので、しばらくこのまま行く） 
 
-    SerialPort port;
+    static SerialPort port;
     byte[] sendbuf;
 
-    public int rotationCount;
+    static public int rotationCount;
     Thread receivingThread;
 
 	// Use this for initialization
@@ -31,28 +31,42 @@ public class SerialConnector : MonoBehaviour {
 	void Update () {
 	}
 
-    void ReadThread()
+    private void ReadThread()
     {
-        while( port != null && port.IsOpen )
+        port.ReadTimeout = 1;
+
+        while( true )
         {
-            char c = (char)port.ReadByte();
-            switch(c)
+            try
             {
-                case 'a':
-                    rotationCount++;
-                    break;
-                case 'A':
-                    rotationCount += 10;
-                    break;
-                case 'b':
-                    rotationCount--;
-                    break;
-                case 'B':
-                    rotationCount -= 10;
-                    break;
-                case 'R':
-                    rotationCount = 0;
-                    break;
+                char c = (char)port.ReadByte();
+                switch (c)
+                {
+                    case 'a':
+                        rotationCount++;
+                        break;
+                    case 'A':
+                        rotationCount += 10;
+                        break;
+                    case 'b':
+                        rotationCount--;
+                        break;
+                    case 'B':
+                        rotationCount -= 10;
+                        break;
+                    case 'R':
+                        rotationCount = 0;
+                        break;
+                }
+            }
+            catch(System.TimeoutException err)
+            {
+                // do nothing
+            }
+            catch (System.Exception err)
+            {
+                print(err.ToString());
+                throw;
             }
         }
     }
@@ -89,9 +103,10 @@ public class SerialConnector : MonoBehaviour {
             throw;
         }
 
-        Debug.Log(port.PortName + ": Connected");
+        Debug.Log(port.PortName + port.IsOpen);
 
-        receivingThread = new Thread(ReadThread);
+        receivingThread = new Thread(new ThreadStart(ReadThread));
+        receivingThread.IsBackground = true;
         receivingThread.Start();
     }
 
@@ -100,4 +115,10 @@ public class SerialConnector : MonoBehaviour {
         sendbuf[0] = (byte)c;
         port.Write(sendbuf, 0, 1);
     }
+
+    public int GetRotationCount()
+    {
+        return rotationCount;
+    }
+
 }

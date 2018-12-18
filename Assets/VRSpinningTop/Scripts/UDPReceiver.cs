@@ -147,6 +147,7 @@ public class UDPReceiver : MonoBehaviour
         if (receiveThread != null)
             receiveThread.Abort();
 
-        client.Close();
+        if( client != null )
+            client.Close();
     }
 }

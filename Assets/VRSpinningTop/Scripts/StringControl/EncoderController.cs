@@ -35,7 +35,7 @@ public class EncoderController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        currentCount = serialPort.rotationCount;
+        currentCount = serialPort.GetRotationCount();
 
         EncoderCount ec;
         ec.dt = Time.deltaTime;

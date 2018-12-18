@@ -18,7 +18,9 @@ public class GameLoop : MonoBehaviour {
     public GameObject stringMachine;//Unity上のStringController
     private Vector3 windingDevice;
     public Vector3 wrist;
-    public float dist;
+
+    public float stringLength;
+
     // Use this for initialization
     void Start () {
 
@@ -82,6 +84,7 @@ public class GameLoop : MonoBehaviour {
     {
         Vector3 windingDevice = stringMachine.transform.position;
         Vector3 wrist = kinectController.wristPosition;
-        dist = Vector3.Distance(windingDevice, wrist);
+        stringLength = Vector3.Distance(windingDevice, wrist);
+        gameObject.GetComponentInChildren<StringController>().setTargetLength(stringLength);
     }
 }
