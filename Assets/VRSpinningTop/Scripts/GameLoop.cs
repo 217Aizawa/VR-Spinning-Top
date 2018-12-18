@@ -9,7 +9,7 @@ public class GameLoop : MonoBehaviour {
     public StringController stringController;//世界の中にあるgameObjectをここに入れる。
     public KinectController kinectController;//そうすることで、spinControllerの変数を使用することができる。
     public BodySourceView bodySourceView;
-
+    public bool isHMD = true;
     private float afterTime = 0;//投げ終わってからの時間
 
     public GameObject Great;
@@ -32,12 +32,11 @@ public class GameLoop : MonoBehaviour {
         Rigidbody komaBody = koma.GetComponentInChildren<Rigidbody>();
         TimeCounter();
         WindingDistance();
-
         if (spinController.isThrown == true)//投げられたら。
         {
             //親子関係があると正常に動作しない
             koma.transform.parent = null;//親子関係を解除する
-            
+
             Debug.Log("isThrown");
             komaBody.isKinematic = false;
             komaBody.useGravity = true;
@@ -64,12 +63,12 @@ public class GameLoop : MonoBehaviour {
         {
             Debug.Log("素晴らしい");
             Great.SetActive(true);
-        }
+        }*/
 
-        if (Input.GetKeyDown("space"))
+        /*if (Input.GetKeyDown("space"))
         {
             ForkParticlePlugin.Instance.Test();
-        }
+        }*/
     }
 
     void TimeCounter()//コマを投げ終わってからの時間を計る。
