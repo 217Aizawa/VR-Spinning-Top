@@ -22,7 +22,7 @@ public class GameLoop : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -32,11 +32,8 @@ public class GameLoop : MonoBehaviour
         Rigidbody komaBody = koma.GetComponentInChildren<Rigidbody>();
         TimeCounter();
         WindingDistance();
-<<<<<<< HEAD
 
         koma.GetComponent<Rigidbody>().rotation = spinController.g_rotation;
-=======
->>>>>>> ab237ddb4b34c711db757734ce31023e6deba6be
         if (spinController.isThrown == true)//投げられたら。
         {
             //親子関係があると正常に動作しない
@@ -47,7 +44,7 @@ public class GameLoop : MonoBehaviour
             komaBody.useGravity = true;
             komaBody.velocity = spinController.velocity;
             komaBody.angularVelocity = Vector3.up * 3.14f;
-            
+
             //koma.GetComponent<Rigidbody>().velocity = spinController.velocity;//スピンコントローラの速度を、コマに代入
         }
         //コマの速度が10以上20以下かつ、投げ終わってから3秒以上経過した場合
@@ -103,4 +100,3 @@ public class GameLoop : MonoBehaviour
         dist = Vector3.Distance(windingDevice, wrist);
     }
 }
-    
