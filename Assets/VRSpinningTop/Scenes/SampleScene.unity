@@ -204,7 +204,7 @@ MonoBehaviour:
   gameLoop: {fileID: 773101332}
   Camera: {fileID: 1020510362}
   Koma: {fileID: 1046440975728644, guid: 2a10d64885a463441959e7d082a7595e, type: 2}
-  KomaObj: {fileID: 0}
+  KomaObj: {fileID: 1932859469}
   headPos: {x: 0, y: 0, z: 0}
   handLeftPos: {x: 0, y: 0, z: 0}
   handRightPos: {x: 0, y: 0, z: 0}
@@ -335,14 +335,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 73311030}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.2}
+  m_LocalRotation: {x: 0.17364816, y: 0, z: 0, w: 0.9848078}
+  m_LocalPosition: {x: 0, y: 0.28, z: -0.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 661590828}
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 20, y: 0, z: 0}
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,7 +593,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Please throw it faster!!
+  m_Text: Please pull the string faster!!
 --- !u!222 &550749918
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -651,22 +651,56 @@ Prefab:
     - target: {fileID: 54211476958334926, guid: 2a10d64885a463441959e7d082a7595e,
         type: 2}
       propertyPath: m_IsKinematic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 54211476958334926, guid: 2a10d64885a463441959e7d082a7595e,
         type: 2}
       propertyPath: m_UseGravity
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4802706378792354, guid: 2a10d64885a463441959e7d082a7595e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.1334
+      value: 0.262
       objectReference: {fileID: 0}
     - target: {fileID: 4802706378792354, guid: 2a10d64885a463441959e7d082a7595e, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: -0.108
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4802706378792354, guid: 2a10d64885a463441959e7d082a7595e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.0007
+      objectReference: {fileID: 0}
+    - target: {fileID: 136027821128995306, guid: 2a10d64885a463441959e7d082a7595e,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.49992582
+      objectReference: {fileID: 0}
+    - target: {fileID: 136027821128995306, guid: 2a10d64885a463441959e7d082a7595e,
+        type: 2}
+      propertyPath: m_Height
+      value: 0.9998519
+      objectReference: {fileID: 0}
+    - target: {fileID: 136027821128995306, guid: 2a10d64885a463441959e7d082a7595e,
+        type: 2}
+      propertyPath: m_Center.y
+      value: 6.5715438e-15
+      objectReference: {fileID: 0}
+    - target: {fileID: 136027821128995306, guid: 2a10d64885a463441959e7d082a7595e,
+        type: 2}
+      propertyPath: m_Center.z
+      value: 0.46243146
+      objectReference: {fileID: 0}
+    - target: {fileID: 54211476958334926, guid: 2a10d64885a463441959e7d082a7595e,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4260210516411990, guid: 2a10d64885a463441959e7d082a7595e, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.004
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114647433073693962, guid: 2a10d64885a463441959e7d082a7595e, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 2a10d64885a463441959e7d082a7595e, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &773101332
@@ -796,7 +830,7 @@ GameObject:
   - component: {fileID: 878014217}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -895,7 +929,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1019843573}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 0.00135, y: 0.00135, z: 0.00135}
   m_Children:
   - {fileID: 550749916}
@@ -990,7 +1024,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1089252036
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1052,7 +1086,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1089252035}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.15, y: 2.68, z: 0.34}
+  m_LocalPosition: {x: 0.66, y: 2.68, z: -1.25}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1459,7 +1493,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Please throw \nit more slowly"
+  m_Text: Please pull the string more slowly
 --- !u!222 &1550385625
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1509,6 +1543,11 @@ MonoBehaviour:
   BodySourceView: {fileID: 16153790}
   wristPosition: {x: 0, y: 0, z: 0}
   spinPosition: {x: 0, y: 0, z: 0}
+--- !u!1 &1932859469 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1046440975728644, guid: 2a10d64885a463441959e7d082a7595e,
+    type: 2}
+  m_PrefabInternal: {fileID: 687048550}
 --- !u!1 &1937581790
 GameObject:
   m_ObjectHideFlags: 0
