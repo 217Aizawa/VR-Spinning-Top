@@ -64,7 +64,7 @@ public class GameLoop : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Space))
                     ChangeGameStateToNext();
 
-                if (Input.GetKey(KeyCode.A))
+                if (Input.GetKey(KeyCode.A))//巻取りが足りなかったら巻き取る
                     stringController.setMotorMode(StringController.MotorMode.isRewinding);
                 else
                     stringController.setMotorMode(StringController.MotorMode.isFree);
