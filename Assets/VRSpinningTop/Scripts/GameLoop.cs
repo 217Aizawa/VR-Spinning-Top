@@ -26,12 +26,8 @@ public class GameLoop : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-<<<<<<< HEAD
         gameState = GameState.free;
         stringController.setMotorMode(StringController.MotorMode.isFree);
-=======
-
->>>>>>> master
     }
 
     // Update is called once per frame
@@ -39,51 +35,19 @@ public class GameLoop : MonoBehaviour
     {
         GameObject koma = bodySourceView.KomaObj;
         Rigidbody komaBody = koma.GetComponentInChildren<Rigidbody>();
-<<<<<<< HEAD
         afterTime += Time.deltaTime;
 
         switch(gameState)
-=======
-        TimeCounter();
-        WindingDistance();
-
-        komaBody.rotation = spinController.g_rotation;
-        (GameObject.Find("f")).GetComponent<Transform>().rotation = Quaternion.FromToRotation(Vector3.up, new Vector3(-spinController.f.x, spinController.f.y, -spinController.f.z));
-        if (spinController.isThrown == true)//投げられたら。
-        {
-            //親子関係があると正常に動作しない
-            koma.transform.parent = null;//親子関係を解除する
-
-            Debug.Log("isThrown");
-            komaBody.isKinematic = false;
-            komaBody.useGravity = true;
-            komaBody.velocity = spinController.velocity;
-            komaBody.angularVelocity = Vector3.up * 3.14f;
-
-            //koma.GetComponent<Rigidbody>().velocity = spinController.velocity;//スピンコントローラの速度を、コマに代入
-        }
-        //コマの速度が10以上20以下かつ、投げ終わってから3秒以上経過した場合
-        if (10 <= komaBody.velocity.z  && komaBody.velocity.z <= 20 && 3 <= afterTime)
-            //最終的には、リザルト画面で表示させる。
-        {
-            Debug.Log("もう速くヒモを引いてください！！");
-            adviseMoreFast.SetActive(true);//アドバイステキストをアクティブにする
-        }
-        //コマの速度が1以上10以下かつ、投げ終わってから3秒以上経過した場合
-        else if (1 <= komaBody.velocity.z && komaBody.velocity.z <= 10 && 3 <= afterTime)
-        {
-            Debug.Log("もうゆっくりヒモを引いてください！！");
-            adviseMoreSlow.SetActive(true);//アドバイステキストをアクティブにする
-        }
-        else if (3 <= afterTime)
->>>>>>> master
         {
             // 体験開始時（紐はたるんでいる）
             case GameState.free:
                 // タイトル画面を表示するならここ
                 stringController.setMotorMode(StringController.MotorMode.isFree);
 
-                if (Input.GetKeyDown(KeyCode.Space))
+                komaBody.rotation = spinController.g_rotation;
+                (GameObject.Find("f")).GetComponent<Transform>().rotation = Quaternion.FromToRotation(Vector3.up, new Vector3(-spinController.f.x, spinController.f.y, -spinController.f.z));
+
+            if (Input.GetKeyDown(KeyCode.Space))
                     ChangeGameStateToNext();
                 break;
             // 紐巻取り（紐を十分短く）　利き手判定
