@@ -8,7 +8,7 @@ public class SpinController : MonoBehaviour
     public bool isThrown;//投げられたかの判定
     public Vector3 velocity;//速度
     public Vector3 Axis;//軸の向き
-    public Vector3 f, old_f,v;   //取得してきた値
+    Vector3 f, old_f,v;   //取得してきた値
     public Quaternion g_rotation,g; //本体とｇの回転
 
 

@@ -33,7 +33,8 @@ public class GameLoop : MonoBehaviour
         TimeCounter();
         WindingDistance();
 
-        koma.GetComponent<Rigidbody>().rotation = spinController.g_rotation;
+        komaBody.rotation = spinController.g_rotation;
+        (GameObject.Find("f")).GetComponent<Transform>().rotation = Quaternion.FromToRotation(Vector3.up, new Vector3(-spinController.f.x, spinController.f.y, -spinController.f.z));
         if (spinController.isThrown == true)//投げられたら。
         {
             //親子関係があると正常に動作しない
