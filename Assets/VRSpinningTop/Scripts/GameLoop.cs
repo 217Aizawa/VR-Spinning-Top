@@ -44,11 +44,14 @@ public class GameLoop : MonoBehaviour
                 // タイトル画面を表示するならここ
                 stringController.setMotorMode(StringController.MotorMode.isFree);
 
-                komaBody.rotation = spinController.g_rotation;
-                (GameObject.Find("f")).GetComponent<Transform>().rotation = Quaternion.FromToRotation(Vector3.up, new Vector3(-spinController.f.x, spinController.f.y, -spinController.f.z));
+//                komaBody.rotation = spinController.g_rotation * Quaternion.AngleAxis(90, Vector3.left);
+//                (GameObject.Find("f")).GetComponent<Transform>().rotation = Quaternion.FromToRotation(Vector3.up, new Vector3(-spinController.f.x, spinController.f.y, -spinController.f.z));
 
-            if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+//                    GameObject.Find("f").SetActive(false);
                     ChangeGameStateToNext();
+                }
                 break;
             // 紐巻取り（紐を十分短く）　利き手判定
             case GameState.preCalibration:
@@ -113,7 +116,10 @@ public class GameLoop : MonoBehaviour
                 break;
             case GameState.result:
                 if (Input.GetKeyDown(KeyCode.Space))
+                {
                     gameState = GameState.free;
+                    GameObject.Find("f").SetActive(true);
+                }
                 break;
         }
 
