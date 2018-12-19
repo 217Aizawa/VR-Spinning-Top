@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class StringController : MonoBehaviour {
-    public enum MotorMode { isTrackingHand, isShowingResistance, isRewinding, isFree };
+    public enum MotorMode { isTrackingHand, isShowingResistance, isRewinding, isFree, isCalibrating };
     public GameLoop gameLoop;
     public MotorMode currentMode;       // 現在のモータモード
     public float InitialStringLength;   // 体験開始時の紐繰り出し長さ[mm]
@@ -23,6 +23,7 @@ public class StringController : MonoBehaviour {
         motor = gameObject.GetComponent<MotorController>();
         serialPort = gameObject.GetComponent<SerialConnector>();
         serialPort.Connect(3);
+        enc.resetCount(InitialStringLength+1000);
     }
 	
 	// Update is called once per frame
@@ -41,13 +42,13 @@ public class StringController : MonoBehaviour {
                 break;
 
             case MotorMode.isRewinding:
-                motor.windUpMotor(1.0f);
-                if (enc.getTotalStringLength() < InitialStringLength)
+/*                if (enc.getTotalStringLength() < InitialStringLength)
                 {
                     motor.stopMotor();
                     currentMode = MotorMode.isFree;
-                }
+                } */
                 break;
+
         }
     }
 
@@ -59,6 +60,23 @@ public class StringController : MonoBehaviour {
     // MotorMode.isFree = フリー状態
     {
         currentMode = mode;
+        switch (currentMode)
+        {
+            case MotorMode.isTrackingHand:
+                break;
+
+            case MotorMode.isShowingResistance:
+                break;
+
+            case MotorMode.isRewinding:
+                motor.windUpMotor(1.0f);
+                break;
+
+            case MotorMode.isFree:
+                motor.stopMotor();
+                break;
+        }
+
     }
 
     public void setTargetLength(float len)

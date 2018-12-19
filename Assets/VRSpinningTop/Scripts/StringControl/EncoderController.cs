@@ -25,9 +25,8 @@ public class EncoderController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         samples = new List<EncoderCount>();
-        resetCount();
 
-        AnglePerCount = 2 * Mathf.PI / 360 / EncoderCounts;
+        AnglePerCount = 2.0f * Mathf.PI / 360 / EncoderCounts;
         LengthPerCount = AnglePerCount * ItomakiRadius;
 
         serialPort = gameObject.GetComponent<SerialConnector>();
@@ -80,6 +79,7 @@ public class EncoderController : MonoBehaviour {
     // 完全に巻き取った状態で呼ぶときは、引数無しでよい。
     {
         currentCount = (int)(extractedLength / LengthPerCount);
+        Debug.Log(extractedLength + "/" + LengthPerCount + "/" + currentCount);
         formerCount = currentCount;
     }
 }
