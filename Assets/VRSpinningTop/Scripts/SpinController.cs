@@ -8,7 +8,7 @@ public class SpinController : MonoBehaviour
     public bool isThrown;//投げられたかの判定
     public Vector3 velocity;//速度
     public Vector3 Axis;//軸の向き
-    Vector3 f, old_f,v;   //取得してきた値
+    public Vector3 f, old_f,v;   //取得してきた値
     public Quaternion g_rotation,g; //本体とｇの回転
 
 
@@ -42,10 +42,12 @@ public class SpinController : MonoBehaviour
 
         //        if (isThrown) velocity = f-old_f;
         //else if (f.magnitude <= 1) old_f = f;
-        else if (f.magnitude<1.1&&f.magnitude>0.9) old_f = f;
-        g = Quaternion.FromToRotation(Vector3.up, new Vector3(-old_f.x, old_f.y, -old_f.z));
-        v = f - old_f;              //ローカル方向
-
+        else if (isThrown != true)
+        {
+            if (f.magnitude < 1.1 && f.magnitude > 0.9) old_f = f;
+            g_rotation = Quaternion.FromToRotation(Vector3.up, new Vector3(-old_f.x, old_f.y, -old_f.z));
+            v = f - old_f;              //ローカル方向
+        }
 
 
         Debug.Log(velocity);
