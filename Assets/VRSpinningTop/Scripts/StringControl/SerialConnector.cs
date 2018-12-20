@@ -73,7 +73,8 @@ public class SerialConnector : MonoBehaviour {
 
     private void OnDestroy()
     {
-        receivingThread.Abort();
+        if(receivingThread != null)
+            receivingThread.Abort();
         if( port != null )
             port.Close();
     }
@@ -100,7 +101,7 @@ public class SerialConnector : MonoBehaviour {
         catch (System.Exception)
         {
             Debug.Log(port.PortName + ": Failed to open");
-            throw;
+            return;
         }
 
         Debug.Log(port.PortName + port.IsOpen);
@@ -112,6 +113,8 @@ public class SerialConnector : MonoBehaviour {
 
     public void SendChar(char c)
     {
+        if (port == null || !port.IsOpen)
+            return;
         sendbuf[0] = (byte)c;
         port.Write(sendbuf, 0, 1);
     }

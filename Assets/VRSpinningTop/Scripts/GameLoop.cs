@@ -28,6 +28,7 @@ public class GameLoop : MonoBehaviour
     {
         gameState = GameState.free;
         stringController.setMotorMode(StringController.MotorMode.isFree);
+        Debug.Log("aizawa");
     }
 
     // Update is called once per frame
@@ -36,8 +37,7 @@ public class GameLoop : MonoBehaviour
         GameObject koma = bodySourceView.KomaObj;
         Rigidbody komaBody = koma.GetComponentInChildren<Rigidbody>();
         afterTime += Time.deltaTime;
-
-        switch(gameState)
+        switch (gameState)
         {
             // 体験開始時（紐はたるんでいる）
             case GameState.free:
@@ -122,7 +122,7 @@ public class GameLoop : MonoBehaviour
                 }
                 break;
         }
-
+        
         WindingDistance();
 
         /*if (Input.GetKeyDown("space"))
@@ -145,11 +145,13 @@ public class GameLoop : MonoBehaviour
         }
     }
     
-    public void WindingDistance()//巻取り距離
+    public void WindingDistance()//巻取り距離 関数自体が呼び出されていない
     {
-        Vector3 windingDevice = stringMachine.transform.position;
-        Vector3 wrist = kinectController.wristPosition;
+        windingDevice = stringMachine.transform.position;
+        wrist = bodySourceView.handednessWristPos;//kinectController.wristPosition
+        Debug.Log("wrist" + wrist);
         stringLength = Vector3.Distance(windingDevice, wrist);
+        //Debug.Log(stringLength);
         stringController.setTargetLength(stringLength);
     }
 

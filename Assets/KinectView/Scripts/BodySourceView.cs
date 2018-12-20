@@ -171,8 +171,8 @@ public class BodySourceView : MonoBehaviour
                     WristKoma = GameObject.Find("WristLeft");
                     handedness = -1;
                     riseHand = false;
-                    handednessWristPos = GetVector3FromJoint(data[i].Joints[Kinect.JointType.WristLeft], false);
                     CreatePrefab();//子としてコマを生成する
+                    KomaObj.transform.localPosition = Vector3.zero;//検証
                     Debug.Log("Handedness Left");
                 }
                 else if (riseHand == true && headPos.y < handRightPos.y && 3 <= rightHandTime)
@@ -180,11 +180,19 @@ public class BodySourceView : MonoBehaviour
                     WristKoma = GameObject.Find("WristRight");
                     handedness = 1;
                     riseHand = false;
-                    handednessWristPos = GetVector3FromJoint(data[i].Joints[Kinect.JointType.WristRight], false);
                     CreatePrefab();
+                    KomaObj.transform.localPosition = Vector3.zero;//検証
                     Debug.Log("Handedness Right");
                 }
-
+                //利き手の手首位置を返し続けるためのif文
+                if(handedness == -1)
+                {
+                    handednessWristPos = GetVector3FromJoint(data[i].Joints[Kinect.JointType.WristLeft], false);
+                }
+                else if(handedness == 1)
+                {
+                    handednessWristPos = GetVector3FromJoint(data[i].Joints[Kinect.JointType.WristRight], false);
+                }
 
                 if (Input.GetKeyDown(KeyCode.KeypadEnter))//利き手強制切り替えスクリプト（テンキーのEnterキー）
                 {
@@ -206,7 +214,6 @@ public class BodySourceView : MonoBehaviour
                 {
                     handedness = -1;
                     WristKoma = GameObject.Find("WristLeft");
-                    Debug.Log("LKey Down");
                     Debug.Log("Converted LeftHandedness");
                     KomaObj.transform.parent = WristKoma.transform;
                     KomaObj.transform.localPosition = Vector3.zero;
@@ -215,9 +222,7 @@ public class BodySourceView : MonoBehaviour
                 {
                     handedness = 1;
                     WristKoma = GameObject.Find("WristRight");
-                    Debug.Log("RKey Down");
                     Debug.Log("Converted RightHandedness");
-                    //KomaObj.transform.ResetLocal;
                     KomaObj.transform.parent = WristKoma.transform;//正常に動作する
                     KomaObj.transform.localPosition = Vector3.zero;
                 }
@@ -239,9 +244,8 @@ public class BodySourceView : MonoBehaviour
             if (gl.isHMD)
             {
                 Vector3 posOculus = Camera.transform.position;
-                Debug.Log("VR mode");
                 OffsetToWorld = posOculus - posHeadKinect;//Oculusの位置を基準にKinectの座標をずらす。
-                Debug.Log(posOculus + "/" + posHeadKinect + "/" + OffsetToWorld);
+                //Debug.Log(posOculus + "/" + posHeadKinect + "/" + OffsetToWorld);//座標表示
                 
             }
             else

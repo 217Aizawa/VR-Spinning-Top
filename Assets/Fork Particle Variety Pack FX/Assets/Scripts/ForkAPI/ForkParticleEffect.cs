@@ -530,7 +530,7 @@ public class ForkParticleEffect : MonoBehaviour
         Texture2D tex = Resources.Load(sName, typeof(Texture2D)) as Texture2D;
 
 		if (tex == null) {
-            Debug.Log("Fork Particle: Failed to load texture");
+            //Debug.Log("Fork Particle: Failed to load texture");
             tex = Resources.Load("null", typeof(Texture2D)) as Texture2D;
 
             if (tex == null)

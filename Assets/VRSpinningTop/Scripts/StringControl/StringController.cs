@@ -59,6 +59,9 @@ public class StringController : MonoBehaviour {
     // MotorMode.isRewinding = プレイ終了後巻取り中
     // MotorMode.isFree = フリー状態
     {
+        if (motor == null)
+            return;
+
         currentMode = mode;
         switch (currentMode)
         {

@@ -10,7 +10,6 @@ public class BodySourceManager : MonoBehaviour
     
     public Body[] GetData()
     {
-        Debug.Log(_Data);
         return _Data;
     }
     
@@ -47,11 +46,11 @@ public class BodySourceManager : MonoBehaviour
                 }
                 
                 frame.GetAndRefreshBodyData(_Data);
-                Debug.Log(_Data.Length);
+                //Debug.Log(_Data.Length);
 
                 frame.Dispose();
                 frame = null;
-                Debug.Log(_Data.Length);
+                //Debug.Log(_Data.Length);
             }
         }    
     }

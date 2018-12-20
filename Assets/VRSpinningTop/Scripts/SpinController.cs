@@ -50,7 +50,7 @@ public class SpinController : MonoBehaviour
         }
 
 
-        Debug.Log(velocity);
+        Debug.Log("koma vel." + velocity);
 
 
         //velocity = new Vector3(0, 0, -5);//変数velocityにVector3構造体をセットする。

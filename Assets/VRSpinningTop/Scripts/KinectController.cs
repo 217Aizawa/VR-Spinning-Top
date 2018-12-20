@@ -5,11 +5,11 @@ using Windows.Kinect;
 
 public class KinectController : MonoBehaviour {
 
-    public BodySourceView BodySourceView;
+    public BodySourceView bodySourceView;
 
     public Vector3 wristPosition;//手首の位置
     public Vector3 spinPosition;//コマの位置
-    private int handedness;//プライベート変数　1= 右　-1=左　0=検出失敗
+    //private int handedness;//プライベート変数　1= 右　-1=左　0=検出失敗
 
     //あとで、BodySourceViewからhandednessを持ってくる
 
@@ -21,18 +21,16 @@ public class KinectController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        if(BodySourceView.handedness == -1) {
-            wristPosition = BodySourceView.handednessWristPos;
-            spinPosition = wristPosition;
+        /*+if(bodySourceView.handedness == -1) {
             Debug.Log("Detected LeftWrist");
-
-        } else if(BodySourceView.handedness == 1)
-        {
-            wristPosition = BodySourceView.handednessWristPos;
+            wristPosition = bodySourceView.handednessWristPos;
             spinPosition = wristPosition;
+        } else if(bodySourceView.handedness == 1)
+        {
             Debug.Log("Detected RightWrist");
-        }
+            wristPosition = bodySourceView.handednessWristPos;
+            spinPosition = wristPosition;
+        }*/
     }
 
     /*public int DetectHandedness()//利き腕判定　戻り値 1=右, -1=左, 0=検出失敗
