@@ -133,9 +133,9 @@ public class BodySourceView : MonoBehaviour
             if (data[i].IsTracked)
             {
                 //get kinect coodinate without offset　[i] ボディ型、Joints{  } JointTypeからJointへの辞書　JointはVector3のようなもの
-                headPos = GetVector3FromJoint(data[i].Joints[Kinect.JointType.Head], false);
-                handLeftPos = GetVector3FromJoint(data[i].Joints[Kinect.JointType.HandLeft], false);
-                handRightPos = GetVector3FromJoint(data[i].Joints[Kinect.JointType.HandRight], false);
+                headPos = GetVector3FromJointWithOffset(data[i].Joints[Kinect.JointType.Head]);
+                handLeftPos = GetVector3FromJointWithOffset(data[i].Joints[Kinect.JointType.HandLeft]);
+                handRightPos = GetVector3FromJointWithOffset(data[i].Joints[Kinect.JointType.HandRight]);
 
                 // found new body
                 if (!_Bodies.ContainsKey(data[i].TrackingId))
@@ -187,11 +187,11 @@ public class BodySourceView : MonoBehaviour
                 //利き手の手首位置を返し続けるためのif文
                 if(handedness == -1)
                 {
-                    handednessWristPos = GetVector3FromJoint(data[i].Joints[Kinect.JointType.WristLeft], false);
+                    handednessWristPos = GetVector3FromJointWithOffset(data[i].Joints[Kinect.JointType.WristLeft]);
                 }
                 else if(handedness == 1)
                 {
-                    handednessWristPos = GetVector3FromJoint(data[i].Joints[Kinect.JointType.WristRight], false);
+                    handednessWristPos = GetVector3FromJointWithOffset(data[i].Joints[Kinect.JointType.WristRight]);
                 }
 
                 if (Input.GetKeyDown(KeyCode.KeypadEnter))//利き手強制切り替えスクリプト（テンキーのEnterキー）
@@ -240,7 +240,7 @@ public class BodySourceView : MonoBehaviour
         {
             // Get the head position without offsetting to Oculus
             // and use it to determine the offset
-            Vector3 posHeadKinect = GetVector3FromJoint(data[trackedId].Joints[Kinect.JointType.Head], false);
+            Vector3 posHeadKinect = GetVector3FromJoint(data[trackedId].Joints[Kinect.JointType.Head]);
             if (gl.isHMD)
             {
                 Vector3 posOculus = Camera.transform.position;
@@ -258,10 +258,21 @@ public class BodySourceView : MonoBehaviour
             //sendSkeleton(data[trackedId]);
         }
     }
-    //trueでOculusの頭にKinectの頭をずらしたもの falseでKinect
-    private Vector3 GetVector3FromJoint(Kinect.Joint joint, bool applyOffet = true)//追加　Jointを持ってくる 
+
+    private Vector3 GetVector3FromJoint(Kinect.Joint joint)//座標を返す関数 KinectのJointを受け取る
     {
-        Vector3 localPosition = new Vector3(joint.Position.X, joint.Position.Y, -joint.Position.Z);
+        Vector3 localPosition = new Vector3(joint.Position.X * 1, joint.Position.Y * 1, joint.Position.Z * -1);//KinectとUnityの世界は約10倍違う(メートルに直す)
+        Vector3 globalPosition = gameObject.transform.TransformPoint(localPosition);//Kinect座標をグローバル(Unity)座標に変換
+
+        return globalPosition;
+
+        //return new Vector3(joint.Position.X * 10, joint.Position.Y * 10, joint.Position.Z * 10);
+    }
+
+
+    private Vector3 GetVector3FromJointWithOffset(Kinect.Joint joint)//追加　Jointを持ってくる 
+    {
+        Vector3 globalPosition = GetVector3FromJoint(joint);
 
         GameLoop gl = gameLoop.GetComponent<GameLoop>();
         /*        if (!gl.isHMD)
@@ -270,10 +281,9 @@ public class BodySourceView : MonoBehaviour
                     localPosition.y *= gl.SpreadFactor;
                 }
         */
-        Vector3 globalPosition = gameObject.transform.TransformPoint(localPosition);//Kinect座標をグローバル(Unity)座標に変換
+        Debug.Log("globalPosition" + globalPosition);
 
-        if (applyOffet)
-            globalPosition += OffsetToWorld;//グローバルポジションをオフセット分ずらす。
+        globalPosition += OffsetToWorld;//グローバルポジションをオフセット分ずらす。
             
         return globalPosition;
     }
@@ -315,13 +325,13 @@ public class BodySourceView : MonoBehaviour
             }
             
             Transform jointObj = bodyObject.transform.Find(jt.ToString());
-            jointObj.localPosition = GetVector3FromJoint(sourceJoint);
+            jointObj.localPosition = GetVector3FromJointWithOffset(sourceJoint);
             
             LineRenderer lr = jointObj.GetComponent<LineRenderer>();
             if(targetJoint.HasValue)
             {
                 lr.SetPosition(0, jointObj.localPosition);
-                lr.SetPosition(1, GetVector3FromJoint(targetJoint.Value));
+                lr.SetPosition(1, GetVector3FromJointWithOffset(targetJoint.Value));
                 lr.SetColors(GetColorForState (sourceJoint.TrackingState), GetColorForState(targetJoint.Value.TrackingState));
             }
             else
@@ -346,11 +356,7 @@ public class BodySourceView : MonoBehaviour
         }
     }
     
-    private static Vector3 GetVector3FromJoint(Kinect.Joint joint)//座標を返す関数 KinectのJointを受け取る
-    {
-        return new Vector3(joint.Position.X * 1, joint.Position.Y * 1, joint.Position.Z * -1);//KinectとUnityの世界は約10倍違う(メートルに直す)
-        //return new Vector3(joint.Position.X * 10, joint.Position.Y * 10, joint.Position.Z * 10);
-    }
+
 
     /*****************************************************************************************************************************
      * 追加
