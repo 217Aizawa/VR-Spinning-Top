@@ -151,93 +151,93 @@ public class BodySourceView : MonoBehaviour
                     }*/
                 }
 
-                // closest player detection　人を一人選ぶ
+                // closest player detection
                 if (Mathf.Abs(headPos.x) < 0.6f)//&& gl.state != GameLoop.GameState.End)(1.0f)
                 {
                     if (closestPosition == Vector3.zero || Mathf.Abs(closestPosition.z) > Mathf.Abs(headPos.z))
                     {
-                        trackedId = i;
-                        closestPosition = headPos;//より近くに人が来たら記憶する
+                        trackedId = i;//IDを記憶する
+                        closestPosition = headPos;//一番近い人を覚える
+                        Debug.Log("trackedId" + " = " + trackedId);
                     }
-                }
-                RefreshBodyObject(data[i], _Bodies[data[i].TrackingId]);
-
-                LeftHandCounter();//挙手時間計測
-                RightHandCounter();
-
-                //利き手判定スクリプト（左手）
-                if (riseHand == true && headPos.y < handLeftPos.y && 3 <= leftHandTime)
-                {
-                    WristKoma = GameObject.Find("WristLeft");
-                    handedness = -1;
-                    riseHand = false;
-                    CreatePrefab();//子としてコマを生成する
-                    KomaObj.transform.localPosition = Vector3.zero;//検証
-                    Debug.Log("Handedness Left");
-                }
-                else if (riseHand == true && headPos.y < handRightPos.y && 3 <= rightHandTime)
-                {
-                    WristKoma = GameObject.Find("WristRight");
-                    handedness = 1;
-                    riseHand = false;
-                    CreatePrefab();
-                    KomaObj.transform.localPosition = Vector3.zero;//検証
-                    Debug.Log("Handedness Right");
-                }
-                //利き手の手首位置を返し続けるためのif文
-                if(handedness == -1)
-                {
-                    handednessWristPos = GetVector3FromJointWithOffset(data[i].Joints[Kinect.JointType.WristLeft]);
-                }
-                else if(handedness == 1)
-                {
-                    handednessWristPos = GetVector3FromJointWithOffset(data[i].Joints[Kinect.JointType.WristRight]);
-                }
-
-                if (Input.GetKeyDown(KeyCode.KeypadEnter))//利き手強制切り替えスクリプト（テンキーのEnterキー）
-                {
-                    Debug.Log("GetKeyDown Enter");
-                    if(handedness == -1)//左手なら
-                    {
-                        handedness = 1;
-                        Debug.Log("Converted RightHandedness");
-                    }
-                    else if(handedness == 1)//右手なら
-                    {
-                        handedness = -1;
-                        Debug.Log("Converted LeftHandedness");
-                    }
-                }
-
-                //キーボードで利き手切り替え
-                if (Input.GetKeyDown(KeyCode.L))
-                {
-                    handedness = -1;
-                    WristKoma = GameObject.Find("WristLeft");
-                    Debug.Log("Converted LeftHandedness");
-                    KomaObj.transform.parent = WristKoma.transform;
-                    KomaObj.transform.localPosition = Vector3.zero;
-                }
-                else if (Input.GetKeyDown(KeyCode.R))
-                {
-                    handedness = 1;
-                    WristKoma = GameObject.Find("WristRight");
-                    Debug.Log("Converted RightHandedness");
-                    KomaObj.transform.parent = WristKoma.transform;//正常に動作する
-                    KomaObj.transform.localPosition = Vector3.zero;
                 }
             }
             else
             {
                 if (trackedId == i)
                     trackedId = -1;
-            }
-            
+            } 
         }
 
         //VR画面で使う
-        if (trackedId != -1 && data[trackedId] != null)
+        if (trackedId != -1 && data[trackedId] != null)//Kinectで認識したら
         {
+            RefreshBodyObject(data[trackedId], _Bodies[data[trackedId].TrackingId]);//body
+
+            LeftHandCounter();//挙手時間計測
+            RightHandCounter();
+
+            //利き手判定スクリプト（左手）
+            if (riseHand == true && headPos.y < handLeftPos.y && 3 <= leftHandTime)
+            {
+                WristKoma = GameObject.Find("WristLeft");
+                handedness = -1;
+                riseHand = false;
+                CreatePrefab();//子としてコマを生成する
+                KomaObj.transform.localPosition = Vector3.zero;//検証
+                Debug.Log("Handedness Left");
+            }
+            else if (riseHand == true && headPos.y < handRightPos.y && 3 <= rightHandTime)
+            {
+                WristKoma = GameObject.Find("WristRight");
+                handedness = 1;
+                riseHand = false;
+                CreatePrefab();
+                KomaObj.transform.localPosition = Vector3.zero;//検証
+                Debug.Log("Handedness Right");
+            }
+            //利き手の手首位置を返し続けるためのif文
+            if (handedness == -1)
+            {
+                handednessWristPos = GetVector3FromJointWithOffset(data[trackedId].Joints[Kinect.JointType.WristLeft]);
+            }
+            else if (handedness == 1)
+            {
+                handednessWristPos = GetVector3FromJointWithOffset(data[trackedId].Joints[Kinect.JointType.WristRight]);
+            }
+
+            if (Input.GetKeyDown(KeyCode.KeypadEnter))//利き手強制切り替えスクリプト（テンキーのEnterキー）
+            {
+                Debug.Log("GetKeyDown Enter");
+                if (handedness == -1)//左手なら
+                {
+                    handedness = 1;
+                    Debug.Log("Converted RightHandedness");
+                }
+                else if (handedness == 1)//右手なら
+                {
+                    handedness = -1;
+                    Debug.Log("Converted LeftHandedness");
+                }
+            }
+
+            //キーボードで利き手切り替え
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                handedness = -1;
+                WristKoma = GameObject.Find("WristLeft");
+                Debug.Log("Converted LeftHandedness");
+                KomaObj.transform.parent = WristKoma.transform;
+                KomaObj.transform.localPosition = Vector3.zero;
+            }
+            else if (Input.GetKeyDown(KeyCode.R))
+            {
+                handedness = 1;
+                WristKoma = GameObject.Find("WristRight");
+                Debug.Log("Converted RightHandedness");
+                KomaObj.transform.parent = WristKoma.transform;//正常に動作する
+                KomaObj.transform.localPosition = Vector3.zero;
+            }
             // Get the head position without offsetting to Oculus
             // and use it to determine the offset
             Vector3 posHeadKinect = GetVector3FromJoint(data[trackedId].Joints[Kinect.JointType.Head]);
@@ -246,13 +246,10 @@ public class BodySourceView : MonoBehaviour
                 Vector3 posOculus = Camera.transform.position;
                 OffsetToWorld = posOculus - posHeadKinect;//Oculusの位置を基準にKinectの座標をずらす。
                 //Debug.Log(posOculus + "/" + posHeadKinect + "/" + OffsetToWorld);//座標表示
-                
             }
             else
             {
                 Debug.Log("VR mode FALSE");
-                //OffsetToWorld = Vector3.zero;
-                //OffsetToWorld.x = data[trackedId].Joints[Kinect.JointType.Head].Position.X * 10;
                 Camera.transform.position = posHeadKinect;
             }
             //sendSkeleton(data[trackedId]);
@@ -281,7 +278,7 @@ public class BodySourceView : MonoBehaviour
                     localPosition.y *= gl.SpreadFactor;
                 }
         */
-        Debug.Log("globalPosition" + globalPosition);
+        //Debug.Log("globalPosition" + globalPosition);
 
         globalPosition += OffsetToWorld;//グローバルポジションをオフセット分ずらす。
             
@@ -308,7 +305,7 @@ public class BodySourceView : MonoBehaviour
             jointObj.transform.parent = body.transform;//body.transform
 
         }
-        
+
         return body;
     }
     
@@ -325,7 +322,7 @@ public class BodySourceView : MonoBehaviour
             }
             
             Transform jointObj = bodyObject.transform.Find(jt.ToString());
-            jointObj.localPosition = GetVector3FromJointWithOffset(sourceJoint);
+            jointObj.localPosition = GetVector3FromJointWithOffset(sourceJoint);//Bodyを表示
             
             LineRenderer lr = jointObj.GetComponent<LineRenderer>();
             if(targetJoint.HasValue)
