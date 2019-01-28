@@ -156,7 +156,7 @@ public class BodySourceView : MonoBehaviour
                 {
                     if (closestPosition == Vector3.zero || Mathf.Abs(closestPosition.z) > Mathf.Abs(headPos.z))
                     {
-                        trackedId = i;//IDを記憶する
+                        trackedId = i;//IDを割り当てる
                         closestPosition = headPos;//一番近い人を覚える
                         Debug.Log("trackedId" + " = " + trackedId);
                     }
