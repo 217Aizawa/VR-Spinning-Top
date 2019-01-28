@@ -43,16 +43,16 @@ public class SerialConnector : MonoBehaviour {
                 switch (c)
                 {
                     case 'a':
-                        rotationCount++;
-                        break;
-                    case 'A':
-                        rotationCount += 10;
-                        break;
-                    case 'b':
                         rotationCount--;
                         break;
-                    case 'B':
+                    case 'A':
                         rotationCount -= 10;
+                        break;
+                    case 'b':
+                        rotationCount++;
+                        break;
+                    case 'B':
+                        rotationCount += 10;
                         break;
                     case 'R':
                         rotationCount = 0;
@@ -122,6 +122,11 @@ public class SerialConnector : MonoBehaviour {
     public int GetRotationCount()
     {
         return rotationCount;
+    }
+
+    public void SetRotationCount(int rc)
+    {
+        rotationCount = rc;
     }
 
 }

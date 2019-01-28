@@ -56,13 +56,17 @@ public class GameLoop : MonoBehaviour
             // 紐巻取り（紐を十分短く）　利き手判定
             case GameState.preCalibration:
                 stringController.setMotorMode(StringController.MotorMode.isRewinding);
-                if (afterTime > 3)
+                if (afterTime > 0.5)
                     ChangeGameStateToNext();
                 break;
             // 紐を引きながらお客さんに手渡す
             case GameState.calibration:
                 if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    stringController.calibrateToLength(stringLength);
+                    stringController.setMotorMode(StringController.MotorMode.isTrackingHand);
                     ChangeGameStateToNext();
+                }
 
                 if (Input.GetKey(KeyCode.A))//巻取りが足りなかったら巻き取る
                     stringController.setMotorMode(StringController.MotorMode.isRewinding);
@@ -73,6 +77,7 @@ public class GameLoop : MonoBehaviour
             case GameState.spinInHand:
                 if (spinController.isThrown == true)//投げられたら。
                 {
+                    stringController.setMotorMode(StringController.MotorMode.isShowingResistance);
                     ChangeGameStateToNext();
 
                     //親子関係があると正常に動作しない
@@ -91,8 +96,8 @@ public class GameLoop : MonoBehaviour
                 // 投げ終わって３秒経過したら結果表示に
                 if (afterTime > 3)
                 {
-                    ChangeGameStateToNext();
                     stringController.setMotorMode(StringController.MotorMode.isFree);
+                    ChangeGameStateToNext();
 
                     //コマの速度が10以上20以下かつ、投げ終わってから3秒以上経過した場合
                     if (10 <= komaBody.velocity.z && komaBody.velocity.z <= 20)

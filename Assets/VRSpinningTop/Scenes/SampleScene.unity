@@ -1342,7 +1342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItomakiRadius: 30
-  EncoderCounts: 400
+  EncoderCounts: 100
   currentCount: 0
 --- !u!114 &1186589129
 MonoBehaviour:

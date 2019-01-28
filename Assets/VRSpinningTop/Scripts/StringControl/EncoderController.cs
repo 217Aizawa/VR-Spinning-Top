@@ -81,5 +81,6 @@ public class EncoderController : MonoBehaviour {
         currentCount = (int)(extractedLength / LengthPerCount);
         Debug.Log(extractedLength + "/" + LengthPerCount + "/" + currentCount);
         formerCount = currentCount;
+        serialPort.SetRotationCount(currentCount);
     }
 }

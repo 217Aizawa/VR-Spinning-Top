@@ -25,9 +25,14 @@ public class StringController : MonoBehaviour {
         serialPort.Connect(3);
         enc.resetCount(InitialStringLength+1000);
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void OnDestroy()
+    {
+        motor.stopMotor();
+    }
+
+    // Update is called once per frame
+    void Update () {
         switch (currentMode)
         {
             case MotorMode.isTrackingHand:
@@ -35,7 +40,10 @@ public class StringController : MonoBehaviour {
                 actualLength = enc.getTotalStringLength();
                 float diff = actualLength - targetLength;
                 // diff が＋　→　目標値のほうが短い　→　巻き取らなければいけない
-                motor.windUpMotor(Kp * diff);
+                if (Mathf.Abs(diff) > 50)
+                    motor.windUpMotor(-Kp * diff);
+                else
+                    motor.stopMotor();
                 break;
 
             case MotorMode.isShowingResistance:
@@ -82,19 +90,33 @@ public class StringController : MonoBehaviour {
 
     }
 
-    public void setTargetLength(float len)
+    public void setTargetLength(float setLengthInMeter)
     // isTrackingHand, isRewinding において、紐の引き出し量の目標値を指定する。
     // 入力：紐引き出し長さ目標値 [m]
     {
         if (currentMode != MotorMode.isTrackingHand && currentMode != MotorMode.isRewinding)
             return;
 
-        targetLength = len * 1000;
+        targetLength = setLengthInMeter * 1000;
+        /*
+        if (currentMode == MotorMode.isTrackingHand)
+        {
+            if (targetLength > enc.getTotalStringLength())     // this should not be happen
+                calibrateToLength(setLengthInMeter);
+        }
+        */
     }
+
 
     public void setResistance(float resistance)//抵抗    resistance の単位は [N]
     {
         currentMode = MotorMode.isShowingResistance;
         motor.setResistance(resistance);
+    }
+
+    public void calibrateToLength(float currentLengthInMeter)
+    {
+        actualLength = currentLengthInMeter * 1000;
+        enc.resetCount(actualLength);
     }
 }
