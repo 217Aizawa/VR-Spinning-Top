@@ -9,6 +9,7 @@ public class HandManager : MonoBehaviour
 {
     public BodySourceView bodySourceView;
     public SpinController spinController;
+    public bool isDebug = true;
 
     const int MinSampleCount = 10;
     Vector3 lastHandPos;
@@ -24,7 +25,7 @@ public class HandManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (spinController.isThrown)
+        if (spinController.isThrown || isDebug)
         {
             Vector3 handPos = bodySourceView.handednessWristPos;
             if (lastHandPos == Vector3.zero)
@@ -34,6 +35,11 @@ public class HandManager : MonoBehaviour
             velocitySamples.Add(v);
             if (velocitySamples.Count > MinSampleCount)
                 velocitySamples.RemoveAt(0);
+
+            lastHandPos = handPos;
+
+            if (isDebug)
+                Debug.Log("Hand Velocity " + v);
         }
         else
         {

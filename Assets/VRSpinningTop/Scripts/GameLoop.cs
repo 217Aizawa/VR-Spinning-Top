@@ -150,11 +150,11 @@ public class GameLoop : MonoBehaviour
         }
     }
     
-    public void WindingDistance()//巻取り距離 関数自体が呼び出されていない
+    public void WindingDistance()//巻取り距離
     {
         windingDevice = stringMachine.transform.position;
         wrist = bodySourceView.handednessWristPos;//kinectController.wristPosition
-        Debug.Log("wrist" + wrist);
+//        Debug.Log("wrist" + wrist);
         stringLength = Vector3.Distance(windingDevice, wrist);
         //Debug.Log(stringLength);
         stringController.setTargetLength(stringLength);
