@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SpinController : MonoBehaviour
 {
-
     public bool isThrown;//投げられたかの判定
     public Vector3 velocity;//速度
     public Vector3 Axis;//軸の向き
-    public Vector3 f, old_f,v;   //取得してきた値
+    public Vector3 f, old_f, v;   //取得してきた値
     public Quaternion g_rotation,g; //本体とｇの回転
 
+    public float ThrowOffThreshold = 1.25f; // 投げ出し判定加速度
 
     // Use this for initialization
     void Start()
@@ -21,24 +21,17 @@ public class SpinController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
         Axis = old_f;
-
-
-
-
 
         f = StringToVector3(UDPReceiver.lastReceivedUDPPacket);
 
         //f = new Vector3( Input.acceleration.x, -Input.acceleration.z, Input.acceleration.y);
-        if ((g * v).magnitude > 1.25&&isThrown!=true) {
+        if ((g * v).magnitude > ThrowOffThreshold && isThrown!=true) {
             isThrown = true;
             v = f - old_f;
-            g_rotation =g;
+            g_rotation = g;
             velocity = g_rotation*v;
         }
-
 
         //        if (isThrown) velocity = f-old_f;
         //else if (f.magnitude <= 1) old_f = f;
@@ -49,9 +42,7 @@ public class SpinController : MonoBehaviour
             v = f - old_f;              //ローカル方向
         }
 
-
         Debug.Log("koma vel." + velocity);
-
 
         //velocity = new Vector3(0, 0, -5);//変数velocityにVector3構造体をセットする。
         if(isThrown == true)
@@ -67,7 +58,7 @@ public class SpinController : MonoBehaviour
         Axis = Vector3.up;
     }
 
-    public static Vector3 StringToVector3(string input)
+    private static Vector3 StringToVector3(string input)
     {
         var elements = input.Trim('(', ')').Split(','); // 前後に丸括弧があれば削除し、カンマで分割
         var result = Vector3.zero;
@@ -83,6 +74,4 @@ public class SpinController : MonoBehaviour
 
         return result;
     }
-
-
 }
