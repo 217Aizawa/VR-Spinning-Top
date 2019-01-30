@@ -1063,7 +1063,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1025043359
 Transform:
   m_ObjectHideFlags: 0
@@ -1484,7 +1484,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1466784401
 Transform:
   m_ObjectHideFlags: 0
@@ -1826,6 +1826,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodySourceView: {fileID: 1937581793}
   spinController: {fileID: 2034248246}
+  isDebug: 1
 --- !u!1 &2034248244
 GameObject:
   m_ObjectHideFlags: 0
