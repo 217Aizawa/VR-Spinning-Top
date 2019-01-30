@@ -1706,6 +1706,7 @@ GameObject:
   - component: {fileID: 1937581791}
   - component: {fileID: 1937581793}
   - component: {fileID: 1937581792}
+  - component: {fileID: 1937581794}
   m_Layer: 0
   m_Name: KinectObject
   m_TagString: Untagged
@@ -1767,6 +1768,21 @@ MonoBehaviour:
   handednessWristPos: {x: 0, y: 0, z: 0}
   handedness: 0
   OffsetToWorld: {x: 0, y: 0, z: 0}
+--- !u!114 &1937581794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937581790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8614eddd776b0b54b86256b51c4b26db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodySourceView: {fileID: 1937581793}
+  spinController: {fileID: 2034248246}
+  isDebug: 1
 --- !u!1 &2034248244
 GameObject:
   m_ObjectHideFlags: 0
