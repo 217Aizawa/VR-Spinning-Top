@@ -10,7 +10,7 @@ public class SpinController : MonoBehaviour
     public Vector3 f, old_f, v;   //取得してきた値
     public Quaternion g_rotation,g; //本体とｇの回転
 
-    public float ThrowOffThreshold = 1.25f; // 投げ出し判定加速度
+    public float ThrowOffThreshold = 1.25f; // 投げ出し判定加速度1.25
 
     // Use this for initialization
     void Start()
