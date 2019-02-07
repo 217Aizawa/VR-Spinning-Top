@@ -70,7 +70,12 @@ public class UDPReceiver : MonoBehaviour
                     + "\nLast Packet: \n" + lastReceivedUDPPacket
                 , style);
     }
-
+    /*
+     * GUI.Box(rectObj, "# UDPReceive\n" + IP.ToString() + ":" + port + " #\n"
+                    + "shell> nc -u 127.0.0.1 : " + port + " \n"
+                    + "\nLast Packet: \n" + lastReceivedUDPPacket
+                , style);
+    */
     // init
     private void init()
     {

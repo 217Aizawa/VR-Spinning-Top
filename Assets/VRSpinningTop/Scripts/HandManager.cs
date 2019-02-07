@@ -37,9 +37,10 @@ public class HandManager : MonoBehaviour
                 velocitySamples.RemoveAt(0);
 
             lastHandPos = handPos;
-
-            if (isDebug)
+            
+            /*if (isDebug)
                 Debug.Log("Hand Velocity " + v);
+            */
         }
         else
         {

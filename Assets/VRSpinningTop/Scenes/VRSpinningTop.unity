@@ -786,7 +786,7 @@ MonoBehaviour:
   stringController: {fileID: 1186589126}
   kinectController: {fileID: 1646389738}
   bodySourceView: {fileID: 1937581793}
-  isHMD: 1
+  isHMD: 0
   Great: {fileID: 97412}
   adviseMoreFast: {fileID: 550749915}
   adviseMoreSlow: {fileID: 1550385622}
