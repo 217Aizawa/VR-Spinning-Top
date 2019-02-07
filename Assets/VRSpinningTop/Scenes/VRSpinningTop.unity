@@ -357,6 +357,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 20, y: 0, z: 0}
+--- !u!1 &146432466
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 146432467}
+  m_Layer: 0
+  m_Name: Aizawa
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &146432467
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146432466}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0007000007, y: 0.22968508, z: -0.10800001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,7 +811,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ccbb1ea006614408ae8e9910d5a8bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameState: 0
   spinController: {fileID: 2034248246}
   stringController: {fileID: 1186589126}
   kinectController: {fileID: 1646389738}
@@ -792,7 +821,7 @@ MonoBehaviour:
   adviseMoreSlow: {fileID: 1550385622}
   stringMachine: {fileID: 1186589124}
   wrist: {x: 0, y: 0, z: 0}
-  stringLength: 0
+  dist: 0
 --- !u!114 &773101335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1396,8 +1425,7 @@ MonoBehaviour:
   currentMode: 0
   InitialStringLength: 5000
   Kp: 1
-  targetLength: 0
-  actualLength: 0
+  stringDist: 0
 --- !u!114 &1186589127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1437,6 +1465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a56c20711481ae446b0c780fe38d55c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationCount: 0
 --- !u!1 &1378505516
 GameObject:
   m_ObjectHideFlags: 0
@@ -1740,7 +1769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3ef9d8d8c5c5e14599cd1064d0ceb4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodySourceView: {fileID: 16153790}
+  BodySourceView: {fileID: 0}
   wristPosition: {x: 0, y: 0, z: 0}
   spinPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1932859469 stripped
@@ -1841,9 +1870,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8614eddd776b0b54b86256b51c4b26db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodySourceView: {fileID: 1937581793}
-  spinController: {fileID: 2034248246}
-  isDebug: 1
 --- !u!1 &2034248244
 GameObject:
   m_ObjectHideFlags: 0
@@ -1890,9 +1916,5 @@ MonoBehaviour:
   isThrown: 0
   velocity: {x: 0, y: 0, z: 0}
   Axis: {x: 0, y: 0, z: 0}
-  f: {x: 0, y: 0, z: 0}
-  old_f: {x: 0, y: 0, z: 0}
-  v: {x: 0, y: 0, z: 0}
   g_rotation: {x: 0, y: 0, z: 0, w: 0}
   g: {x: 0, y: 0, z: 0, w: 0}
-  ThrowOffThreshold: 1.25
