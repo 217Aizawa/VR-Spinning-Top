@@ -103,18 +103,18 @@ public class GameLoop : MonoBehaviour
                     if (10 <= komaBody.velocity.z && komaBody.velocity.z <= 20)
                     //最終的には、リザルト画面で表示させる。
                     {
-                        Debug.Log("もう速くヒモを引いてください！！");
+                        //もう速くヒモを引いてください！！
                         adviseMoreFast.SetActive(true);//アドバイステキストをアクティブにする
                     }
                     //コマの速度が1以上10以下かつ、投げ終わってから3秒以上経過した場合
                     else if (1 <= komaBody.velocity.z && komaBody.velocity.z <= 10)
                     {
-                        Debug.Log("もうゆっくりヒモを引いてください！！");
-                        adviseMoreSlow.SetActive(true);//アドバイステキストをアクティブにする
+                        //もうゆっくりヒモを引いてください！！
+                        adviseMoreSlow.SetActive(true);
                     }
                     else
                     {
-                        Debug.Log("素晴らしい");
+                        //素晴らしい
                         Great.SetActive(true);
                     }
                 }

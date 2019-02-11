@@ -21,7 +21,7 @@ public class KomaRotate : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.F))
         {
             Debug.Log("F");
-            //rb.angularVelocity = Vector3.up * 3.14f;//πは180°/sec3.14
+            rb.angularVelocity = Vector3.up * 3.14f;//πは180°/sec3.14
             //rb.AddTorque(Vector3.up * 3.14f);
         }
 	}
