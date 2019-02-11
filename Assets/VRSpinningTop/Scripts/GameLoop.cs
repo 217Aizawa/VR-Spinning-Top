@@ -79,7 +79,7 @@ public class GameLoop : MonoBehaviour
                 {
                     stringController.setMotorMode(StringController.MotorMode.isShowingResistance);
                     ChangeGameStateToNext();
-
+                    
                     //親子関係があると正常に動作しない
                     koma.transform.parent = null;//親子関係を解除する
 
@@ -87,8 +87,8 @@ public class GameLoop : MonoBehaviour
                     komaBody.isKinematic = false;
                     komaBody.useGravity = true;
                     komaBody.velocity = spinController.velocity;
-                    komaBody.angularVelocity = Vector3.up * 3.14f;
-
+                    komaBody.angularVelocity = Vector3.up * 3.14f;//追加
+                    
                     //koma.GetComponent<Rigidbody>().velocity = spinController.velocity;//スピンコントローラの速度を、コマに代入
                 }
                 break;
