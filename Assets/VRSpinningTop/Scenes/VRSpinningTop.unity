@@ -749,7 +749,7 @@ PrefabInstance:
     - target: {fileID: 4067648536993870338, guid: 2a10d64885a463441959e7d082a7595e,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114647433073693962, guid: 2a10d64885a463441959e7d082a7595e, type: 3}
@@ -1802,19 +1802,6 @@ MonoBehaviour:
   spinController: {fileID: 2034248246}
   komaPhysics: {fileID: 1927468842}
   physicMaterial: {fileID: 13400000, guid: f58362160b5cc6d49a9e84af69d6fa4b, type: 2}
---- !u!135 &1932859472
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1932859469}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.03379262
-  m_Center: {x: 0, y: 0.034639005, z: 0}
 --- !u!1 &1937581790
 GameObject:
   m_ObjectHideFlags: 0
