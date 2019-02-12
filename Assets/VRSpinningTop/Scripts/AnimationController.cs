@@ -5,6 +5,7 @@ using UnityEngine;
 public class AnimationController : MonoBehaviour
 {
     public SpinController spinController;
+    public KomaPhysics komaPhysics;//SpinningTopComplete2(1)
     public PhysicMaterial physicMaterial;
     Rigidbody rb;
 
@@ -39,5 +40,15 @@ public class AnimationController : MonoBehaviour
         physicMaterial.dynamicFriction = 0;
         physicMaterial.staticFriction = 0;
         physicMaterial.bounciness = 0;
+    }
+
+    //オブジェクトが衝突したとき
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        { 
+            GetComponent<Animator>().SetTrigger("SampleTrigger");
+            Debug.Log("Contact");
+        }
     }
 }

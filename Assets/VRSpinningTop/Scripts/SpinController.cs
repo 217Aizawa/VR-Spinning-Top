@@ -31,14 +31,15 @@ public class SpinController : MonoBehaviour
             v = f - old_f;
             g_rotation = g;
             velocity = g_rotation*v;
+            
         }
 
-        //        if (isThrown) velocity = f-old_f;
+        //if (isThrown) velocity = f-old_f;
         //else if (f.magnitude <= 1) old_f = f;
         else if (isThrown != true)
         {
             if (f.magnitude < 1.1 && f.magnitude > 0.9) old_f = f;
-            g_rotation = Quaternion.FromToRotation(Vector3.up, new Vector3(-old_f.x, old_f.y, -old_f.z));
+            g_rotation = Quaternion.FromToRotation(Vector3.up, new Vector3(old_f.x, old_f.y, old_f.z));//-old_f.x, old_f.y, -old_f.z)
             v = f - old_f;              //ローカル方向
         }
 
