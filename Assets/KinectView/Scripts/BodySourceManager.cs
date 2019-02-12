@@ -41,7 +41,7 @@ public class BodySourceManager : MonoBehaviour
                 if (_Data == null)//ボディを取得
                 {
                     _Data = new Body[_Sensor.BodyFrameSource.BodyCount];
-                    Debug.Log(_Data);
+                    //Debug.Log(_Data);
 
                 }
                 
