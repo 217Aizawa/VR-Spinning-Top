@@ -6,48 +6,46 @@ public class AnimationController : MonoBehaviour
 {
     public SpinController spinController;
     public KomaPhysics komaPhysics;//SpinningTopComplete2(1)
-    public PhysicMaterial physicMaterial;
     Rigidbody rb;
-
+    Animator anim;
+    private float countTime = 0;//タイマー
     private void Awake()
     {
-        ResetPhysics();
+
     }
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = komaPhysics.GetComponent<Rigidbody>();//komaPhysicsのRbを取得
+        anim = GetComponent<Animator>();//アニメーターセット
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(spinController.isThrown == true)
+            countTime += Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.A))
-            GetComponent<Animator>().SetTrigger("Success");
-
-
-        if (spinController.isThrown == true)//Input.GetKeyDown(KeyCode.F)
         {
+            anim.SetTrigger("Success");
+            rb.constraints = RigidbodyConstraints.FreezePosition;//ポジション固定
+        }
+
+        if (spinController.isThrown == true && countTime > 1)//isThrownかつ投げてから1秒以上経過していれば
+        {
+            Debug.Log("Test Play");
+            anim.SetTrigger("SampleTrigger");
             //GetComponent<Animator>().SetTrigger("SampleTrigger");
-            //physicMaterial.dynamicFriction = 1;
-            //physicMaterial.staticFriction = 1;
         }
     }
 
-    void ResetPhysics()
-    {
-        physicMaterial.dynamicFriction = 0;
-        physicMaterial.staticFriction = 0;
-        physicMaterial.bounciness = 0;
-    }
 
     //オブジェクトが衝突したとき
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)//Rigidbodyがないと衝突検知できない
     {
         if (collision.gameObject.CompareTag("Ground"))
-        { 
-            GetComponent<Animator>().SetTrigger("SampleTrigger");
+        {
             Debug.Log("Contact");
         }
     }
