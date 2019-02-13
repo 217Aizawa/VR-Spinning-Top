@@ -548,36 +548,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58082c20fa9ed634c8a6569a2a345f4f, type: 3}
---- !u!1 &530130453
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 530130454}
-  m_Layer: 0
-  m_Name: animator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &530130454
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 530130453}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 0.07, y: 0.07000003, z: 0.07000003}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &550749915
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,6 +645,16 @@ PrefabInstance:
       propertyPath: spinController
       value: 
       objectReference: {fileID: 2034248246}
+    - target: {fileID: 5395454773059715556, guid: 2a10d64885a463441959e7d082a7595e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1101635671127034317, guid: 2a10d64885a463441959e7d082a7595e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1505421857995939674, guid: 2a10d64885a463441959e7d082a7595e,
         type: 3}
       propertyPath: spinController
@@ -683,7 +663,7 @@ PrefabInstance:
     - target: {fileID: 1505421857995939674, guid: 2a10d64885a463441959e7d082a7595e,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Radius
@@ -708,7 +688,7 @@ PrefabInstance:
     - target: {fileID: 4007872962282960826, guid: 2a10d64885a463441959e7d082a7595e,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4861284235651590, guid: 2a10d64885a463441959e7d082a7595e, type: 3}
       propertyPath: m_LocalPosition.x
