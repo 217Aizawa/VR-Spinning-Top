@@ -9,6 +9,7 @@ public class AnimationController : MonoBehaviour
     Rigidbody rb;
     Animator anim;
     private float countTime = 0;//タイマー
+
     private void Awake()
     {
 
@@ -16,8 +17,13 @@ public class AnimationController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = komaPhysics.GetComponent<Rigidbody>();//komaPhysicsのRbを取得
+        //rb = komaPhysics.GetComponent<Rigidbody>();//komaPhysicsのRbを取得
+        rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();//アニメーターセット
+
+
+        //spinController = ScriptableObject.FindObjectOfType<SpinController>();
+        //PrefabはSpinControllerがセットされていないで呼び出される。
     }
 
     // Update is called once per frame
@@ -34,9 +40,9 @@ public class AnimationController : MonoBehaviour
 
         if (spinController.isThrown == true && countTime > 1)//isThrownかつ投げてから1秒以上経過していれば
         {
-            Debug.Log("Test Play");
-            anim.SetTrigger("SampleTrigger");
-            //GetComponent<Animator>().SetTrigger("SampleTrigger");
+            //anim.SetTrigger("SampleTrigger");
+            anim.SetTrigger("Fail");
+            rb.constraints = RigidbodyConstraints.FreezeAll;//回転、位置
         }
     }
 

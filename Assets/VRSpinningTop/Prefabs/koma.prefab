@@ -406,7 +406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spinController: {fileID: 0}
-  komaPhysics: {fileID: 0}
+  komaPhysics: {fileID: 4387682128327582640}
 --- !u!1 &1750177449016202
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,7 +435,7 @@ Transform:
   m_GameObject: {fileID: 1750177449016202}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0.6}
-  m_LocalScale: {x: 0.004, y: 0.001, z: 0.001}
+  m_LocalScale: {x: 0.0002, y: 0.0005, z: 0.001}
   m_Children: []
   m_Father: {fileID: 4802706378792354}
   m_RootOrder: 0
