@@ -25,7 +25,7 @@ public class HandManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (spinController.isThrown || isDebug)
+        if (SpinController.isThrown || isDebug)
         {
             Vector3 handPos = bodySourceView.handednessWristPos;
             if (lastHandPos == Vector3.zero)

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SpinningController : MonoBehaviour {
     public Vector3 speed;
-
 	// Use this for initialization
 	void Start () {
         speed = Vector3.zero;

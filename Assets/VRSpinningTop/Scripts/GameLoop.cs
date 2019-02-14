@@ -75,7 +75,7 @@ public class GameLoop : MonoBehaviour
 
                 break;
             case GameState.spinInHand:
-                if (spinController.isThrown == true)//投げられたら。
+                if (SpinController.isThrown == true)//投げられたら。
                 {
                     stringController.setMotorMode(StringController.MotorMode.isShowingResistance);
                     ChangeGameStateToNext();

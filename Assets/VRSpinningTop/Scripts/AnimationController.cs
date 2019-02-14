@@ -17,19 +17,17 @@ public class AnimationController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //rb = komaPhysics.GetComponent<Rigidbody>();//komaPhysicsのRbを取得
+        //rb = komaPhysics.GetComponent<Rigidbody>();//komaPhysicsのRbを取得 親用
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();//アニメーターセット
 
-
-        //spinController = ScriptableObject.FindObjectOfType<SpinController>();
         //PrefabはSpinControllerがセットされていないで呼び出される。
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(spinController.isThrown == true)
+        if(SpinController.isThrown == true)
             countTime += Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.A))
@@ -38,7 +36,7 @@ public class AnimationController : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezePosition;//ポジション固定
         }
 
-        if (spinController.isThrown == true && countTime > 1)//isThrownかつ投げてから1秒以上経過していれば
+        if (SpinController.isThrown == true && countTime > 1)//isThrownかつ投げてから1秒以上経過していれば
         {
             //anim.SetTrigger("SampleTrigger");
             anim.SetTrigger("Fail");
