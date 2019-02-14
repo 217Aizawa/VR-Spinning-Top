@@ -698,6 +698,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4802706378792354, guid: 2a10d64885a463441959e7d082a7595e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4802706378792354, guid: 2a10d64885a463441959e7d082a7595e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4802706378792354, guid: 2a10d64885a463441959e7d082a7595e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4802706378792354, guid: 2a10d64885a463441959e7d082a7595e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4802706378792354, guid: 2a10d64885a463441959e7d082a7595e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4802706378792354, guid: 2a10d64885a463441959e7d082a7595e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4802706378792354, guid: 2a10d64885a463441959e7d082a7595e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4260210516411990, guid: 2a10d64885a463441959e7d082a7595e, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.004
@@ -706,7 +734,8 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.001
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1505421857995939674, guid: 2a10d64885a463441959e7d082a7595e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2a10d64885a463441959e7d082a7595e, type: 3}
 --- !u!1 &773101332
 GameObject:
@@ -1673,7 +1702,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5fcfcffbe0e6414a803f7a42de0ca94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isThrown: 0
   velocity: {x: 0, y: 0, z: 0}
   Axis: {x: 0, y: 0, z: 0}
   f: {x: 0, y: 0, z: 0}
