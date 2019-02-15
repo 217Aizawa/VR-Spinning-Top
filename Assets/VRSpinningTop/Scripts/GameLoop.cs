@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameLoop : MonoBehaviour
@@ -122,6 +123,7 @@ public class GameLoop : MonoBehaviour
             case GameState.result:
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    ResetScene();//追加
                     gameState = GameState.free;
                     GameObject.Find("f").SetActive(true);
                 }
@@ -166,5 +168,10 @@ public class GameLoop : MonoBehaviour
         int currentState = (int)gameState;
         currentState = (currentState + 1) % Enum.GetNames(typeof(GameState)).Length;
         gameState = (GameState)Enum.ToObject(typeof(GameState), currentState);
+    }
+
+    void ResetScene()
+    {
+        SceneManager.LoadScene("VRSpinningTop");
     }
 }

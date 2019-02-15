@@ -24,7 +24,6 @@ public class KomaPhysics : MonoBehaviour
         {
             //rb.constraints = RigidbodyConstraints.FreezePosition;//ポジション固定 
             rb.constraints = RigidbodyConstraints.FreezeAll;
-            //Debug.Log("Contact");
         }
     }
 }
