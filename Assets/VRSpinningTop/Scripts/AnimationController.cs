@@ -30,7 +30,7 @@ public class AnimationController : MonoBehaviour
         if(SpinController.isThrown == true)
             countTime += Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.Backspace))
         {
             anim.SetTrigger("Success");
             rb.constraints = RigidbodyConstraints.FreezePosition;//ポジション固定

@@ -38,9 +38,9 @@ public class HandManager : MonoBehaviour
 
             lastHandPos = handPos;
             
-            /*if (isDebug)
+            if (isDebug)
                 Debug.Log("Hand Velocity " + v);
-            */
+            
         }
         else
         {
