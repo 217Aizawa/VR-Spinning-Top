@@ -62,9 +62,14 @@ public class SpinController : MonoBehaviour
     private static Vector3 StringToVector3(string input)
     {
         var elements = input.Trim('(', ')').Split(','); // 前後に丸括弧があれば削除し、カンマで分割
+        var elementCount = Mathf.Min(elements.Length, 3); // ループ回数をelementsの数以下かつ3以下にする
+        var result = Vector3.zero;
+
+        /*
+        var elements = input.Trim('(', ')').Split(','); // 前後に丸括弧があれば削除し、カンマで分割
         var result = Vector3.zero;
         var elementCount = Mathf.Min(elements.Length, 3); // ループ回数をelementsの数以下かつ3以下にする
-
+        */
         for (var i = 0; i < elementCount; i++)
         {
             float value;

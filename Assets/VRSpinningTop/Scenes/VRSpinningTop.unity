@@ -660,7 +660,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4861284235651590, guid: 2a10d64885a463441959e7d082a7595e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4861284235651590, guid: 2a10d64885a463441959e7d082a7595e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1709,4 +1709,4 @@ MonoBehaviour:
   v: {x: 0, y: 0, z: 0}
   g_rotation: {x: 0, y: 0, z: 0, w: 0}
   g: {x: 0, y: 0, z: 0, w: 0}
-  ThrowOffThreshold: 1.25
+  ThrowOffThreshold: 2

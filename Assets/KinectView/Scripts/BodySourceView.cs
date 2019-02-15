@@ -301,7 +301,7 @@ public class BodySourceView : MonoBehaviour
 
 
             
-            jointObj.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);//KinectBodyの大きさを設定できる 0.3f, 0.3f, 0.3f
+            jointObj.transform.localScale = new Vector3(0.025f, 0.025f, 0.025f);//KinectBodyの大きさを設定できる 0.3f, 0.3f, 0.3f
             jointObj.name = jt.ToString();
             jointObj.transform.parent = body.transform;//body.transform
 
@@ -391,6 +391,7 @@ public class BodySourceView : MonoBehaviour
             Destroy(obj);
         //Instantiate(Object, Vector3, Quaternion, Parent.transform)
         KomaObj = (GameObject)Instantiate(Koma, handednessWristPos, Quaternion.identity, WristKoma.transform);
+        KomaObj.transform.SetParent(transform, false);//親のスケールの影響を受けないようにするコード。
     }
 
     /*
