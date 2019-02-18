@@ -10,7 +10,8 @@ public class SpinController : MonoBehaviour
     public Vector3 f, old_f, v;   //取得してきた値
     public Quaternion g_rotation,g; //本体とｇの回転
 
-    public float ThrowOffThreshold = 1.25f; // 投げ出し判定加速度1.25
+    // 投げ出し判定加速度
+    public float ThrowOffThreshold = 1.25f;//Inspector上の数値が優先される
 
     // Use this for initialization
     void Start()
@@ -65,8 +66,7 @@ public class SpinController : MonoBehaviour
         var elementCount = Mathf.Min(elements.Length, 3); // ループ回数をelementsの数以下かつ3以下にする
         var result = Vector3.zero;
 
-        /*
-        var elements = input.Trim('(', ')').Split(','); // 前後に丸括弧があれば削除し、カンマで分割
+        /*var elements = input.Trim('(', ')').Split(','); // 前後に丸括弧があれば削除し、カンマで分割
         var result = Vector3.zero;
         var elementCount = Mathf.Min(elements.Length, 3); // ループ回数をelementsの数以下かつ3以下にする
         */

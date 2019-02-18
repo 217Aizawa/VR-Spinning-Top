@@ -36,7 +36,7 @@ public class AnimationController : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezePosition;//ポジション固定
         }
 
-        if (SpinController.isThrown == true && countTime > 1)//isThrownかつ投げてから1秒以上経過していれば
+        if (SpinController.isThrown == true && countTime > 0.5)//isThrownかつ投げてから1秒以上経過していれば
         {
             anim.SetTrigger("Fail");
             //anim.SetTrigger("Success");
