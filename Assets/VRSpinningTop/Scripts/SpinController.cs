@@ -8,6 +8,9 @@ public class SpinController : MonoBehaviour
     public Vector3 velocity;//速度
     public Vector3 Axis;//軸の向き
     public Vector3 f, old_f, v;   //取得してきた値
+    //vはローカルな方向
+    //fは加速度方向
+    //old_fは安定している重力方向
     public Quaternion g_rotation,g; //本体とｇの回転
 
     // 投げ出し判定加速度
@@ -31,8 +34,12 @@ public class SpinController : MonoBehaviour
             isThrown = true;
             v = f - old_f;
             g_rotation = g;
-            velocity = g_rotation*v;
-            
+            velocity = g_rotation*v;//追加
+
+            velocity.x = velocity.x * -1;//velocityのX・Z軸の正負が
+            //velocity.z = velocity.z * -1;//反転しているのでここで正常に戻す。
+            //Z軸の修正が微妙。。。
+
         }
 
         //if (isThrown) velocity = f-old_f;

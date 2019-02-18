@@ -38,8 +38,8 @@ public class AnimationController : MonoBehaviour
 
         if (SpinController.isThrown == true && countTime > 0.5)//isThrownかつ投げてから1秒以上経過していれば
         {
-            anim.SetTrigger("Fail");
-            //anim.SetTrigger("Success");
+            //anim.SetTrigger("Fail");
+            anim.SetTrigger("Success");
             //rb.constraints = RigidbodyConstraints.FreezeAll;//回転、位置
         }
     }
