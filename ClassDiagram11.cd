@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GameLoop">
+    <Position X="9.5" Y="2" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="GameLoop.GameState">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\VRSpinningTop\Scripts\GameLoop.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAQAACBAFDACAAEBAAAAAAAAQCAAAAANAAIgAIIAAAQ=</HashCode>
+      <FileName>Assets\VRSpinningTop\Scripts\GameLoop.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HandManager">
+    <Position X="13.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQAAAABACIAAAAAAAAEAAAAACACAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\VRSpinningTop\Scripts\HandManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpinController">
+    <Position X="4.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAACCABAQAAAAAAAAAAAASAAAAYIBQAAAAAAAQ=</HashCode>
+      <FileName>Assets\VRSpinningTop\Scripts\SpinController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EncoderController">
+    <Position X="2.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AGQAAAAAACAAEAAAAAAAACAAASCAAAABAgAAAAgEAAg=</HashCode>
+      <FileName>Assets\VRSpinningTop\Scripts\StringControl\EncoderController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SerialConnector">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBAAAAAGAAAAABAIAAAMAAAAAAAAkAAAAACAAAAAg=</HashCode>
+      <FileName>Assets\VRSpinningTop\Scripts\StringControl\SerialConnector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SerialConnectorTester">
+    <Position X="0.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\VRSpinningTop\Scripts\StringControl\SerialConnectorTester.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StringController">
+    <Position X="2.5" Y="2" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="StringController.MotorMode" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\VRSpinningTop\Scripts\StringControl\StringController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AgUBAAACACAAIIAAAEAABAEAAAAAACCAAgAAAAAAgAA=</HashCode>
+      <FileName>Assets\VRSpinningTop\Scripts\StringControl\StringController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ForkParticleEffect" Collapsed="true">
+    <Position X="13.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EKzBHgAAFjIC0YOAACSEQACSRiFjAJAcEJAACsgQCgA=</HashCode>
+      <FileName>Assets\Fork Particle Variety Pack FX\Assets\Scripts\ForkAPI\ForkParticleEffect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ForkParticlePlugin" Collapsed="true">
+    <Position X="11.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEABQAACAACYIAAAAAABAAAQAIIAAAQAAACAAgIEE=</HashCode>
+      <FileName>Assets\Fork Particle Variety Pack FX\Assets\Scripts\ForkAPI\ForkParticlePlugin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BodySourceManager">
+    <Position X="13.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAABAAECAAAACAAAAAAAAAAAEAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Assets\KinectView\Scripts\BodySourceManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BodySourceView">
+    <Position X="15.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQKABAQACEAAgBAAgBIAQMAEAAACAIAAkBCAQAgBEA=</HashCode>
+      <FileName>Assets\KinectView\Scripts\BodySourceView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AnimationController">
+    <Position X="11.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACABAAAEAAAAAAAAAAAAAAAJAQIAAAAAAEA=</HashCode>
+      <FileName>Assets\VRSpinningTop\Scripts\AnimationController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KinectController">
+    <Position X="4.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAAAAAACAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Assets\VRSpinningTop\Scripts\KinectController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KomaPhysics">
+    <Position X="11.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\VRSpinningTop\Scripts\KomaPhysics.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MotorController">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAIAAAAAAAAAAAACAAgAAAQAAAAA=</HashCode>
+      <FileName>Assets\VRSpinningTop\Scripts\StringControl\MotorController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UDPReceiver">
+    <Position X="7.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAABAAEKAAAAACAAAAAAAAIAAAAAoAAACABAAAAAA=</HashCode>
+      <FileName>Assets\VRSpinningTop\Scripts\UDPReceiver.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UDPSender">
+    <Position X="7.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwAAJABgCAAAAACAAAAAAAAIAAARAoAAACABAACAAA=</HashCode>
+      <FileName>Assets\VRSpinningTop\Scripts\UDPSender.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="EncoderCount" Collapsed="true">
+    <Position X="0.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Assets\VRSpinningTop\Scripts\StringControl\EncoderController.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Yu Gothic UI" Size="9" />
+</ClassDiagram>
