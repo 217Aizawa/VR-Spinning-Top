@@ -36,9 +36,9 @@ public class SpinController : MonoBehaviour
             g_rotation = g;
             velocity = g_rotation*v;//追加
 
-            velocity.x = velocity.x * -1;//velocityのX・Z軸の正負が
-            //velocity.z = velocity.z * -1;//反転しているのでここで正常に戻す。
-            //Z軸の修正が微妙。。。
+            velocity.x = velocity.x * -1;//velocityのX・Z軸の正負が反転しているのでここで正常に戻す。
+            //velocity.z = velocity.z * -1;//確認済み
+            
 
         }
 
