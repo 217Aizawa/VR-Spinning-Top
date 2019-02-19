@@ -191,7 +191,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4861284235651590}
-  - component: {fileID: 1505421857995939674}
   m_Layer: 0
   m_Name: koma
   m_TagString: Koma
@@ -216,20 +215,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1505421857995939674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1046440975728644}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff04b89f1737be949bbaacac5f84a31e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spinController: {fileID: 0}
-  komaPhysics: {fileID: 4387682128327582640}
 --- !u!1 &1223803739781750
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,7 +400,7 @@ Transform:
   m_GameObject: {fileID: 1750177449016202}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0.6}
-  m_LocalScale: {x: 0.0002, y: 0.0005, z: 0.001}
+  m_LocalScale: {x: 0.004, y: 0.001, z: 0.001}
   m_Children: []
   m_Father: {fileID: 4802706378792354}
   m_RootOrder: 0

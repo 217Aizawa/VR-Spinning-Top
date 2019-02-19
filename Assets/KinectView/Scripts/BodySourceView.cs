@@ -392,6 +392,7 @@ public class BodySourceView : MonoBehaviour
         //Instantiate(Object, Vector3, Quaternion, Parent.transform)
         KomaObj = (GameObject)Instantiate(Koma, handednessWristPos, Quaternion.identity, WristKoma.transform);
         KomaObj.transform.SetParent(transform, false);//親のスケールの影響を受けないようにするコード。
+        KomaObj.transform.parent = WristKoma.transform;
     }
 
     /*
