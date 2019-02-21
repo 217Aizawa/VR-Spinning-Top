@@ -10,15 +10,11 @@ public class AnimationController : MonoBehaviour
     Animator anim;
     private float countTime = 0;//タイマー
 
-    private void Awake()
-    {
-
-    }
     // Start is called before the first frame update
     void Start()
     {
         //rb = komaPhysics.GetComponent<Rigidbody>();//komaPhysicsのRbを取得 親用
-        //rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();//アニメーターセット
 
         //PrefabはSpinControllerがセットされていないで呼び出される。
@@ -32,6 +28,7 @@ public class AnimationController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
+            //anim.SetTrigger("Fail");
             anim.SetTrigger("Success");
             rb.constraints = RigidbodyConstraints.FreezePosition;//ポジション固定
         }
@@ -40,17 +37,15 @@ public class AnimationController : MonoBehaviour
         {
             //anim.SetTrigger("Fail");
             anim.SetTrigger("Success");
-            //rb.constraints = RigidbodyConstraints.FreezeAll;//回転、位置
         }
     }
-
 
     //オブジェクトが衝突したとき KomaPhysicsがあるのであとでこれを削除する
     void OnCollisionEnter(Collision collision)//Rigidbodyがないと衝突検知できない
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            //Debug.Log("Contact");
+            rb.constraints = RigidbodyConstraints.FreezeAll;
         }
     }
 }

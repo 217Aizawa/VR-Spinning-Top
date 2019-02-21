@@ -1,0 +1,1026 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Windows.Kinect.KinectBuffer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAIAAAAAAARCBAAiAAAAAAAAIgAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\KinectBuffer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.AudioBeamSubFrame" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BABAIAAAACACCAKREAIiSAAwBAACAQAAAAEwEAAAAIA=</HashCode>
+      <FileName>Assets\Standard Assets\KinectSpecialCases.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.AudioBeamFrame" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAGAqAAIAAAIQABAQAACCADAAAAAAAAEAREA=</HashCode>
+      <FileName>Assets\Standard Assets\KinectSpecialCases.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.BodyFrame" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAABCAAAAIIACIgAAIAAAAKAIAgAAAAAEAgBAA=</HashCode>
+      <FileName>Assets\Standard Assets\KinectSpecialCases.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.Body" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAQwKNEggMSAEMQgIBEACBSAgDAAFACIoCQGAg=</HashCode>
+      <FileName>Assets\Standard Assets\KinectSpecialCases.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.ColorFrame" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BCAAI0UAACASIBaIAAIgAABABAACCAAAAAAgCAgAQBA=</HashCode>
+      <FileName>Assets\Standard Assets\KinectSpecialCases.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.DepthFrame" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABIAQAIACSAAAITCAogAAAAhAACAAAAAASgAAAAACA=</HashCode>
+      <FileName>Assets\Standard Assets\KinectSpecialCases.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.BodyIndexFrame" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ECBAAQAAACAAAAYBBAsiAIgAAAACAAAAAAAAABQAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\KinectSpecialCases.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.InfraredFrame" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAQACACBgAAIBACogAAAAAgACJAAAAAAAgAQAEAA=</HashCode>
+      <FileName>Assets\Standard Assets\KinectSpecialCases.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.KinectSensor" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IgABQEGAACQIIRIAAAJACoIQiGAGFMAgIAIUAIWAhgA=</HashCode>
+      <FileName>Assets\Standard Assets\KinectSpecialCases.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.LongExposureInfraredFrame" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAQDAACAAAAIBAAoiAgEAAEACAAAQAQBAAQAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\KinectSpecialCases.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.CoordinateMapper" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>wAAogAAYBCBJgiIgQE4CAgQCEAoKBIEADAAAAAYMAAA=</HashCode>
+      <FileName>Assets\Standard Assets\KinectSpecialCases.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.AudioBeam" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAACAACQIAAAIgBACQhAACFAAAgAAEACAAIIA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\AudioBeam.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.AudioBeamFrameArrivedEventArgs" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAICAAIAQAAAABACAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\AudioBeamFrameArrivedEventArgs.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.AudioBeamFrameList" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAACAABAIAAAIAAAAAAAACAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\AudioBeamFrameList.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.AudioBeamFrameReader" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABIAAAAECAAAAIAiBKAAAAwggAClAgAAAA0AQAAAIA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\AudioBeamFrameReader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.AudioBeamFrameReference" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAQCABAAIIAAIgAAAAAAACAAAAAAAAIBAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\AudioBeamFrameReference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.AudioBodyCorrelation" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAACAAAEIAAAIAAAAAAAACQAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\AudioBodyCorrelation.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.AudioSource" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIBBBBAIEiAAAIIBMQIAACJAgEACFAQEEAAEAAAAIAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\AudioSource.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.BodyFrameArrivedEventArgs" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAACAAAEIAAAIARAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\BodyFrameArrivedEventArgs.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.BodyFrameReader" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AhAABAAAQCAAAANACAIAIAIAgAiCFAABAAAkAAAgAAI=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\BodyFrameReader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.BodyFrameReference" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAIAAAEAACAgAAIAAAIiAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\BodyFrameReference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.BodyFrameSource" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gABAAAAABCAAgMoAMAIAAAAAgAACFAQFEEAEAAIAQAQ=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\BodyFrameSource.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.BodyIndexFrameArrivedEventArgs" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAJAAAIAQAgAAAACAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\BodyIndexFrameArrivedEventArgs.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.BodyIndexFrameReader" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQCAIAAIACAIBAgACgEACFQAAACA0AgQACAQ=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\BodyIndexFrameReader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.BodyIndexFrameReference" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIACAAAACAAAAIAQAIgAAAAAAACAAAAAAEQAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\BodyIndexFrameReference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.BodyIndexFrameSource" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gABAAQAAACAgAoIAMAoAAABAgAACFAQEEEEEAAAAQAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\BodyIndexFrameSource.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.ColorCameraSettings" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIACAAAAMAAAIAAAAAACADAAAEAAAAAARRAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\ColorCameraSettings.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.ColorFrameArrivedEventArgs" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAIAAAIIUAAAIAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\ColorFrameArrivedEventArgs.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.ColorFrameReader" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABACEAAQCAAAoIACAIgEAABgAEDFAAAAAAkAAJAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\ColorFrameReader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.ColorFrameReference" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAEAABCAAAAMAAAIgAAAAAAACAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\ColorFrameReference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.ColorFrameSource" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAQAAgCAAAIIAMAIQEAAAgAASHAQEkAAEAAAACJA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\ColorFrameSource.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.CoordinateMappingChangedEventArgs" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAIAAAIAABAAAAACAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\CoordinateMappingChangedEventArgs.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.DepthFrameArrivedEventArgs" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAIAAIMAQACAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\DepthFrameArrivedEventArgs.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.DepthFrameReader" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAASCQAEFIQSAIAAIAIgAACFAAAAgAkAAAAAAg=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\DepthFrameReader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.DepthFrameReference" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAQgAAACQAAAIAAAIwAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\DepthFrameReference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.DepthFrameSource" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQBAAQAgAiAAAYICMAIAAAAAqAACFAQEEQAEAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\DepthFrameSource.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.FrameCapturedEventArgs" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAIAAEIgAAAAABACAAHAAYAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\FrameCapturedEventArgs.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.FrameDescription" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAIAQQAAhCAQQAIAAAKgAGAAAAICAAAAAAACAAAAQAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\FrameDescription.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.InfraredFrameArrivedEventArgs" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAACAAACIAAQIAQAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\InfraredFrameArrivedEventArgs.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.InfraredFrameReader" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IBAAgAAQQCAAAAMACEIAAAAAgAACFABAGAg0AAQAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\InfraredFrameReader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.InfraredFrameReference" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAACAAAAIAAAIgAABQAAACAAAAAEAAAAACAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\InfraredFrameReference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.InfraredFrameSource" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAQAQACAAAIIAMAIAABAAgAkCHAQEGAAEgAgAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\InfraredFrameSource.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.IsAvailableChangedEventArgs" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAACAAAEIAAAIAAAAAAAACAQAAAAAAAIAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\IsAvailableChangedEventArgs.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.KinectUnityAddinUtils" Collapsed="true">
+    <Position X="7" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\KinectUnityAddinUtils.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Windows.Kinect.LongExposureInfraredFrameArrivedEventArgs" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAADAAAAIAAAIAUAAAAAACAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\LongExposureInfraredFrameArrivedEventArgs.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.LongExposureInfraredFrameReader" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgCCQmAAAgIACgIAIAAAgAACFCAAAACkACBAAQA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\LongExposureInfraredFrameReader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.LongExposureInfraredFrameReference" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIKABAAACAAAAIAAAIgAAAAAAACAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\LongExposureInfraredFrameReference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.LongExposureInfraredFrameSource" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAQEBACAACIIAMAIAQAQIgCACFAQUEAAEAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\LongExposureInfraredFrameSource.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.MultiSourceFrame" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABiEAAAAAChAAAIAAAsAIAAAAgEGAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\MultiSourceFrame.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.MultiSourceFrameArrivedEventArgs" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAACAAAAIAAAIAQACAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\MultiSourceFrameArrivedEventArgs.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.MultiSourceFrameReader" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAEQGAABAIAABIAAABAwABCFAAgECAkMAAAAMA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\MultiSourceFrameReader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Windows.Kinect.MultiSourceFrameReference" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAACAAAAIAAQIAAAAAAACCAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\MultiSourceFrameReference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Helper.CollectionMap&lt;TKey, TValue&gt;" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\CollectionMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.EventPump" Collapsed="true">
+    <Position X="10.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARAABAAAAAAIAAAAAAAAAAAAAABAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\EventPump.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.ExceptionHelper" Collapsed="true">
+    <Position X="14" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQIAIAAAQAAAAAAAAEAAAQAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\ExceptionHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.NativeObjectCache" Collapsed="true">
+    <Position X="10.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAIAAgAAAAAAAABAAAAAgIAAAAAAAIAAA=</HashCode>
+      <FileName>Assets\Standard Assets\NativeObjectCache.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.NativeWrapper" Collapsed="true">
+    <Position X="12.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Assets\Standard Assets\NativeWrapper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.SmartGCHandle" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAACAgCAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\SmartGCHandle.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Helper.ThreadSafeDictionary&lt;TKey, TValue&gt;" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAJAAAAAAAAAAAAACAAABAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\ThreadSafeDictionary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.CrossPlatformInput.AxisTouchButton" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACgAAAAAAAIAQAAAJAAAQAAAAAAAAIIABAAAAAACAA=</HashCode>
+      <FileName>Assets\Standard Assets\CrossPlatformInput\Scripts\AxisTouchButton.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UnityStandardAssets.CrossPlatformInput.ButtonHandler" Collapsed="true">
+    <Position X="10.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAgAAAAAAABAACAAAACQAAAAAAAAAAAIAAAAACAA=</HashCode>
+      <FileName>Assets\Standard Assets\CrossPlatformInput\Scripts\ButtonHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.CrossPlatformInput.CrossPlatformInputManager" Collapsed="true">
+    <Position X="10.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>mAICAgAAgBKAAwAAAAAAAAAAAAIBAAgAFIAAAABASAQ=</HashCode>
+      <FileName>Assets\Standard Assets\CrossPlatformInput\Scripts\CrossPlatformInputManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.CrossPlatformInput.InputAxisScrollbar" Collapsed="true">
+    <Position X="17.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\CrossPlatformInput\Scripts\InputAxisScrollbar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.CrossPlatformInput.Joystick" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IECAAAAAACEIAAAAAABAAAAAAAAAIACIAAQAEAAAaAA=</HashCode>
+      <FileName>Assets\Standard Assets\CrossPlatformInput\Scripts\Joystick.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UnityStandardAssets.CrossPlatformInput.MobileControlRig" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAEACQAAAAAAAAAAAAAAAAAAAAIAAAABAAACAA=</HashCode>
+      <FileName>Assets\Standard Assets\CrossPlatformInput\Scripts\MobileControlRig.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UnityStandardAssets.CrossPlatformInput.TiltInput" Collapsed="true">
+    <Position X="10.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACQACAAAAAEAAAAAAQAAAgAAAAAAAAAIAAAAAAAACAA=</HashCode>
+      <FileName>Assets\Standard Assets\CrossPlatformInput\Scripts\TiltInput.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.CrossPlatformInput.TouchPad" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IGSABAAAACgIAAAAAAAAAAAEAAAAIBSIABQAEACAaAI=</HashCode>
+      <FileName>Assets\Standard Assets\CrossPlatformInput\Scripts\TouchPad.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UnityStandardAssets.CrossPlatformInput.VirtualInput" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kAACAAAAgBKAAwAAAAAABAAAAEIAAAgIEIABAABCSAQ=</HashCode>
+      <FileName>Assets\Standard Assets\CrossPlatformInput\Scripts\VirtualInput.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.CrossPlatformInput.PlatformSpecific.MobileInput" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAACAAAAABCAAwAAAAAAAAAAAAAAAAgAAIAAAIAiSAA=</HashCode>
+      <FileName>Assets\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\MobileInput.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.CrossPlatformInput.PlatformSpecific.StandaloneInput" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAACAAAAABCAAwAAAAAAAAAAAAAAAAgAAIAAAAACSAA=</HashCode>
+      <FileName>Assets\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\StandaloneInput.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.CrossPlatformInput.Inspector.TiltInputAxisStylePropertyDrawer" Collapsed="true">
+    <Position X="12.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\CrossPlatformInput\Scripts\TiltInput.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.Kinect.VisualGestureBuilder.VisualGestureBuilderDatabase" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>wAAAAAAAACAAAAIAAAIAAAEAwAACAEBAAAACAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\KinectVisualGestureBuilderSpecialCases.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Microsoft.Kinect.VisualGestureBuilder.VisualGestureBuilderFrameSource" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kAMCAIAAFCwAAAIAEQYDwACggIEiHGAGEIAEkCEEAAA=</HashCode>
+      <FileName>Assets\Standard Assets\KinectVisualGestureBuilderSpecialCases.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Microsoft.Kinect.VisualGestureBuilder.ContinuousGestureResult" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAgAAIAAAIAAAAAAAgKAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Microsoft\Kinect\VisualGestureBuilder\ContinuousGestureResult.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Microsoft.Kinect.VisualGestureBuilder.DiscreteGestureResult" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAACAAAAJAEAIgAAAAAIECAAIAAAQAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Microsoft\Kinect\VisualGestureBuilder\DiscreteGestureResult.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Microsoft.Kinect.VisualGestureBuilder.Gesture" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAACAAAAJAAEKAAAQAAAACAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Microsoft\Kinect\VisualGestureBuilder\Gesture.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Microsoft.Kinect.VisualGestureBuilder.KinectVisualGestureBuilderUnityAddinUtils" Collapsed="true">
+    <Position X="8.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Microsoft\Kinect\VisualGestureBuilder\KinectVisualGestureBuilderUnityAddinUtils.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.Kinect.VisualGestureBuilder.TrackingIdLostEventArgs" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAgAAIAAAoAiAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Microsoft\Kinect\VisualGestureBuilder\TrackingIdLostEventArgs.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Microsoft.Kinect.VisualGestureBuilder.VisualGestureBuilderFrame" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIKAACAAAAIAAAIggAOAAKACEAAAgAAAAkAgBAA=</HashCode>
+      <FileName>Assets\Standard Assets\Microsoft\Kinect\VisualGestureBuilder\VisualGestureBuilderFrame.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Microsoft.Kinect.VisualGestureBuilder.VisualGestureBuilderFrameArrivedEventArgs" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAIAAQIAQAAAAAACAAgAAAAAAAAAAQA=</HashCode>
+      <FileName>Assets\Standard Assets\Microsoft\Kinect\VisualGestureBuilder\VisualGestureBuilderFrameArrivedEventArgs.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Microsoft.Kinect.VisualGestureBuilder.VisualGestureBuilderFrameReader" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAABAKAACAIQCAIAAAEBoAAiFAAAAAAkQICkAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Microsoft\Kinect\VisualGestureBuilder\VisualGestureBuilderFrameReader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Microsoft.Kinect.VisualGestureBuilder.VisualGestureBuilderFrameReference" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAACAAAAIAAAIgAAAAAAACAAAAAACAAAIAFAA=</HashCode>
+      <FileName>Assets\Standard Assets\Microsoft\Kinect\VisualGestureBuilder\VisualGestureBuilderFrameReference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.ActivateTrigger" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAgIAIAAAAAAgAAAAAAAARAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\ActivateTrigger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.AutoMobileShaderSwitch" Collapsed="true">
+    <Position X="5.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAECAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\AutoMobileShaderSwitch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.AutoMoveAndRotate" Collapsed="true">
+    <Position X="7" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAAAAAAiAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\AutoMoveAndRotate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.CameraRefocus" Collapsed="true">
+    <Position X="12.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABACAAAACACAAIAAAAAAQAAAAAAABAAAAAgACAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\CameraRefocus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.CurveControlledBob" Collapsed="true">
+    <Position X="12.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAACAAAAAAAAASAwAAAAABASAAAABAABAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\CurveControlledBob.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.DragRigidbody" Collapsed="true">
+    <Position X="5.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAIAAAACQAACAAAAAAAAAAIAAgAgAAAAAAAAiAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\DragRigidbody.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.DynamicShadowSettings" Collapsed="true">
+    <Position X="7" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQQAAFAACAAAEAAAAAACAAAIAAAAAgBAAAABAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\DynamicShadowSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.FollowTarget" Collapsed="true">
+    <Position X="15.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAIAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\FollowTarget.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.FOVKick" Collapsed="true">
+    <Position X="19.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACQAAACAAAAAAAAAACAAABAIBAAgAAAAgAAAAEAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\FOVKick.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.FPSCounter" Collapsed="true">
+    <Position X="21" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAACAAAhAAAAgAAAAAAAEQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\FPSCounter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.LerpControlledBob" Collapsed="true">
+    <Position X="10.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAABIgAAAAAAAAAAgAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\LerpControlledBob.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.ObjectResetter" Collapsed="true">
+    <Position X="14" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAACAAAAAABAAAAAAAAAAAAACAAAAAABAACCA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\ObjectResetter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.ParticleSystemDestroyer" Collapsed="true">
+    <Position X="15.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAACAAAAAAAAAAAAAAAAAAQAIAIAQAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\ParticleSystemDestroyer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.PlatformSpecificContent" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARAAIAEAgAAQAAAAAAAAAAAAAAAAAAYBACAAAAACAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\PlatformSpecificContent.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.SimpleActivatorMenu" Collapsed="true">
+    <Position X="22.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAEQAAAAIAAAAAAAAACAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\SimpleActivatorMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.SimpleMouseRotator" Collapsed="true">
+    <Position X="5.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAYACAAAAAQAAgAAAAACACAAAIAgABgAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\SimpleMouseRotator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.SmoothFollow" Collapsed="true">
+    <Position X="8.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAUAIAAAIAAAAEIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\SmoothFollow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.TimedObjectActivator" Collapsed="true">
+    <Position X="14" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAABAAAAgAIAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\TimedObjectActivator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.TimedObjectDestructor" Collapsed="true">
+    <Position X="15.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIIAAAAAAEAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\TimedObjectDestructor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.WaypointCircuit" Collapsed="true">
+    <Position X="12.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CgAEAAqAAIIAAAEAABAAAwBAAEGAQAhAoAAAQAAAAEA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\WaypointCircuit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.WaypointProgressTracker" Collapsed="true">
+    <Position X="15.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEgAAAACEABAAAIAQAAAEABAAIAQAIAAwAAAAAICo=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\WaypointProgressTracker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlphaButtonClickMask" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAQAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\AlphaButtonClickMask.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EventSystemChecker" Collapsed="true">
+    <Position X="12.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\EventSystemChecker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ForcedReset" Collapsed="true">
+    <Position X="17.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\ForcedReset.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.Inspector.ReplacementListDrawer" Collapsed="true">
+    <Position X="21" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAACAAAEAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\AutoMobileShaderSwitch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.Inspector.EntriesDrawer" Collapsed="true">
+    <Position X="8.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAACAAAEAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\TimedObjectActivator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Utility.Inspector.WaypointListDrawer" Collapsed="true">
+    <Position X="14" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAACAAAAAAEA=</HashCode>
+      <FileName>Assets\Standard Assets\Utility\WaypointCircuit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Windows.Data.PropertyChangedEventArgs" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAIIAAIIAAAAAAACAAQAAAAAAABAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Data\PropertyChangedEventArgs.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Struct Name="Windows.Kinect.CameraIntrinsics" Collapsed="true">
+    <Position X="5.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAACCAAAAAIgAAAAAAAAAAAAIACAAAAAAAAAiA=</HashCode>
+      <FileName>Assets\Standard Assets\CameraIntrinsics.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Windows.Kinect.PointF" Collapsed="true">
+    <Position X="15.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAYiA=</HashCode>
+      <FileName>Assets\Standard Assets\KinectSpecialCases.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Windows.Kinect.CameraSpacePoint" Collapsed="true">
+    <Position X="7" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAYiE=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\CameraSpacePoint.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Windows.Kinect.ColorSpacePoint" Collapsed="true">
+    <Position X="8.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAYiA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\ColorSpacePoint.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Windows.Kinect.DepthSpacePoint" Collapsed="true">
+    <Position X="10.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAYiA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\DepthSpacePoint.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Windows.Kinect.Joint" Collapsed="true">
+    <Position X="12.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAggAAAQAAAAAAAAIAAAAAAAAAAAiA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\Joint.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Windows.Kinect.JointOrientation" Collapsed="true">
+    <Position X="14" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAgAAAQAAAAAAAAIAAAAAAAAAAAiA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\JointOrientation.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Windows.Kinect.Vector4" Collapsed="true">
+    <Position X="17.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAIYiE=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\Vector4.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="Helper.INativeWrapper" Collapsed="true">
+    <Position X="5.25" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\INativeWrapper.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Windows.Kinect.Activity" Collapsed="true">
+    <Position X="5.25" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAACAAAAIAAAAAAIAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\Activity.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Windows.Kinect.Appearance" Collapsed="true">
+    <Position X="7" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\Appearance.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Windows.Kinect.AudioBeamMode" Collapsed="true">
+    <Position X="8.75" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\AudioBeamMode.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Windows.Kinect.ColorImageFormat" Collapsed="true">
+    <Position X="10.5" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQABAAAAAAAAAAAAAAAEAAAAAAAAAAEAEQA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\ColorImageFormat.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Windows.Kinect.DetectionResult" Collapsed="true">
+    <Position X="12.25" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAACAAAAACAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\DetectionResult.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Windows.Kinect.Expression" Collapsed="true">
+    <Position X="14" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAABAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\Expression.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Windows.Kinect.FrameCapturedStatus" Collapsed="true">
+    <Position X="15.75" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\FrameCapturedStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Windows.Kinect.FrameEdges" Collapsed="true">
+    <Position X="17.5" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAIAAAACACAAAEAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\FrameEdges.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Windows.Kinect.FrameSourceTypes" Collapsed="true">
+    <Position X="19.25" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAEBAAAAAAACAAAgAAAAgAFAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\FrameSourceTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Windows.Kinect.HandState" Collapsed="true">
+    <Position X="22.75" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAACAAAAAAAAAAAAAAAAAACAABA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\HandState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Windows.Kinect.JointType" Collapsed="true">
+    <Position X="5.25" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAcAAGCAAIEMBhAgAAAIIBABEAEAAAECAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\JointType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Windows.Kinect.KinectAudioCalibrationState" Collapsed="true">
+    <Position X="7" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\KinectAudioCalibrationState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Windows.Kinect.KinectCapabilities" Collapsed="true">
+    <Position X="8.75" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEABAAAAAAgAAAAAAAAAgEAgAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\KinectCapabilities.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Windows.Kinect.TrackingConfidence" Collapsed="true">
+    <Position X="10.5" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\TrackingConfidence.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Windows.Kinect.TrackingState" Collapsed="true">
+    <Position X="12.25" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Standard Assets\Windows\Kinect\TrackingState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Microsoft.Kinect.VisualGestureBuilder.GestureType" Collapsed="true">
+    <Position X="21" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAASA=</HashCode>
+      <FileName>Assets\Standard Assets\Microsoft\Kinect\VisualGestureBuilder\GestureType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Yu Gothic UI" Size="9" />
+</ClassDiagram>
