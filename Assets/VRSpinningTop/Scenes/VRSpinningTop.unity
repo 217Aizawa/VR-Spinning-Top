@@ -213,7 +213,7 @@ MonoBehaviour:
   headPos: {x: 0, y: 0, z: 0}
   handLeftPos: {x: 0, y: 0, z: 0}
   handRightPos: {x: 0, y: 0, z: 0}
-  handednessWristPos: {x: 0, y: 0, z: 0}
+  handednessHandPos: {x: 0, y: 0, z: 0}
   handedness: 0
   OffsetToWorld: {x: 0, y: 0, z: 0}
 --- !u!1 &22850407
@@ -600,7 +600,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 197205128}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.099131905, y: 0.026623726, z: -0.23579174}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1044,12 +1044,12 @@ MonoBehaviour:
   stringController: {fileID: 1186589126}
   kinectController: {fileID: 1646389738}
   bodySourceView: {fileID: 1937581793}
-  isHMD: 1
+  isHMD: 0
   Great: {fileID: 97412}
   adviseMoreFast: {fileID: 550749915}
   adviseMoreSlow: {fileID: 1550385622}
   stringMachine: {fileID: 1186589124}
-  wrist: {x: 0, y: 0, z: 0}
+  hand: {x: 0, y: 0, z: 0}
   stringLength: 0
 --- !u!114 &773101335
 MonoBehaviour:
@@ -1903,7 +1903,7 @@ MonoBehaviour:
   headPos: {x: 0, y: 0, z: 0}
   handLeftPos: {x: 0, y: 0, z: 0}
   handRightPos: {x: 0, y: 0, z: 0}
-  handednessWristPos: {x: 0, y: 0, z: 0}
+  handednessHandPos: {x: 0, y: 0, z: 0}
   handedness: 0
   OffsetToWorld: {x: 0, y: 0, z: 0}
 --- !u!114 &1937581794

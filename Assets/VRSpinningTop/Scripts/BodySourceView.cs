@@ -10,13 +10,16 @@ public class BodySourceView : MonoBehaviour
     public GameObject gameLoop;
     public GameObject Camera;
     public GameObject Koma;
-    GameObject WristKoma;
+    //GameObject WristKoma;
+    GameObject HandKoma;
     public GameObject KomaObj;
 
     public Vector3 headPos;//追加
     public Vector3 handLeftPos;//左手位置
     public Vector3 handRightPos;//右手位置
-    public Vector3 handednessWristPos;//利き手の手首位置
+    //public Vector3 handednessWristPos;//利き手の手首位置
+
+    public Vector3 handednessHandPos;//利き手位置　追加
 
     private float leftHandTime = 0;//左手を挙げている時間
     private float rightHandTime = 0;
@@ -181,7 +184,8 @@ public class BodySourceView : MonoBehaviour
             //利き手判定スクリプト（左手）
             if (riseHand == true && headPos.y < handLeftPos.y && 3 <= leftHandTime)
             {
-                WristKoma = GameObject.Find("WristLeft");
+                //WristKoma = GameObject.Find("WristLeft");
+                HandKoma = GameObject.Find("HandLeft");
                 handedness = -1;
                 riseHand = false;
                 CreatePrefab();//子としてコマを生成する
@@ -190,7 +194,8 @@ public class BodySourceView : MonoBehaviour
             }
             else if (riseHand == true && headPos.y < handRightPos.y && 3 <= rightHandTime)
             {
-                WristKoma = GameObject.Find("WristRight");
+                //WristKoma = GameObject.Find("WristRight");
+                HandKoma = GameObject.Find("HandRight");
                 handedness = 1;
                 riseHand = false;
                 CreatePrefab();
@@ -200,11 +205,13 @@ public class BodySourceView : MonoBehaviour
             //利き手の手首位置を返し続けるためのif文
             if (handedness == -1)
             {
-                handednessWristPos = GetVector3FromJointWithOffset(data[trackedId].Joints[Kinect.JointType.WristLeft]);
+                //handednessWristPos = GetVector3FromJointWithOffset(data[trackedId].Joints[Kinect.JointType.WristLeft]);
+                handednessHandPos = handLeftPos;//左手を利き手に代入
             }
             else if (handedness == 1)
             {
-                handednessWristPos = GetVector3FromJointWithOffset(data[trackedId].Joints[Kinect.JointType.WristRight]);
+                //handednessWristPos = GetVector3FromJointWithOffset(data[trackedId].Joints[Kinect.JointType.WristRight]);
+                handednessHandPos = handRightPos;//右手を利き手に代入
             }
 
             if (Input.GetKeyDown(KeyCode.KeypadEnter))//利き手強制切り替えスクリプト（テンキーのEnterキー）
@@ -226,17 +233,25 @@ public class BodySourceView : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.L))
             {
                 handedness = -1;
-                WristKoma = GameObject.Find("WristLeft");
+                //WristKoma = GameObject.Find("WristLeft");
+                HandKoma = GameObject.Find("HandLeft");
+
                 Debug.Log("Converted LeftHandedness");
-                KomaObj.transform.parent = WristKoma.transform;
+                //KomaObj.transform.parent = WristKoma.transform;//正常に動作する
+                KomaObj.transform.parent = HandKoma.transform;
+
                 KomaObj.transform.localPosition = Vector3.zero;
             }
             else if (Input.GetKeyDown(KeyCode.R))
             {
                 handedness = 1;
-                WristKoma = GameObject.Find("WristRight");
+                //WristKoma = GameObject.Find("WristRight");
+                HandKoma = GameObject.Find("HandRight");
+
                 Debug.Log("Converted RightHandedness");
-                KomaObj.transform.parent = WristKoma.transform;//正常に動作する
+                //KomaObj.transform.parent = WristKoma.transform;
+                KomaObj.transform.parent = HandKoma.transform;
+
                 KomaObj.transform.localPosition = Vector3.zero;
             }
             // Get the head position without offsetting to Oculus
@@ -390,128 +405,13 @@ public class BodySourceView : MonoBehaviour
         if (obj != null)
             Destroy(obj);
         //Instantiate(Object, Vector3, Quaternion, Parent.transform)
-        KomaObj = (GameObject)Instantiate(Koma, handednessWristPos, Quaternion.identity, WristKoma.transform);
+        //KomaObj = (GameObject)Instantiate(Koma, handednessWristPos, Quaternion.identity, WristKoma.transform);
+        KomaObj = (GameObject)Instantiate(Koma, handednessHandPos, Quaternion.identity, HandKoma.transform);
+
         KomaObj.transform.SetParent(transform, false);//親のスケールの影響を受けないようにするコード。
-        KomaObj.transform.parent = WristKoma.transform;
+        //KomaObj.transform.parent = WristKoma.transform;
+        KomaObj.transform.parent = HandKoma.transform;
+
     }
-
-    /*
-    void JudgeHandedness()
-    {
-        if (headPos.y < handLeftPos.y)
-        {
-            handedness = -1;
-        }
-        else if (headPos.y < handRightPos.y)
-        {
-            handedness = 1;
-        }
-
-        switch (handedness)
-        {
-            case -1:
-                Debug.Log("Handedness Left");
-                break;
-
-            case 1:
-                Debug.Log("Handedness Right");
-                break;
-        }
-    }*/
-
-    /*void Update () 
-  {
-
-      if (BodySourceManager == null)
-      {
-          return;
-      }
-
-      _BodyManager = BodySourceManager.GetComponent<BodySourceManager>();
-      if (_BodyManager == null)
-      {
-          return;
-      }
-
-      Kinect.Body[] data = _BodyManager.GetData();
-      if (data == null)
-      {
-          return;
-      }
-      List<ulong> trackedIds = new List<ulong>();
-
-      foreach(var body in data)//データの中のボディを使う 一旦コメントアウト
-      {
-          if (body == null)
-          {
-              continue;
-          }
-
-          if(body.IsTracked)
-          {
-              trackedIds.Add (body.TrackingId);
-          }
-      }
-
-      Vector3 closestPosition = Vector3.zero;
-      //GameLoop gl = gameLoop.GetComponent<GameLoop>();
-
-      //foreach(var body in data)ボディ取り出し 追加
-      for (int i = 0; i < data.Length; i++)
-      {
-          if (data[i] == null)
-          {
-              continue;
-          }
-
-          if (data[i].IsTracked)
-          {
-              //get kinect coodinate without offset　[i] ボディ型、Joints{  } JointTypeからJointへの辞書　JointはVector3のようなもの
-              headPos = GetVector3FromJoint(data[i].Joints[Kinect.JointType.Head], false);////頭の位置をジョイントから持ってくる
-
-              // found new body
-              if (!_Bodies.ContainsKey(data[i].TrackingId))
-              {
-                  _Bodies[data[i].TrackingId] = CreateBodyObject(data[i].TrackingId);
-              }
-
-              if (Mathf.Abs(headPos.x) < 0.3f )//&& Mathf.Abs(position.z) < 1.5f)//xの絶対値が両側30センチ＆zは絶対値を取らなくてよい。人が居たら開始
-              {
-                  /*if (!gl.isHMD)
-                  {
-                      gl.NextStateWithCheckCurrentState(GameLoop.GameState.Opening);//オープニング状態なら次へ
-                  }
-              }
-
-              // closest player detection　人を一人選ぶ
-              if (Mathf.Abs(headPos.x) < 1.0f )//&& gl.state != GameLoop.GameState.End)
-              {
-                  if (closestPosition == Vector3.zero || Mathf.Abs(closestPosition.z) > Mathf.Abs(headPos.z))//より近くに人が来たら記憶する
-                  {
-                      trackedId = i;
-                      closestPosition = headPos;
-                  }
-              }
-              RefreshBodyObject(data[i], _Bodies[data[i].TrackingId]);
-          }
-          else
-          {
-              if (trackedId == i)
-                  trackedId = -1;
-          }
-      }
-
-      List<ulong> knownIds = new List<ulong>(_Bodies.Keys);
-
-      // First delete untracked bodies
-      foreach(ulong trackingId in knownIds)
-      {
-          if(!trackedIds.Contains(trackingId))
-          {
-              Destroy(_Bodies[trackingId]);
-              _Bodies.Remove(trackingId);
-          }
-      }        
-  }*/
-
+    //Aizaws Branch
 }

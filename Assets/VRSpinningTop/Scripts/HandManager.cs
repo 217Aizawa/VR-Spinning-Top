@@ -27,7 +27,9 @@ public class HandManager : MonoBehaviour
     {
         if (SpinController.isThrown || isDebug)
         {
-            Vector3 handPos = bodySourceView.handednessWristPos;
+            //Vector3 handPos = bodySourceView.handednessWristPos;
+            Vector3 handPos = bodySourceView.handednessHandPos;
+
             if (lastHandPos == Vector3.zero)
                 lastHandPos = handPos;
 
@@ -40,7 +42,7 @@ public class HandManager : MonoBehaviour
             
             /*if (isDebug)
                 Debug.Log("Hand Velocity " + v);
-            */ 
+            */
         }
         else
         {

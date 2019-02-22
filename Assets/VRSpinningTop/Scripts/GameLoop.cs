@@ -20,7 +20,9 @@ public class GameLoop : MonoBehaviour
     public GameObject adviseMoreSlow;
     public GameObject stringMachine;//Unity上のStringController
     private Vector3 windingDevice;
-    public Vector3 wrist;
+
+    //public Vector3 wrist;
+    public Vector3 hand;
 
     public float stringLength;
 
@@ -155,9 +157,11 @@ public class GameLoop : MonoBehaviour
     public void WindingDistance()//巻取り距離
     {
         windingDevice = stringMachine.transform.position;
-        wrist = bodySourceView.handednessWristPos;//kinectController.wristPosition
-//        Debug.Log("wrist" + wrist);
-        stringLength = Vector3.Distance(windingDevice, wrist);
+        //wrist = bodySourceView.handednessHandPos;//kinectController.wristPosition
+        hand = bodySourceView.handednessHandPos;
+        //Debug.Log("wrist" + wrist);
+        //stringLength = Vector3.Distance(windingDevice, wrist);
+        stringLength = Vector3.Distance(windingDevice, hand);
         //Debug.Log(stringLength);
         stringController.setTargetLength(stringLength);
     }
