@@ -23,7 +23,6 @@ public class KomaPhysics : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             //rb.constraints = RigidbodyConstraints.FreezePosition;//ポジション固定 
-            rb.constraints = RigidbodyConstraints.FreezeAll;
         }
     }
 }
