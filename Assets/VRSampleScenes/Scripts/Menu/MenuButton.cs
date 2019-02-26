@@ -26,6 +26,7 @@ namespace VRStandardAssets.Menu
         private void OnEnable ()
         {
             m_InteractiveItem.OnOver += HandleOver;
+            m_InteractiveItem.OnWatch += HandleWatch;
             m_InteractiveItem.OnOut += HandleOut;
             m_SelectionRadial.OnSelectionComplete += HandleSelectionComplete;
         }
@@ -34,10 +35,17 @@ namespace VRStandardAssets.Menu
         private void OnDisable ()
         {
             m_InteractiveItem.OnOver -= HandleOver;
+            m_InteractiveItem.OnWatch -= HandleWatch;
             m_InteractiveItem.OnOut -= HandleOut;
             m_SelectionRadial.OnSelectionComplete -= HandleSelectionComplete;
         }
         
+        private void HandleWatch()
+        {
+            m_SelectionRadial.Show();
+
+            m_GazeOver = true;
+        }
 
         private void HandleOver()
         {

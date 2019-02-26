@@ -115,11 +115,17 @@ namespace VRStandardAssets.Utils
             m_LastInteractible = null;
         }
 
+        private void HandleWatch()//スタートシーン用関数。
+        {
+            if (m_CurrentInteractible != null)
+                m_CurrentInteractible.Watch();
+        }
 
         private void HandleUp()
         {
             if (m_CurrentInteractible != null)
                 m_CurrentInteractible.Up();
+
         }
 
 

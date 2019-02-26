@@ -209,7 +209,6 @@ GameObject:
   - component: {fileID: 456195941}
   - component: {fileID: 456195940}
   - component: {fileID: 456195939}
-  - component: {fileID: 456195942}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -334,22 +333,6 @@ MonoBehaviour:
   m_CameraFade: {fileID: 666268902}
   m_SelectionRadial: {fileID: 666268901}
   m_InteractiveItem: {fileID: 456195939}
---- !u!114 &456195942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 456195934}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1539d9bad5ac9f449d81d13b171da44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FrameRate: 30
-  m_ScreenMesh: {fileID: 456195936}
-  m_VRInteractiveItem: {fileID: 456195939}
-  m_AnimTextures: []
 --- !u!1001 &666268900
 PrefabInstance:
   m_ObjectHideFlags: 0

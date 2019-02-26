@@ -31,6 +31,7 @@ namespace VRStandardAssets.Utils
         private void OnEnable()
         {
             m_VRInput.OnDown += HandleDown;
+            m_VRInput.OnWatch += HandleWatch;
             m_VRInput.OnUp += HandleUp;
         }
 
@@ -38,6 +39,7 @@ namespace VRStandardAssets.Utils
         private void OnDisable()
         {
             m_VRInput.OnDown -= HandleDown;
+            m_VRInput.OnWatch -= HandleWatch;
             m_VRInput.OnUp -= HandleUp;
         }
 
@@ -120,6 +122,15 @@ namespace VRStandardAssets.Utils
 
             // Once it's been used make the radial invisible.
             Hide ();
+        }
+
+
+        private void HandleWatch()
+        {
+            if (m_IsSelectionRadialActive)
+            {
+                m_SelectionFillRoutine = StartCoroutine(FillSelectionRadial());
+            }
         }
 
 

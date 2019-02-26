@@ -21,6 +21,7 @@ namespace VRStandardAssets.Utils
 
 
         public event Action<SwipeDirection> OnSwipe;                // Called every frame passing in the swipe, including if there is no swipe.
+        public event Action OnWatch;                                // インタラクティブアイテムを見ている間呼び出される。
         public event Action OnClick;                                // Called when Fire1 is released and it's not a double click.
         public event Action OnDown;                                 // Called when Fire1 is pressed.
         public event Action OnUp;                                   // Called when Fire1 is released.
@@ -30,8 +31,10 @@ namespace VRStandardAssets.Utils
 
         [SerializeField] private float m_DoubleClickTime = 0.3f;    //The max time allowed between double clicks
         [SerializeField] private float m_SwipeWidth = 0.3f;         //The width of a swipe
+        [SerializeField] private VRInteractiveItem m_InteractiveItem;           // Reference to the VRInteractiveItem which must be looked at to tint the images.
 
-        
+
+
         private Vector2 m_MouseDownPosition;                        // The screen position of the mouse when Fire1 is pressed.
         private Vector2 m_MouseUpPosition;                          // The screen position of the mouse when Fire1 is released.
         private float m_LastMouseUpTime;                            // The time when Fire1 was last released.
@@ -45,8 +48,18 @@ namespace VRStandardAssets.Utils
         private void Update()
         {
             CheckInput();
+            GazeInput();
         }
 
+        private void GazeInput()
+        {
+            //視線入力
+            if(m_InteractiveItem.m_IsOver == true)
+            {
+                if (OnWatch != null)
+                    OnWatch();
+            }
+        }
 
         private void CheckInput()
         {
@@ -57,7 +70,8 @@ namespace VRStandardAssets.Utils
             {
                 // When Fire1 is pressed record the position of the mouse.
                 m_MouseDownPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-            
+                Debug.Log("Mouse Button Down");
+
                 // If anything has subscribed to OnDown call it.
                 if (OnDown != null)
                     OnDown();
@@ -101,7 +115,7 @@ namespace VRStandardAssets.Utils
                     // If it's not a double click, it's a single click.
                     // If anything has subscribed to OnClick call it.
                     if (OnClick != null)
-                        OnClick();
+                        OnClick();//Debug.Log("OnClick");
                 }
 
                 // Record the time when Fire1 is released.
@@ -187,6 +201,7 @@ namespace VRStandardAssets.Utils
         private void OnDestroy()
         {
             // Ensure that all events are unsubscribed when this is destroyed.
+            OnWatch = null;
             OnSwipe = null;
             OnClick = null;
             OnDoubleClick = null;
