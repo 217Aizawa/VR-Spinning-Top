@@ -70,9 +70,10 @@ namespace VRStandardAssets.Utils
             RaycastHit hit;
             
             // Do the raycast forweards to see if we hit an interactive item
+            //レイキャストが目の前のインタラクティブアイテムに当たっているならば
             if (Physics.Raycast(ray, out hit, m_RayLength, ~m_ExclusionLayers))
             {
-                VRInteractiveItem interactible = hit.collider.GetComponent<VRInteractiveItem>(); //attempt to get the VRInteractiveItem on the hit object
+                VRInteractiveItem interactible = hit.collider.GetComponent<VRInteractiveItem>(); //ヒットしたオブジェクトのVRInteractiveItemを取得しようとしている
                 m_CurrentInteractible = interactible;
 
                 // If we hit an interactive item and it's not the same as the last interactive item, then call Over
