@@ -27,6 +27,11 @@ namespace VRStandardAssets.Utils
             get { return m_IsOver; }              // Is the gaze currently over this object?
         }
 
+        void Update()
+        {
+            //if (m_IsOver)
+                //Debug.Log("Is Over");
+        }
 
         // The below functions are called by the VREyeRaycaster when the appropriate input is detected.
         // They in turn call the appropriate events should they have subscribers.
@@ -40,11 +45,8 @@ namespace VRStandardAssets.Utils
 
         public void Watch()
         {
-            m_IsOver = true;
-
             if (OnWatch != null)
                 OnWatch();
-
         }
 
         public void Out()
@@ -73,7 +75,7 @@ namespace VRStandardAssets.Utils
         public void Up()
         {
             if (OnUp != null)
-                OnUp();
+                OnUp(); Debug.Log("OnUp");
         }
 
 

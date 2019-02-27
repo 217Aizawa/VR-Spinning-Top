@@ -48,16 +48,23 @@ namespace VRStandardAssets.Utils
         private void Update()
         {
             CheckInput();
-            GazeInput();
+            //GazeInput();
+            
         }
 
         private void GazeInput()
         {
-            //視線入力
-            if(m_InteractiveItem.m_IsOver == true)
+            if (m_InteractiveItem.IsOver)//視線を外した後にも、前の情報が残っている。
             {
-                if (OnWatch != null)
-                    OnWatch();
+                Debug.Log("Is Over");
+                if (OnDown != null)
+                    OnDown();
+            }
+            else if (m_InteractiveItem.IsOver != true)
+            {
+                Debug.Log("Now else");
+                if (OnUp != null)
+                    OnUp();
             }
         }
 
@@ -65,6 +72,19 @@ namespace VRStandardAssets.Utils
         {
             // Set the default swipe to be none.
             SwipeDirection swipe = SwipeDirection.NONE;
+
+            if (m_InteractiveItem.IsOver)//視線を外した後にも、前の情報が残っている。
+            {
+                Debug.Log("Is Over");
+                if (OnDown != null)
+                    OnDown();
+            }
+            else if (m_InteractiveItem.IsOver != true)
+            {
+                Debug.Log("Now else");
+                if (OnUp != null)
+                    OnUp();
+            }
 
             if (Input.GetButtonDown("Fire1"))
             {

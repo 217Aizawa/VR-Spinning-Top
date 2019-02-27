@@ -39,6 +39,7 @@ namespace VRStandardAssets.Utils
             m_VrInput.OnDoubleClick += HandleDoubleClick;
             m_VrInput.OnUp += HandleUp;
             m_VrInput.OnDown += HandleDown;
+            m_VrInput.OnWatch += HandleWatch;
         }
 
 
@@ -48,6 +49,7 @@ namespace VRStandardAssets.Utils
             m_VrInput.OnDoubleClick -= HandleDoubleClick;
             m_VrInput.OnUp -= HandleUp;
             m_VrInput.OnDown -= HandleDown;
+            m_VrInput.OnWatch -= HandleWatch;
         }
 
 
