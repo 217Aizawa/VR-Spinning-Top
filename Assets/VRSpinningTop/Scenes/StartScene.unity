@@ -1030,10 +1030,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0742577183eb7964686ad45f844edd4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SceneToLoad: VRSpinningTop
-  m_CameraFade: {fileID: 666268902}
-  m_SelectionRadial: {fileID: 666268901}
-  m_InteractiveItem: {fileID: 1606546072}
+  m_SceneToLoad: 
+  m_CameraFade: {fileID: 0}
+  m_SelectionRadial: {fileID: 0}
+  m_InteractiveItem: {fileID: 0}
 --- !u!1 &1988496061
 GameObject:
   m_ObjectHideFlags: 0
@@ -1081,10 +1081,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0742577183eb7964686ad45f844edd4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SceneToLoad: VRSpinningTop
-  m_CameraFade: {fileID: 666268902}
-  m_SelectionRadial: {fileID: 666268901}
-  m_InteractiveItem: {fileID: 1988496064}
+  m_SceneToLoad: 
+  m_CameraFade: {fileID: 0}
+  m_SelectionRadial: {fileID: 0}
+  m_InteractiveItem: {fileID: 0}
 --- !u!114 &1988496064
 MonoBehaviour:
   m_ObjectHideFlags: 0
