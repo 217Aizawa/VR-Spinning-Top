@@ -1002,6 +1002,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: koma
       objectReference: {fileID: 0}
+    - target: {fileID: 1046440975728644, guid: 2a10d64885a463441959e7d082a7595e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5395454773059715556, guid: 2a10d64885a463441959e7d082a7595e,
         type: 3}
       propertyPath: spinController
