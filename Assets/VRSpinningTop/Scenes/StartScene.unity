@@ -785,8 +785,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1196017053}
   - component: {fileID: 1196017052}
-  - component: {fileID: 1196017051}
-  - component: {fileID: 1196017050}
   m_Layer: 0
   m_Name: StartSprite
   m_TagString: Untagged
@@ -794,35 +792,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1196017050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1196017049}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fea6f8eea666334aaf9869ad8f7bcda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IsOver: 0
---- !u!114 &1196017051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1196017049}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0742577183eb7964686ad45f844edd4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneToLoad: 
-  m_CameraFade: {fileID: 0}
-  m_SelectionRadial: {fileID: 0}
-  m_InteractiveItem: {fileID: 0}
 --- !u!212 &1196017052
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -953,8 +922,6 @@ GameObject:
   - component: {fileID: 1606546075}
   - component: {fileID: 1606546074}
   - component: {fileID: 1606546073}
-  - component: {fileID: 1606546072}
-  - component: {fileID: 1606546076}
   m_Layer: 0
   m_Name: StartText
   m_TagString: Untagged
@@ -962,19 +929,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1606546072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1606546071}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fea6f8eea666334aaf9869ad8f7bcda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IsOver: 0
 --- !u!102 &1606546073
 TextMesh:
   serializedVersion: 3
@@ -1048,22 +1002,6 @@ Transform:
   m_Father: {fileID: 1988496062}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1606546076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1606546071}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0742577183eb7964686ad45f844edd4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneToLoad: 
-  m_CameraFade: {fileID: 0}
-  m_SelectionRadial: {fileID: 0}
-  m_InteractiveItem: {fileID: 0}
 --- !u!1 &1988496061
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,8 +1011,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1988496062}
-  - component: {fileID: 1988496064}
-  - component: {fileID: 1988496063}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -1099,35 +1035,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1988496063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1988496061}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0742577183eb7964686ad45f844edd4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneToLoad: 
-  m_CameraFade: {fileID: 0}
-  m_SelectionRadial: {fileID: 0}
-  m_InteractiveItem: {fileID: 0}
---- !u!114 &1988496064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1988496061}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fea6f8eea666334aaf9869ad8f7bcda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IsOver: 0
 --- !u!1 &2029295856
 GameObject:
   m_ObjectHideFlags: 0
