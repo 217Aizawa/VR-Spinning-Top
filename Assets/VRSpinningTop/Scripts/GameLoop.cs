@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.XR;
 
 public class GameLoop : MonoBehaviour
 {
@@ -37,6 +38,7 @@ public class GameLoop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //XRSettings.renderViewportScale = 0.5f;
         GameObject koma = bodySourceView.KomaObj;
         Rigidbody komaBody = koma.GetComponentInChildren<Rigidbody>();
         afterTime += Time.deltaTime;
