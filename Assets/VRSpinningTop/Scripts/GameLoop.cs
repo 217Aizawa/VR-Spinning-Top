@@ -195,6 +195,7 @@ public class GameLoop : MonoBehaviour
             XRSettings.enabled = true;
         }else
         {
+            //isHMD = JudgeController.isJudge;
             XRSettings.enabled = false;
         }
     }

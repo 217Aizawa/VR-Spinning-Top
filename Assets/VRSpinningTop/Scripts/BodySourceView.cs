@@ -14,6 +14,7 @@ public class BodySourceView : MonoBehaviour
     //GameObject WristKoma;
     GameObject HandKoma;
     public GameObject KomaObj;
+    public GameObject Text;//3Dテキスト
 
     public Vector3 headPos;//追加
     public Vector3 handLeftPos;//左手位置
@@ -185,6 +186,7 @@ public class BodySourceView : MonoBehaviour
             //利き手判定スクリプト（左手）
             if (riseHand == true && headPos.y < handLeftPos.y && 3 <= leftHandTime)
             {
+                Text.SetActive(false);
                 //WristKoma = GameObject.Find("WristLeft");
                 HandKoma = GameObject.Find("HandLeft");
                 handedness = -1;
@@ -195,6 +197,7 @@ public class BodySourceView : MonoBehaviour
             }
             else if (riseHand == true && headPos.y < handRightPos.y && 3 <= rightHandTime)
             {
+                Text.SetActive(false);
                 //WristKoma = GameObject.Find("WristRight");
                 HandKoma = GameObject.Find("HandRight");
                 handedness = 1;
