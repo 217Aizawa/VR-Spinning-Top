@@ -27,6 +27,12 @@ public class GameLoop : MonoBehaviour
 
     public float stringLength;
 
+    private void Awake()
+    {
+        Judge();
+        ModeSelect();
+    }
+
     // Use this for initialization
     void Start()
     {
@@ -180,4 +186,29 @@ public class GameLoop : MonoBehaviour
     {
         SceneManager.LoadScene("VRSpinningTop");
     }
+
+    void Judge()//JudgeSceneのキー入力を基に表示方法を切り替える
+    {
+        if (JudgeController.isJudge)
+        {
+            isHMD = JudgeController.isJudge;
+            XRSettings.enabled = true;
+        }else
+        {
+            XRSettings.enabled = false;
+        }
+    }
+
+    void ModeSelect()//VRSpininngTopシーン内の確認用関数。本番では使用しない。
+    {
+        if (isHMD)
+        {
+            XRSettings.enabled = true;
+        }
+        else
+        {
+            XRSettings.enabled = false;
+        }
+    }
+
 }
