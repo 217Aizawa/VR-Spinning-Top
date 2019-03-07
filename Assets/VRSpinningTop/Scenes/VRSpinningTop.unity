@@ -1010,15 +1010,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4629484891779650, guid: 58082c20fa9ed634c8a6569a2a345f4f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.03212108
       objectReference: {fileID: 0}
     - target: {fileID: 4629484891779650, guid: 58082c20fa9ed634c8a6569a2a345f4f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.15071356
       objectReference: {fileID: 0}
     - target: {fileID: 4629484891779650, guid: 58082c20fa9ed634c8a6569a2a345f4f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.50316155
       objectReference: {fileID: 0}
     - target: {fileID: 4629484891779650, guid: 58082c20fa9ed634c8a6569a2a345f4f, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1059,7 +1059,17 @@ PrefabInstance:
     - target: {fileID: 20341228083751238, guid: 58082c20fa9ed634c8a6569a2a345f4f,
         type: 3}
       propertyPath: field of view
-      value: 100
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 20341228083751238, guid: 58082c20fa9ed634c8a6569a2a345f4f,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 20341228083751238, guid: 58082c20fa9ed634c8a6569a2a345f4f,
+        type: 3}
+      propertyPath: far clip plane
+      value: 5000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58082c20fa9ed634c8a6569a2a345f4f, type: 3}
