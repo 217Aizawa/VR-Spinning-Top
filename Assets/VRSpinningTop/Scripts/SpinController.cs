@@ -8,6 +8,14 @@ public class SpinController : MonoBehaviour
     public Vector3 velocity;//速度
     public Vector3 Axis;//軸の向き
     public Vector3 f, old_f, v;   //取得してきた値
+
+    [Header("New Koma Device")]
+    public bool useNewDevice;
+    public KomaDeviceController komaDeviceController;
+    public int KomaPort;
+
+    [Space(10)]
+
     //vはローカルな方向
     //fは加速度方向
     //old_fは安定している重力方向
@@ -20,6 +28,7 @@ public class SpinController : MonoBehaviour
     void Start()
     {
         ResetSpin();
+        komaDeviceController.Connect(KomaPort);
     }
 
     // Update is called once per frame
@@ -27,7 +36,11 @@ public class SpinController : MonoBehaviour
     {
         Axis = old_f;
 
-        f = StringToVector3(UDPReceiver.lastReceivedUDPPacket);
+        if (useNewDevice)
+            f = komaDeviceController.getAcceleration();
+        else
+            f = StringToVector3(UDPReceiver.lastReceivedUDPPacket);
+        
 
         //f = new Vector3( Input.acceleration.x, -Input.acceleration.z, Input.acceleration.y);
         if ((g * v).magnitude > ThrowOffThreshold && isThrown!=true) {
