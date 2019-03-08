@@ -1,19 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR;
 
-public class CameraSettings : MonoBehaviour
+public class QuitController : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        XRDevice.SetTrackingSpaceType(TrackingSpaceType.RoomScale);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey("escape"))
+            UnityEditor.EditorApplication.isPlaying = false;
+        //Application.Quit();
     }
 }

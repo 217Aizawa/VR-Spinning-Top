@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Koma
   - Ground
+  - SubCamera
+  - KomaChild
   layers:
   - Default
   - TransparentFX

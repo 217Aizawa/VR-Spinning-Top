@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 5395454773059715556}
   m_Layer: 0
   m_Name: SpininngTopComplete2 (1)
-  m_TagString: Untagged
+  m_TagString: KomaChild
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
