@@ -48,12 +48,13 @@ public class GameLoop : MonoBehaviour
         GameObject koma = bodySourceView.KomaObj;
         Rigidbody komaBody = koma.GetComponentInChildren<Rigidbody>();
         afterTime += Time.deltaTime;
+        Debug.Log(gameState);
         switch (gameState)
         {
             // 体験開始時（紐はたるんでいる）
             case GameState.free:
+                Debug.Log("フリー状態");
                 // タイトル画面を表示するならここ
-                stringController.setMotorMode(StringController.MotorMode.isFree);
 
                 //komaBody.rotation = spinController.g_rotation * Quaternion.AngleAxis(90, Vector3.left);
                 //(GameObject.Find("f")).GetComponent<Transform>().rotation = Quaternion.FromToRotation(Vector3.up, new Vector3(-spinController.f.x, spinController.f.y, -spinController.f.z));
@@ -62,7 +63,9 @@ public class GameLoop : MonoBehaviour
                 {
                 //GameObject.Find("f").SetActive(false);
                     ChangeGameStateToNext();
+                    Debug.Log(gameState);
                 }
+                stringController.setMotorMode(StringController.MotorMode.isFree);
                 break;
             // 紐巻取り（紐を十分短く）　利き手判定
             case GameState.preCalibration:
@@ -140,7 +143,7 @@ public class GameLoop : MonoBehaviour
                 break;
         }
         
-        WindingDistance();
+        //WindingDistance();
 
         /*if (Input.GetKeyDown("space"))
         {
