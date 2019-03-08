@@ -5,8 +5,10 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public Camera SubCamera;
+    public GameObject target;
     private float cntTime;
     Vector3 cmOffset;
+    public Vector3 Position;
 
     // Start is called before the first frame update
     void Start()
@@ -17,26 +19,40 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Counter();
         ChangeCamera();
-        /*FindKomaTag();
-        GameObject.FindGameObjectsWithTag("Koma");//Komaタグがついているオブジェクトを探す。*/
+        FindKomaTag();
+        //DebugFindKomaTag();
+        Position = transform.position;
     }
 
-    void FindKomaTag()
+    void FindKomaTag()//本番用
     {
         if (GameObject.FindGameObjectsWithTag("KomaChild").Length == 1)
         {
-            GameObject.FindWithTag("KomaChild");
-            Debug.Log("Find KomaChild");
+            target = GameObject.FindWithTag("KomaChild");
+
+            cmOffset = transform.position - target.transform.position;
+            Debug.Log("cmOffset" + cmOffset);
+
+            cmOffset.Normalize();
+            cmOffset = cmOffset * 0.2f;
+            cmOffset.y = 0.1f;
+
+            transform.position = target.transform.position + cmOffset;
+            transform.LookAt(target.transform);
+        }
+
+    }
+
+    void DebugFindKomaTag()//デバッグ用関数。
+    {
+        if (GameObject.FindGameObjectsWithTag("Koma").Length == 1)
+        {
+            target = GameObject.FindWithTag("Koma");
         }
     }
-    
-    void Counter()
-    {
-        
-    }
-    void ChangeCamera()
+
+    void ChangeCamera()//カメラ切り替え関数
     {
         if (SpinController.isThrown == true)
         {

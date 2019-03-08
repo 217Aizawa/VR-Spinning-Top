@@ -1465,7 +1465,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1223803739781750, guid: 2a10d64885a463441959e7d082a7595e, type: 3}
       propertyPath: m_TagString
-      value: KomaChild
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1505421857995939674, guid: 2a10d64885a463441959e7d082a7595e, type: 3}
@@ -2080,7 +2080,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -2108,7 +2108,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1111968207}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 5}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2127,6 +2127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SubCamera: {fileID: 1111968209}
+  target: {fileID: 0}
+  Position: {x: 0, y: 0, z: 0}
 --- !u!1 &1126703932
 GameObject:
   m_ObjectHideFlags: 0
@@ -2216,6 +2218,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SubCamera: {fileID: 0}
+  target: {fileID: 0}
+  Position: {x: 0, y: 0, z: 0}
 --- !u!1818360608 &1175884689
 PositionConstraint:
   m_ObjectHideFlags: 0
