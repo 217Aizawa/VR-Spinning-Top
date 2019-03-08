@@ -13,22 +13,24 @@ public class StringController : MonoBehaviour {
     public float actualLength;          // 実際の繰り出し量（参照用）
 
     EncoderController enc;
-    MotorController motor;
     SerialConnector serialPort;
+
+    [Header("Serial Port")]
+    public int portNumber;
 
     // Use this for initialization
     void Start () {
         currentMode = MotorMode.isTrackingHand;
         enc = gameObject.GetComponent<EncoderController>();
-        motor = gameObject.GetComponent<MotorController>();
         serialPort = gameObject.GetComponent<SerialConnector>();
-        serialPort.Connect(3);
+        serialPort.Connect(portNumber);
         enc.resetCount(InitialStringLength+1000);
     }
 
     private void OnDestroy()
     {
-        motor.stopMotor();
+        if (!serialPort)
+            serialPort.SendChar('A');   // initial FREE MODE
     }
 
     // Update is called once per frame
@@ -36,25 +38,12 @@ public class StringController : MonoBehaviour {
         switch (currentMode)
         {
             case MotorMode.isTrackingHand:
-                // ここは実は PID 制御でなめらかに目標引き出し長さに移行したい。とりあえず P だけ入れとく。
-                actualLength = enc.getTotalStringLength();
-                float diff = actualLength - targetLength;
-                // diff が＋　→　目標値のほうが短い　→　巻き取らなければいけない
-                if (Mathf.Abs(diff) > 50)
-                    motor.windUpMotor(-Kp * diff);
-                else
-                    motor.stopMotor();
                 break;
 
             case MotorMode.isShowingResistance:
                 break;
 
             case MotorMode.isRewinding:
-/*                if (enc.getTotalStringLength() < InitialStringLength)
-                {
-                    motor.stopMotor();
-                    currentMode = MotorMode.isFree;
-                } */
                 break;
 
         }
@@ -67,27 +56,38 @@ public class StringController : MonoBehaviour {
     // MotorMode.isRewinding = プレイ終了後巻取り中
     // MotorMode.isFree = フリー状態
     {
-        if (motor == null)
+        if (serialPort == null)
+            return;
+
+        // if mode is unchanged, do nothing. This is to avoid sending the status code to Machine repeatedly.
+        if (currentMode == mode)
             return;
 
         currentMode = mode;
+
+        if (serialPort == null)
+            return;
+
+        Debug.Log("Motor Switching to " + currentMode);
+
         switch (currentMode)
         {
             case MotorMode.isTrackingHand:
+                serialPort.SendChar('B');
                 break;
 
             case MotorMode.isShowingResistance:
+                serialPort.SendChar('C');
                 break;
 
             case MotorMode.isRewinding:
-                motor.windUpMotor(1.0f);
+                serialPort.SendChar('E');
                 break;
 
             case MotorMode.isFree:
-                motor.stopMotor();
+                serialPort.SendChar('D');
                 break;
         }
-
     }
 
     public void setTargetLength(float setLengthInMeter)
@@ -98,20 +98,12 @@ public class StringController : MonoBehaviour {
             return;
 
         targetLength = setLengthInMeter * 1000;
-        /*
-        if (currentMode == MotorMode.isTrackingHand)
-        {
-            if (targetLength > enc.getTotalStringLength())     // this should not be happen
-                calibrateToLength(setLengthInMeter);
-        }
-        */
     }
 
 
     public void setResistance(float resistance)//抵抗    resistance の単位は [N]
     {
         currentMode = MotorMode.isShowingResistance;
-        motor.setResistance(resistance);
     }
 
     public void calibrateToLength(float currentLengthInMeter)
