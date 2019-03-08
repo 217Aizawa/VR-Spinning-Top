@@ -6,6 +6,7 @@ public class CameraController : MonoBehaviour
 {
     public Camera SubCamera;
     private float cntTime;
+    Vector3 cmOffset;
 
     // Start is called before the first frame update
     void Start()
@@ -16,30 +17,32 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Counter();
+        //Counter();
         ChangeCamera();
         /*FindKomaTag();
         GameObject.FindGameObjectsWithTag("Koma");//Komaタグがついているオブジェクトを探す。*/
     }
 
-    /*void FindKomaTag()
+    void FindKomaTag()
     {
-        if (GameObject.FindGameObjectsWithTag("Koma").Length == 1)
+        if (GameObject.FindGameObjectsWithTag("KomaChild").Length == 1)
         {
-            GameObject.FindWithTag("Koma");
+            GameObject.FindWithTag("KomaChild");
+            Debug.Log("Find KomaChild");
         }
-    }*/
+    }
     
     void Counter()
+    {
+        
+    }
+    void ChangeCamera()
     {
         if (SpinController.isThrown == true)
         {
             cntTime += Time.deltaTime;
         }
-    }
-    void ChangeCamera()
-    {
-        if(SpinController.isThrown && cntTime > 3)
+        if (SpinController.isThrown && cntTime > 3)
         {
             SubCamera.depth = 3;//カメラの深度を3プラスする
 
