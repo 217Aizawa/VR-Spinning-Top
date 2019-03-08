@@ -2126,7 +2126,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed719018427cd8428f8c8f9c2f23dde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SubCamera: {fileID: 1111968209}
   target: {fileID: 0}
   Position: {x: 0, y: 0, z: 0}
 --- !u!1 &1126703932
@@ -2205,21 +2204,6 @@ MonoBehaviour:
   m_FadeDuration: 2
   m_FadeInOnSceneLoad: 1
   m_FadeInOnStart: 1
---- !u!114 &1175884687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1175884684}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ed719018427cd8428f8c8f9c2f23dde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SubCamera: {fileID: 0}
-  target: {fileID: 0}
-  Position: {x: 0, y: 0, z: 0}
 --- !u!1818360608 &1175884689
 PositionConstraint:
   m_ObjectHideFlags: 0

@@ -16,18 +16,18 @@ public class BodySourceView : MonoBehaviour
     public GameObject KomaObj;
     public GameObject Text;//3Dテキスト
 
-    public Vector3 headPos;//追加
+    public Vector3 headPos;//
     public Vector3 handLeftPos;//左手位置
     public Vector3 handRightPos;//右手位置
     //public Vector3 handednessWristPos;//利き手の手首位置
 
-    public Vector3 handednessHandPos;//利き手位置　追加
+    public Vector3 handednessHandPos;//利き手位置
 
     private float leftHandTime = 0;//左手を挙げている時間
     private float rightHandTime = 0;
 
 
-    public int handedness;//追加 public
+    public int handedness;// public
     bool riseHand = true;//利き手判定用に一度だけ判定するbool。ゲームが終了したら、trueに戻す。
 
 
@@ -78,7 +78,12 @@ public class BodySourceView : MonoBehaviour
   
     void Update()
     {
-        if(GameObject.FindGameObjectsWithTag("Koma").Length == 1)
+        //カメラ切り替え用に時間計測 追加
+        if (SpinController.isThrown == true)
+            CameraController.cntTime += Time.deltaTime;
+
+
+        if (GameObject.FindGameObjectsWithTag("Koma").Length == 1)
         {
             KomaObj = GameObject.FindWithTag("Koma");
         }
@@ -266,6 +271,11 @@ public class BodySourceView : MonoBehaviour
                 Vector3 posOculus = Camera.transform.position;
                 OffsetToWorld = posOculus - posHeadKinect;//Oculusの位置を基準にKinectの座標をずらす。
                 //Debug.Log(posOculus + "/" + posHeadKinect + "/" + OffsetToWorld);//座標表示
+
+                if (CameraController.cntTime > 3)//追加
+                {
+                    
+                }
             }
             else
             {
@@ -273,6 +283,7 @@ public class BodySourceView : MonoBehaviour
                 Camera.transform.position = posHeadKinect;
             }
             //sendSkeleton(data[trackedId]);
+            
         }
     }
 
@@ -287,7 +298,7 @@ public class BodySourceView : MonoBehaviour
     }
 
 
-    private Vector3 GetVector3FromJointWithOffset(Kinect.Joint joint)//追加　Jointを持ってくる 
+    private Vector3 GetVector3FromJointWithOffset(Kinect.Joint joint)//Jointを持ってくる 
     {
         Vector3 globalPosition = GetVector3FromJoint(joint);
 
@@ -376,7 +387,7 @@ public class BodySourceView : MonoBehaviour
 
 
     /*****************************************************************************************************************************
-     * 追加
+     * 
      * 
      */
      
