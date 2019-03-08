@@ -48,12 +48,10 @@ public class GameLoop : MonoBehaviour
         GameObject koma = bodySourceView.KomaObj;
         Rigidbody komaBody = koma.GetComponentInChildren<Rigidbody>();
         afterTime += Time.deltaTime;
-        Debug.Log(gameState);
         switch (gameState)
         {
             // 体験開始時（紐はたるんでいる）
             case GameState.free:
-                Debug.Log("フリー状態");
                 // タイトル画面を表示するならここ
 
                 //komaBody.rotation = spinController.g_rotation * Quaternion.AngleAxis(90, Vector3.left);
@@ -63,13 +61,12 @@ public class GameLoop : MonoBehaviour
                 {
                 //GameObject.Find("f").SetActive(false);
                     ChangeGameStateToNext();
-                    Debug.Log(gameState);
                 }
                 stringController.setMotorMode(StringController.MotorMode.isFree);
                 break;
             // 紐巻取り（紐を十分短く）　利き手判定
             case GameState.preCalibration:
-                stringController.setMotorMode(StringController.MotorMode.isRewinding);
+                stringController.setMotorMode(StringController.MotorMode.isTrackingHand);   // keep tension
                 if (afterTime > 0.5)
                     ChangeGameStateToNext();
                 break;
@@ -78,18 +75,15 @@ public class GameLoop : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     stringController.calibrateToLength(stringLength);
-                    stringController.setMotorMode(StringController.MotorMode.isTrackingHand);
                     ChangeGameStateToNext();
                 }
-
-                if (Input.GetKey(KeyCode.A))//巻取りが足りなかったら巻き取る
-                    stringController.setMotorMode(StringController.MotorMode.isRewinding);
                 else
-                    stringController.setMotorMode(StringController.MotorMode.isFree);
-
+                {
+                    stringController.setMotorMode(StringController.MotorMode.isTrackingHand);
+                }
                 break;
             case GameState.spinInHand:
-                if (SpinController.isThrown == true)//投げられたら。
+                if (SpinController.isThrown == true || Input.GetKeyDown(KeyCode.Space) )//投げられたら。
                 {
                     stringController.setMotorMode(StringController.MotorMode.isShowingResistance);
                     ChangeGameStateToNext();
@@ -134,6 +128,7 @@ public class GameLoop : MonoBehaviour
                 }
                 break;
             case GameState.result:
+                stringController.setMotorMode(StringController.MotorMode.isRewinding);
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     ResetScene();//追加
