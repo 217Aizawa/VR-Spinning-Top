@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public static Camera SubCamera;
+    //public static Camera SubCamera;
     public GameObject target;
     public static float cntTime;
     Vector3 cmOffset;
@@ -52,7 +52,7 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    static void ChangeCamera()//カメラ切り替え関数
+    void ChangeCamera()//カメラ切り替え関数
     {
         if (SpinController.isThrown == true)
         {
@@ -60,8 +60,7 @@ public class CameraController : MonoBehaviour
         }
         if (SpinController.isThrown && cntTime > 3)
         {
-            SubCamera.depth = 10;//カメラの深度をプラスする
-
+            gameObject.GetComponent<Camera>().depth = 10;//カメラの深度をプラスする
         }
     }
 }

@@ -101,7 +101,7 @@ public class KomaDeviceController : MonoBehaviour
         float az = ((float)recvData[2] - 128) / 25.0f;
         Vector3 result = new Vector3(ax, ay, az);
 
-        Debug.Log(recvData[0] + "/" + recvData[1] + "/" + recvData[2] +":" + result);
+        //Debug.Log(recvData[0] + "/" + recvData[1] + "/" + recvData[2] +":" + result);
 
         return result;
     }

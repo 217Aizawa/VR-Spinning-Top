@@ -1527,7 +1527,7 @@ MonoBehaviour:
   stringController: {fileID: 1186589126}
   kinectController: {fileID: 1646389738}
   bodySourceView: {fileID: 1937581793}
-  isHMD: 1
+  isHMD: 0
   Great: {fileID: 97412}
   adviseMoreFast: {fileID: 550749915}
   adviseMoreSlow: {fileID: 1550385622}
@@ -2278,7 +2278,7 @@ MonoBehaviour:
   Kp: 1
   targetLength: 0
   actualLength: 0
-  portNumber: 0
+  portNumber: 1
 --- !u!114 &1186589127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2918,7 +2918,7 @@ MonoBehaviour:
   f: {x: 0, y: 0, z: 0}
   old_f: {x: 0, y: 0, z: 0}
   v: {x: 0, y: 0, z: 0}
-  useNewDevice: 0
+  useNewDevice: 1
   komaDeviceController: {fileID: 2034248247}
   KomaPort: 4
   g_rotation: {x: 0, y: 0, z: 0, w: 0}
