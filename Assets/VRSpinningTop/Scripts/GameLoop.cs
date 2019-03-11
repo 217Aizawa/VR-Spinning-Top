@@ -30,7 +30,7 @@ public class GameLoop : MonoBehaviour
     private void Awake()
     {
         Judge();
-        ModeSelect();
+        //ModeSelect();
     }
 
     // Use this for initialization
@@ -193,7 +193,7 @@ public class GameLoop : MonoBehaviour
             XRSettings.enabled = true;
         }else
         {
-            //isHMD = JudgeController.isJudge;
+            isHMD = false;
             XRSettings.enabled = false;
         }
     }

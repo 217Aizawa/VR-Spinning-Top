@@ -78,11 +78,6 @@ public class BodySourceView : MonoBehaviour
   
     void Update()
     {
-        //カメラ切り替え用に時間計測 追加
-        if (SpinController.isThrown == true)
-            CameraController.cntTime += Time.deltaTime;
-
-
         if (GameObject.FindGameObjectsWithTag("Koma").Length == 1)
         {
             KomaObj = GameObject.FindWithTag("Koma");
@@ -271,11 +266,6 @@ public class BodySourceView : MonoBehaviour
                 Vector3 posOculus = Camera.transform.position;
                 OffsetToWorld = posOculus - posHeadKinect;//Oculusの位置を基準にKinectの座標をずらす。
                 //Debug.Log(posOculus + "/" + posHeadKinect + "/" + OffsetToWorld);//座標表示
-
-                if (CameraController.cntTime > 3)//追加
-                {
-                    
-                }
             }
             else
             {
