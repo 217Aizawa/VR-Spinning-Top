@@ -31,7 +31,7 @@ public class SerialConnector : MonoBehaviour {
 	void Update () {
 	}
 
-    private void ReadThread()
+    private static void ReadThread()
     {
         port.ReadTimeout = 1;
 
@@ -73,16 +73,14 @@ public class SerialConnector : MonoBehaviour {
 
     private void OnDestroy()
     {
-        if(receivingThread != null)
-            receivingThread.Abort();
-        if( port != null )
-            port.Close();
+        Debug.Log("thread" + receivingThread.IsAlive);
+        Debug.Log("port" + port.IsOpen);
     }
 
     public void Connect(int portNr)
     {
         if (port != null)
-            port.Close();
+            return;
 
         Debug.Log("Start connecting to port:" + portNr);
 
@@ -98,8 +96,9 @@ public class SerialConnector : MonoBehaviour {
         {
             port.Open();
         }
-        catch (System.Exception)
+        catch (System.Exception e)
         {
+            Debug.LogException(e);
             Debug.Log(port.PortName + ": Failed to open");
             return;
         }
