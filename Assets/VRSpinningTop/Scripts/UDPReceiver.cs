@@ -117,6 +117,7 @@ public class UDPReceiver : MonoBehaviour
             {
                 // Bytes empfangen.
                 IPEndPoint anyIP = new IPEndPoint(IPAddress.Any, 0);
+
                 byte[] data = client.Receive(ref anyIP);
 
                 // Bytes mit der UTF8-Kodierung in das Textformat kodieren.

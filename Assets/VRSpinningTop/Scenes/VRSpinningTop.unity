@@ -476,6 +476,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: QuitController
       objectReference: {fileID: 0}
+    - target: {fileID: 8332313685175541493, guid: fdeb85c8ed663024fa3922322aa59704,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8332313685175541495, guid: fdeb85c8ed663024fa3922322aa59704,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2273,6 +2278,7 @@ MonoBehaviour:
   Kp: 1
   targetLength: 0
   actualLength: 0
+  portNumber: 0
 --- !u!114 &1186589127
 MonoBehaviour:
   m_ObjectHideFlags: 0
