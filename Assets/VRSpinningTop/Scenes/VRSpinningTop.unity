@@ -3501,16 +3501,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
   rotationSpeedZ: 0
+  angleZ: 0
   Axis: {x: 0, y: 0, z: 0}
-  f: {x: 0, y: 0, z: 0}
-  old_f: {x: 0, y: 0, z: 0}
+  currentForce: {x: 0, y: 0, z: 0}
+  oldForce: {x: 0, y: 0, z: 0}
   v: {x: 0, y: 0, z: 0}
   useNewDevice: 1
   komaDeviceController: {fileID: 2034248247}
   KomaPort: 4
   g_rotation: {x: 0, y: 0, z: 0, w: 0}
   g: {x: 0, y: 0, z: 0, w: 0}
-  ThrowOffThreshold: 2
+  ThrowOffThreshold: 0.6
 --- !u!114 &2034248247
 MonoBehaviour:
   m_ObjectHideFlags: 0
