@@ -9,13 +9,13 @@ public class KomaDeviceController : MonoBehaviour
     static SerialPort port;
     static int[] recvData;
     
-    Thread receivingThread;
-    int cp;
+    static Thread receivingThread;
 
     // Use this for initialization
     void Start()
     {
-        recvData = new int[3];
+        if (recvData == null || recvData.Length == 0)
+            recvData = new int[3];
     }
 
     // Update is called once per frame
@@ -31,9 +31,6 @@ public class KomaDeviceController : MonoBehaviour
 
         while (true)
         {
-            if (!port.IsOpen)
-                break;
-
             try
             {
                 int c = port.ReadByte();
@@ -45,55 +42,58 @@ public class KomaDeviceController : MonoBehaviour
                     cp = (cp + 1) % 3;
                 }
             }
-            catch (System.TimeoutException err)
+            catch (System.TimeoutException)
             {
                 // do nothing
             }
             catch (System.Exception err)
             {
                 print(err.ToString());
-                throw;
+                break;
             }
         }
     }
 
     private void OnDestroy()
     {
+    }
+
+    public void OnApplicationQuit()
+    {
         if (receivingThread != null)
             receivingThread.Abort();
-        if (port != null)
-            port.Close();
+        port.Close();
     }
 
     public void Connect(int portNr)
     {
         // if port is already open, just keep it
-        if (port != null)
-            return;
-
-        port = new SerialPort();
-        port.PortName = "COM" + portNr;
-        port.BaudRate = 4800;
-        port.DataBits = 8;
-        port.Parity = Parity.None;
-        port.StopBits = StopBits.One;
-        port.Handshake = Handshake.None;
-
-        try
+        if (port == null)
         {
-            port.Open();
-        }
-        catch (System.Exception)
-        {
-            Debug.Log(port.PortName + ": Koma Failed to open");
-            return;
-        }
+            port = new SerialPort();
+            port.PortName = "COM" + portNr;
+            port.BaudRate = 4800;
+            port.DataBits = 8;
+            port.Parity = Parity.None;
+            port.StopBits = StopBits.One;
+            port.Handshake = Handshake.None;
 
-        Debug.Log("Connected to Koma on Port " + portNr);
+            try
+            {
+                port.Open();
+            }
+            catch (System.Exception)
+            {
+                Debug.Log(port.PortName + ": Koma Failed to open");
+                return;
+            }
 
-        receivingThread = new Thread(new ThreadStart(ReadThread));
-        receivingThread.IsBackground = true;
-        receivingThread.Start();
+            Debug.Log("Connected to Koma on Port " + portNr);
+
+            receivingThread = new Thread(new ThreadStart(ReadThread));
+            receivingThread.IsBackground = true;
+            receivingThread.Start();
+        }
     }
 
     public Vector3 getAcceleration()

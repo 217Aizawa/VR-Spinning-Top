@@ -53,7 +53,7 @@ public class SpinController : MonoBehaviour
 
             velocity.x = velocity.x * -1;//velocityのX・Z軸の正負が反転しているのでここで正常に戻す。
             //velocity.z = velocity.z * -1;//確認済み
-            Invoke("CalculateRotationZ", 0.1f);
+            StartCoroutine("CalculateRotationZ");
         }
 
         //if (isThrown) velocity = f-old_f;
@@ -73,6 +73,29 @@ public class SpinController : MonoBehaviour
         }
     }
 
+    IEnumerator CalculateRotationZ()
+    {
+        Vector3 acc;
+        while (true)
+        {
+            if (useNewDevice)
+                acc = komaDeviceController.getAcceleration();
+            else
+                acc = StringToVector3(UDPReceiver.lastReceivedUDPPacket);
+
+            if (acc.magnitude < 0.2f)  // almost free in the air
+                break;
+
+            yield return new WaitForSecondsRealtime(0.01f);
+        }
+
+        // if Z direction is changing, the acceleration will be observed on Z
+        rotationSpeedZ = f.z;
+        Debug.Log("Observed Z rotation" + rotationSpeedZ);
+
+        yield break;
+    }
+
     public void SetSuccessEffect(float delay = 0.0f)
     {
         Invoke("StartSuccessEffect", delay);
@@ -81,19 +104,6 @@ public class SpinController : MonoBehaviour
     void StartSuccessEffect()
     {
         ForkParticlePlugin.Instance.Test();
-    }
-
-    void CalculateRotationZ()
-    {
-        Vector3 f;
-        if (useNewDevice)
-            f = komaDeviceController.getAcceleration();
-        else
-            f = StringToVector3(UDPReceiver.lastReceivedUDPPacket);
-
-        // if Z direction is changing, the acceleration will be observed on Z
-        rotationSpeedZ = f.z;
-        Debug.Log("Observed Z rotation" + rotationSpeedZ);
     }
 
     public void ResetSpin()//初期化
