@@ -107,23 +107,31 @@ public class GameLoop : MonoBehaviour
                     stringController.setMotorMode(StringController.MotorMode.isFree);
                     ChangeGameStateToNext();
 
+                    Vector3 Vkoma = spinController.velocity;
+                    Vkoma.z = 0;
+                    float komaSpeed = Vkoma.magnitude;
+
                     //コマの速度が10以上20以下かつ、投げ終わってから3秒以上経過した場合
-                    if (10 <= komaBody.velocity.z && komaBody.velocity.z <= 20)
+                    if (1.6 <= komaSpeed && komaSpeed <= 3.4)
                     //最終的には、リザルト画面で表示させる。
                     {
-                        //もう速くヒモを引いてください！！
-                        adviseMoreFast.SetActive(true);//アドバイステキストをアクティブにする
+                        Great.SetActive(true);
+                        Debug.Log("KomaSpeed" + komaSpeed);
+                        //アドバイステキストをアクティブにする
                     }
                     //コマの速度が1以上10以下かつ、投げ終わってから3秒以上経過した場合
-                    else if (1 <= komaBody.velocity.z && komaBody.velocity.z <= 10)
+                    else if (3.4 <= komaSpeed )
                     {
-                        //もうゆっくりヒモを引いてください！！
+                        //速すぎる
                         adviseMoreSlow.SetActive(true);
+                        Debug.Log("KomaSpeed" + komaSpeed);
                     }
                     else
                     {
-                        //素晴らしい
-                        Great.SetActive(true);
+                        //遅すぎる
+                        adviseMoreFast.SetActive(true);
+                        Debug.Log("KomaSpeed" + komaSpeed);
+                        //Great.SetActive(true);
                     }
                 }
                 break;
