@@ -1006,6 +1006,18 @@ Transform:
   m_Father: {fileID: 1937581791}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &445599731 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5395454773059715556, guid: 2a10d64885a463441959e7d082a7595e,
+    type: 3}
+  m_PrefabInstance: {fileID: 687048550}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff04b89f1737be949bbaacac5f84a31e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &528360464
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1531,6 +1543,7 @@ MonoBehaviour:
   stringController: {fileID: 1186589126}
   kinectController: {fileID: 1646389738}
   bodySourceView: {fileID: 1937581793}
+  animationController: {fileID: 445599731}
   isHMD: 1
   Advise1: {fileID: 1889953701}
   Advise2: {fileID: 1384996191}

@@ -14,6 +14,7 @@ public class GameLoop : MonoBehaviour
     public StringController stringController;//世界の中にあるgameObjectをここに入れる。
     public KinectController kinectController;//そうすることで、spinControllerの変数を使用することができる。
     public BodySourceView bodySourceView;
+    public AnimationController animationController;
     public bool isHMD = true;
     private float afterTime = 0;//投げ終わってからの時間
 
@@ -123,12 +124,16 @@ public class GameLoop : MonoBehaviour
                     if (1.6 <= komaSpeed && komaSpeed <= 3.4)
                     //最終的には、リザルト画面で表示させる。
                     {
+                        animationController.anim.SetTrigger("Success");//成功時のアニメーション
+
                         spinController.SetSuccessEffect(0);
                         Great.SetActive(true);
                         Debug.Log("KomaSpeed" + komaSpeed);
                     }
                     else if (3.4 <= komaSpeed )
                     {
+                        if (afterTime > 6)
+                            animationController.anim.SetTrigger("Fail");//失敗時のアニメーション
                         Advise1.SetActive(true);
                         //速すぎる
                         //adviseMoreSlow.SetActive(true);
@@ -136,6 +141,8 @@ public class GameLoop : MonoBehaviour
                     }
                     else
                     {
+                        if (afterTime > 6)
+                            animationController.anim.SetTrigger("Success");//成功時のアニメーション
                         //遅すぎる
                         //adviseMoreFast.SetActive(true);
                         Debug.Log("KomaSpeed" + komaSpeed);

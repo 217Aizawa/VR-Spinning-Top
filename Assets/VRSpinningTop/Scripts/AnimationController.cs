@@ -7,7 +7,7 @@ public class AnimationController : MonoBehaviour
     public SpinController spinController;
     public KomaPhysics komaPhysics;//SpinningTopComplete2(1)
     Rigidbody rb;
-    Animator anim;
+    public Animator anim;
     private float countTime = 0;//タイマー
 
     // Start is called before the first frame update
@@ -29,14 +29,14 @@ public class AnimationController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
             //anim.SetTrigger("Fail");
-            anim.SetTrigger("Success");
+            //anim.SetTrigger("Success");
             rb.constraints = RigidbodyConstraints.FreezePosition;//ポジション固定
         }
 
         if (SpinController.isThrown == true && countTime > 1)//isThrownかつ投げてから1秒以上経過していれば
         {
             //anim.SetTrigger("Fail");
-            anim.SetTrigger("Success");
+            //anim.SetTrigger("Success");
         }
 
         //本番用判定
