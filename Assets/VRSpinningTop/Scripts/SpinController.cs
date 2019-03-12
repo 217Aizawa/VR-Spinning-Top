@@ -7,8 +7,9 @@ public class SpinController : MonoBehaviour
     public static bool isThrown;//投げられたかの判定
     public Vector3 velocity;//速度
     public float rotationSpeedZ = 0.0f;
+    public float angleZ;
     public Vector3 Axis;//軸の向き
-    public Vector3 f, old_f, v;   //取得してきた値
+    public Vector3 currentForce, oldForce, v;   //取得してきた値
 
     [Header("New Koma Device")]
     public bool useNewDevice;
@@ -23,7 +24,7 @@ public class SpinController : MonoBehaviour
     public Quaternion g_rotation,g; //本体とｇの回転
 
     // 投げ出し判定加速度
-    public float ThrowOffThreshold = 1.25f;//Inspector上の数値が優先される
+    public float ThrowOffThreshold = 0.2f;//Inspector上の数値が優先される
 
     // Use this for initialization
     void Start()
@@ -35,34 +36,38 @@ public class SpinController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Axis = old_f;
+        Axis = oldForce;
 
         if (useNewDevice)
-            f = komaDeviceController.getAcceleration();
+            currentForce = komaDeviceController.getAcceleration();
         else
-            f = StringToVector3(UDPReceiver.lastReceivedUDPPacket);
+            currentForce = StringToVector3(UDPReceiver.lastReceivedUDPPacket);
         
 
-        //f = new Vector3( Input.acceleration.x, -Input.acceleration.z, Input.acceleration.y);
-        if ((g * v).magnitude > ThrowOffThreshold && isThrown!=true)    // 投げ出し判定
+        //currentForce = new Vector3( Input.acceleration.x, -Input.acceleration.z, Input.acceleration.y);
+        if (currentForce.magnitude < ThrowOffThreshold && isThrown != true)    // 投げ出し判定
         {
             isThrown = true;
-            v = f - old_f;
-            g_rotation = g;
-            velocity = g_rotation*v;//追加
+            velocity = g_rotation * v;      // 最後に加えられていた力を打ち出し速度とする
+            velocity.x = velocity.x * -1;   //velocityのX軸の正負が反転しているのでここで正常に戻す。
 
-            velocity.x = velocity.x * -1;//velocityのX・Z軸の正負が反転しているのでここで正常に戻す。
-            //velocity.z = velocity.z * -1;//確認済み
-            StartCoroutine("CalculateRotationZ");
+            // ｚ軸の向きがぐるぐる回っていれば、ｚ軸の加速度（遠心力）として観測される
+            rotationSpeedZ = currentForce.z;
+            Debug.Log("Observed Z rotation: " + rotationSpeedZ);
+
+            // 投げ出し時のｚ軸の傾き（度）
+            angleZ = Vector3.Angle(g_rotation * new Vector3(0, 0, 1), new Vector3(0, 0, 1));
+            Debug.Log("Oberved Z slant: " + angleZ);
         }
 
-        //if (isThrown) velocity = f-old_f;
-        //else if (f.magnitude <= 1) old_f = f;
+        //if (isThrown) velocity = currentForce-old_f;
+        //else if (currentForce.magnitude <= 1) old_f = currentForce;
         else if (isThrown != true)  // 投げ出し判定前（重力方向測定）
         {
-            if (f.magnitude < 1.1 && f.magnitude > 0.9) old_f = f;
-            g_rotation = Quaternion.FromToRotation(Vector3.up, new Vector3(old_f.x, old_f.y, old_f.z));//-old_f.x, old_f.y, -old_f.z)
-            v = f - old_f;              //ローカル方向
+            if (0.9f < currentForce.magnitude && currentForce.magnitude < 1.1f)
+                oldForce = currentForce;
+            g_rotation = Quaternion.FromToRotation(new Vector3(0,0,1), new Vector3(oldForce.x, oldForce.y, oldForce.z));//-old_f.x, old_f.y, -old_f.z)
+            v = currentForce - oldForce;              //　加えられている力（ローカル方向）
         }
 
 //        Debug.Log("koma vel." + velocity);
@@ -71,29 +76,6 @@ public class SpinController : MonoBehaviour
         if(isThrown == true)
         {
         }
-    }
-
-    IEnumerator CalculateRotationZ()
-    {
-        Vector3 acc;
-        while (true)
-        {
-            if (useNewDevice)
-                acc = komaDeviceController.getAcceleration();
-            else
-                acc = StringToVector3(UDPReceiver.lastReceivedUDPPacket);
-
-            if (acc.magnitude < 0.2f)  // almost free in the air
-                break;
-
-            yield return new WaitForSecondsRealtime(0.01f);
-        }
-
-        // if Z direction is changing, the acceleration will be observed on Z
-        rotationSpeedZ = f.z;
-        Debug.Log("Observed Z rotation" + rotationSpeedZ);
-
-        yield break;
     }
 
     public void SetSuccessEffect(float delay = 0.0f)
