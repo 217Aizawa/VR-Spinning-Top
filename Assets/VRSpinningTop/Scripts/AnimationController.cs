@@ -33,14 +33,16 @@ public class AnimationController : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezePosition;//ポジション固定
         }
 
-        if (SpinController.isThrown == true && countTime > 0.5)//isThrownかつ投げてから1秒以上経過していれば
+        if (SpinController.isThrown == true && countTime > 1)//isThrownかつ投げてから1秒以上経過していれば
         {
             //anim.SetTrigger("Fail");
             anim.SetTrigger("Success");
         }
+
+        //本番用判定
+        
     }
 
-    //オブジェクトが衝突したとき KomaPhysicsがあるのであとでこれを削除する
     void OnCollisionEnter(Collision collision)//Rigidbodyがないと衝突検知できない
     {
         if (collision.gameObject.CompareTag("Ground"))

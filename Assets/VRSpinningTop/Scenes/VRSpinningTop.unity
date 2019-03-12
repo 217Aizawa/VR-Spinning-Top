@@ -112,12 +112,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &97412 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5814564792055123745, guid: c1634dea5c76e2540b40b3843518f3a5,
-    type: 3}
-  m_PrefabInstance: {fileID: 5814564792055182245}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &16153790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1093,12 +1087,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58082c20fa9ed634c8a6569a2a345f4f, type: 3}
---- !u!1 &550749915 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5814564792578536830, guid: c1634dea5c76e2540b40b3843518f3a5,
-    type: 3}
-  m_PrefabInstance: {fileID: 5814564792055182245}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &609035656
 GameObject:
   m_ObjectHideFlags: 0
@@ -1543,10 +1531,16 @@ MonoBehaviour:
   stringController: {fileID: 1186589126}
   kinectController: {fileID: 1646389738}
   bodySourceView: {fileID: 1937581793}
-  isHMD: 0
-  Great: {fileID: 97412}
-  adviseMoreFast: {fileID: 550749915}
-  adviseMoreSlow: {fileID: 1550385622}
+  isHMD: 1
+  Advise1: {fileID: 1889953701}
+  Advise2: {fileID: 1384996191}
+  Advise3: {fileID: 1856084268}
+  Advise4: {fileID: 667240686}
+  Advise5: {fileID: 1802123379}
+  Advise6: {fileID: 1728781971}
+  Advise7: {fileID: 158567335}
+  Advise8: {fileID: 1748528126}
+  Great: {fileID: 1015928294}
   stringMachine: {fileID: 1186589124}
   hand: {x: 0, y: 0, z: 0}
   stringLength: 0
@@ -2095,7 +2089,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1111968207}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff3b76b4b1f9edc478fa26d60e535d5a, type: 3}
   m_Name: 
@@ -2556,12 +2550,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1550385622 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5814564792787546739, guid: c1634dea5c76e2540b40b3843518f3a5,
-    type: 3}
-  m_PrefabInstance: {fileID: 5814564792055182245}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1560166487
 GameObject:
   m_ObjectHideFlags: 0
@@ -2858,12 +2846,22 @@ PrefabInstance:
     - target: {fileID: 5814564792055123747, guid: c1634dea5c76e2540b40b3843518f3a5,
         type: 3}
       propertyPath: m_FontData.m_FontSize
-      value: 8
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5814564792055123747, guid: c1634dea5c76e2540b40b3843518f3a5,
         type: 3}
       propertyPath: m_FontData.m_MinSize
-      value: 8
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5814564792055123744, guid: c1634dea5c76e2540b40b3843518f3a5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 22.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5814564792055123744, guid: c1634dea5c76e2540b40b3843518f3a5,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -405
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1634dea5c76e2540b40b3843518f3a5, type: 3}
@@ -3489,6 +3487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
+  rotationSpeedZ: 0
   Axis: {x: 0, y: 0, z: 0}
   f: {x: 0, y: 0, z: 0}
   old_f: {x: 0, y: 0, z: 0}
@@ -3691,6 +3690,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: VisorHUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 5814564792244412496, guid: c1634dea5c76e2540b40b3843518f3a5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5814564792578536830, guid: c1634dea5c76e2540b40b3843518f3a5,
         type: 3}

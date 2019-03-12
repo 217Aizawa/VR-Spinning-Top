@@ -37,9 +37,9 @@ public class AdviseController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 Vkoma = sc.velocity;
-        Vkoma.z = 0;
-        float komaSpeed = Vkoma.magnitude;
+        Vector3 komaVec = sc.velocity;
+        komaVec.z = 0;
+        float komaSpeed = komaVec.magnitude;
 
         if (gl.gameState == GameLoop.GameState.result)
             timer = Time.deltaTime;
@@ -48,6 +48,8 @@ public class AdviseController : MonoBehaviour
             if (1.6 <= komaSpeed && komaSpeed <= 3.4)
             {
                 //Great
+                Great.SetActive(true);
+                //sc.SetSuccessEffect(0.5f);//成功時のエフェクト表示関数。
                 Debug.Log("KomaSpeed" + komaSpeed);
                 //Great.SetActive(true);
             }
@@ -55,6 +57,7 @@ public class AdviseController : MonoBehaviour
             {
                 //速すぎる
                 //adviseMoreSlow
+                Advise1.SetActive(true);
                 Debug.Log("KomaSpeed" + komaSpeed);
             }
             else

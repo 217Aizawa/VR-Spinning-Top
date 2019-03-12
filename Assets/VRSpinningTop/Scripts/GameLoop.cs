@@ -16,9 +16,18 @@ public class GameLoop : MonoBehaviour
     public BodySourceView bodySourceView;
     public bool isHMD = true;
     private float afterTime = 0;//投げ終わってからの時間
+
+    //投げ出し、引く速さ、引き始めの順番
+    public GameObject Advise1;//速、速、速
+    public GameObject Advise2;//速、速、遅
+    public GameObject Advise3;//速、遅、速
+    public GameObject Advise4;//速、遅、遅
+    public GameObject Advise5;//遅、速、速
+    public GameObject Advise6;//遅、速、遅
+    public GameObject Advise7;//遅、遅、速
+    public GameObject Advise8;//遅、遅、遅
     public GameObject Great;
-    public GameObject adviseMoreFast;
-    public GameObject adviseMoreSlow;
+
     public GameObject stringMachine;//Unity上のStringController
     private Vector3 windingDevice;
 
@@ -30,7 +39,7 @@ public class GameLoop : MonoBehaviour
     private void Awake()
     {
         Judge();
-        //ModeSelect();
+        ModeSelect();
     }
 
     // Use this for initialization
@@ -106,30 +115,29 @@ public class GameLoop : MonoBehaviour
                 {
                     stringController.setMotorMode(StringController.MotorMode.isFree);
                     ChangeGameStateToNext();
-
+                    
                     Vector3 Vkoma = spinController.velocity;
                     Vkoma.z = 0;
-                    float komaSpeed = Vkoma.magnitude;
+                    float komaSpeed = Vkoma.magnitude;//ベクトルの長さを返す。
 
-                    //コマの速度が10以上20以下かつ、投げ終わってから3秒以上経過した場合
                     if (1.6 <= komaSpeed && komaSpeed <= 3.4)
                     //最終的には、リザルト画面で表示させる。
                     {
+                        spinController.SetSuccessEffect(0);
                         Great.SetActive(true);
                         Debug.Log("KomaSpeed" + komaSpeed);
-                        //アドバイステキストをアクティブにする
                     }
-                    //コマの速度が1以上10以下かつ、投げ終わってから3秒以上経過した場合
                     else if (3.4 <= komaSpeed )
                     {
+                        Advise1.SetActive(true);
                         //速すぎる
-                        adviseMoreSlow.SetActive(true);
+                        //adviseMoreSlow.SetActive(true);
                         Debug.Log("KomaSpeed" + komaSpeed);
                     }
                     else
                     {
                         //遅すぎる
-                        adviseMoreFast.SetActive(true);
+                        //adviseMoreFast.SetActive(true);
                         Debug.Log("KomaSpeed" + komaSpeed);
                         //Great.SetActive(true);
                     }
@@ -200,7 +208,7 @@ public class GameLoop : MonoBehaviour
             XRSettings.enabled = true;
         }else
         {
-            isHMD = false;
+            //isHMD = false;
             XRSettings.enabled = false;
         }
     }
