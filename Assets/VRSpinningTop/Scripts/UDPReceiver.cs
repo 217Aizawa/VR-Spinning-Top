@@ -29,7 +29,7 @@ public class UDPReceiver : MonoBehaviour
     Thread receiveThread;
 
     // udpclient object
-    UdpClient client;
+    static UdpClient client;
 
     // public
     private string IP;
@@ -110,7 +110,9 @@ public class UDPReceiver : MonoBehaviour
     // receive thread
     private void ReceiveData()
     {
-        client = new UdpClient(port);
+        if( client == null )
+            client = new UdpClient(port);
+
         while (true)
         {
             try
@@ -129,9 +131,16 @@ public class UDPReceiver : MonoBehaviour
                 // latest UDPpacket
                 lastReceivedUDPPacket = text;
             }
+            catch (SocketException)
+            {
+                // someone killed the connection
+                // then quit the thread
+                return;
+            }
             catch (Exception err)
             {
-//                print(err.ToString());
+                //                print(err.ToString());
+                throw (err);
             }
         }
     }

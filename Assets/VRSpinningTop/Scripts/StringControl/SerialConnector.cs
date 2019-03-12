@@ -37,6 +37,9 @@ public class SerialConnector : MonoBehaviour {
 
         while( true )
         {
+            if (port == null)
+                break;
+
             try
             {
                 char c = (char)port.ReadByte();
@@ -63,6 +66,11 @@ public class SerialConnector : MonoBehaviour {
             {
                 // do nothing
             }
+            catch(System.InvalidOperationException)
+            {
+                // when port is closed
+                break;
+            }
             catch (System.Exception)
             {
                 throw;
@@ -72,16 +80,31 @@ public class SerialConnector : MonoBehaviour {
 
     private void OnDestroy()
     {
-        if( receivingThread != null)
+        if (receivingThread != null)
+        {
+            receivingThread.Abort();
             Debug.Log("Serial Connecter thread status: " + receivingThread.IsAlive);
-        if( port != null )
+        }
+        if (port != null)
+        {
             Debug.Log("Serial Connector port status: " + port.IsOpen);
+            // not closing here, keep the static connection
+        }
+    }
+
+    public void OnApplicationQuit()
+    {
+        port.Close();
+        // when application closes in standalone mode, close it
     }
 
     public void Connect(int portNr)
     {
         if (port != null)
+        {
+            Debug.Log("Avoiding Reinitializaton of COM port");
             return;
+        }
 
         Debug.Log("Start connecting to port:" + portNr);
 
