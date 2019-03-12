@@ -84,7 +84,7 @@ public class UDPReceiver : MonoBehaviour
 		{
 			if (ip.AddressFamily == AddressFamily.InterNetwork)
 			{
-				Debug.Log("Found MyIP : " + ip.ToString());
+//				Debug.Log("Found MyIP : " + ip.ToString());
 
 				if (IP.Length == 0)
 				{
@@ -131,7 +131,7 @@ public class UDPReceiver : MonoBehaviour
             }
             catch (Exception err)
             {
-                print(err.ToString());
+//                print(err.ToString());
             }
         }
     }

@@ -67,7 +67,6 @@ public class KomaDeviceController : MonoBehaviour
         if (port != null)
             port.Close();
 
-        Debug.Log("Start connecting to Koma on:" + portNr);
 
         port = new SerialPort();
         port.PortName = "COM" + portNr;
@@ -87,7 +86,7 @@ public class KomaDeviceController : MonoBehaviour
             return;
         }
 
-        Debug.Log(port.PortName + port.IsOpen);
+        Debug.Log("Connected to Koma on Port " + portNr);
 
         receivingThread = new Thread(new ThreadStart(ReadThread));
         receivingThread.IsBackground = true;

@@ -59,13 +59,12 @@ public class SerialConnector : MonoBehaviour {
                         break;
                 }
             }
-            catch(System.TimeoutException err)
+            catch(System.TimeoutException)
             {
                 // do nothing
             }
-            catch (System.Exception err)
+            catch (System.Exception)
             {
-                print(err.ToString());
                 throw;
             }
         }
@@ -73,8 +72,10 @@ public class SerialConnector : MonoBehaviour {
 
     private void OnDestroy()
     {
-        Debug.Log("thread" + receivingThread.IsAlive);
-        Debug.Log("port" + port.IsOpen);
+        if( receivingThread != null)
+            Debug.Log("Serial Connecter thread status: " + receivingThread.IsAlive);
+        if( port != null )
+            Debug.Log("Serial Connector port status: " + port.IsOpen);
     }
 
     public void Connect(int portNr)

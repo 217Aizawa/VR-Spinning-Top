@@ -79,7 +79,7 @@ public class EncoderController : MonoBehaviour {
     // 完全に巻き取った状態で呼ぶときは、引数無しでよい。
     {
         currentCount = (int)(extractedLength / LengthPerCount);
-        Debug.Log("Encoder reset to " + extractedLength + "/" + LengthPerCount + "/" + currentCount);
+//        Debug.Log("Encoder reset to " + extractedLength + "/" + LengthPerCount + "/" + currentCount);
         formerCount = currentCount;
         if( serialPort )
             serialPort.SetRotationCount(currentCount);

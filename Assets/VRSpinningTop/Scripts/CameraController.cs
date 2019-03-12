@@ -27,14 +27,12 @@ public class CameraController : MonoBehaviour
 
     void FindKomaTag()//本番用
     {
-        Debug.Log("Camera");
         if (GameObject.FindGameObjectsWithTag("KomaChild").Length == 1)
         {
             GameObject target;
             target = GameObject.FindWithTag("KomaChild");
 
             cmOffset = mainCamera.transform.position - target.transform.position;
-            Debug.Log("cmOffset" + cmOffset);
 
             cmOffset.Normalize();
             cmOffset = cmOffset * 1f;//0.2f
@@ -46,7 +44,6 @@ public class CameraController : MonoBehaviour
 
             transform.LookAt(target.transform);
 
-            Debug.Log("sub camera at " + transform.position);
         }
     }
 
