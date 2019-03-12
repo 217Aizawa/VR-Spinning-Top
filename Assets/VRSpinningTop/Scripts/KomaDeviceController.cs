@@ -31,6 +31,9 @@ public class KomaDeviceController : MonoBehaviour
 
         while (true)
         {
+            if (!port.IsOpen)
+                break;
+
             try
             {
                 int c = port.ReadByte();
@@ -64,9 +67,9 @@ public class KomaDeviceController : MonoBehaviour
 
     public void Connect(int portNr)
     {
+        // if port is already open, just keep it
         if (port != null)
-            port.Close();
-
+            return;
 
         port = new SerialPort();
         port.PortName = "COM" + portNr;

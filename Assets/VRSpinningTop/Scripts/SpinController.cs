@@ -6,6 +6,7 @@ public class SpinController : MonoBehaviour
 {
     public static bool isThrown;//投げられたかの判定
     public Vector3 velocity;//速度
+    public float rotationSpeedZ = 0.0f;
     public Vector3 Axis;//軸の向き
     public Vector3 f, old_f, v;   //取得してきた値
 
@@ -43,7 +44,8 @@ public class SpinController : MonoBehaviour
         
 
         //f = new Vector3( Input.acceleration.x, -Input.acceleration.z, Input.acceleration.y);
-        if ((g * v).magnitude > ThrowOffThreshold && isThrown!=true) {
+        if ((g * v).magnitude > ThrowOffThreshold && isThrown!=true)    // 投げ出し判定
+        {
             isThrown = true;
             v = f - old_f;
             g_rotation = g;
@@ -51,26 +53,47 @@ public class SpinController : MonoBehaviour
 
             velocity.x = velocity.x * -1;//velocityのX・Z軸の正負が反転しているのでここで正常に戻す。
             //velocity.z = velocity.z * -1;//確認済み
-            
-
+            Invoke("CalculateRotationZ", 0.1f);
         }
 
         //if (isThrown) velocity = f-old_f;
         //else if (f.magnitude <= 1) old_f = f;
-        else if (isThrown != true)
+        else if (isThrown != true)  // 投げ出し判定前（重力方向測定）
         {
             if (f.magnitude < 1.1 && f.magnitude > 0.9) old_f = f;
             g_rotation = Quaternion.FromToRotation(Vector3.up, new Vector3(old_f.x, old_f.y, old_f.z));//-old_f.x, old_f.y, -old_f.z)
             v = f - old_f;              //ローカル方向
         }
 
-        Debug.Log("koma vel." + velocity);
+//        Debug.Log("koma vel." + velocity);
 
         //velocity = new Vector3(0, 0, -5);//変数velocityにVector3構造体をセットする。
         if(isThrown == true)
         {
-            ForkParticlePlugin.Instance.Test();
         }
+    }
+
+    public void SetSuccessEffect(float delay = 0.0f)
+    {
+        Invoke("StartSuccessEffect", delay);
+    }
+
+    void StartSuccessEffect()
+    {
+        ForkParticlePlugin.Instance.Test();
+    }
+
+    void CalculateRotationZ()
+    {
+        Vector3 f;
+        if (useNewDevice)
+            f = komaDeviceController.getAcceleration();
+        else
+            f = StringToVector3(UDPReceiver.lastReceivedUDPPacket);
+
+        // if Z direction is changing, the acceleration will be observed on Z
+        rotationSpeedZ = f.z;
+        Debug.Log("Observed Z rotation" + rotationSpeedZ);
     }
 
     public void ResetSpin()//初期化

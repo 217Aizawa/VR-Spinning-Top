@@ -30,7 +30,9 @@ public class StringController : MonoBehaviour {
     private void OnDestroy()
     {
         if (!serialPort)
+        {
             serialPort.SendChar('A');   // initial FREE MODE
+        }
     }
 
     // Update is called once per frame

@@ -141,7 +141,6 @@ public class GameLoop : MonoBehaviour
                 {
                     ResetScene();//追加
                     gameState = GameState.free;
-                    GameObject.Find("f").SetActive(true);
                 }
                 break;
         }
