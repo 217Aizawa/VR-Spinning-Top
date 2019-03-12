@@ -40,7 +40,7 @@ public class CameraController : MonoBehaviour
             cmOffset = cmOffset * 1f;//0.2f
             cmOffset.y = 0.1f;
 
-            Vector3 arrow = target.transform.position + cmOffset - mainCamera.transform.position;
+            Vector3 arrow = target.transform.position + cmOffset - mainCamera.transform.position;//サブカメラにいて欲しい座標
             transform.parent.transform.position = arrow;
 
 

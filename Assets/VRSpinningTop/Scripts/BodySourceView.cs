@@ -270,7 +270,10 @@ public class BodySourceView : MonoBehaviour
             else
             {
                 Debug.Log("VR mode FALSE");
-                Camera.transform.position = posHeadKinect;
+                Vector3 posPro = Camera.transform.position;//プロジェクター用ベクター3
+                //Camera.transform.position = posHeadKinect;//このままだと地面に埋まった状態で生成されてしまう
+                OffsetToWorld = posPro - posHeadKinect;
+
             }
             //sendSkeleton(data[trackedId]);
             
