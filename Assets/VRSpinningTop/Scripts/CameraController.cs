@@ -35,7 +35,7 @@ public class CameraController : MonoBehaviour
             cmOffset = mainCamera.transform.position - target.transform.position;
 
             cmOffset.Normalize();
-            cmOffset = cmOffset * 0.5f;//0.2f
+            cmOffset = cmOffset * 1.5f;//0.2f
             cmOffset.y = 0.1f;
 
             Vector3 arrow = target.transform.position + cmOffset - mainCamera.transform.position;//サブカメラにいて欲しい座標
