@@ -88,6 +88,11 @@ public class SpinController : MonoBehaviour
         ForkParticlePlugin.Instance.Test();
     }
 
+    public void StopSuccessEffect()
+    {
+        ForkParticlePlugin.Instance.InvalidateObjects();
+    }
+
     public void ResetSpin()//初期化
     {
         isThrown = false;

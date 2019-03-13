@@ -46,7 +46,7 @@ public class CameraController : MonoBehaviour
                 cmOffset = cmOffset * 0.5f;//PROJECTORmodeならばcmOffsetを0.5に
             
             cmOffset.y = 0.1f;
-            Debug.Log("cmOffset " + "/" + cmOffset);
+//            Debug.Log("cmOffset " + "/" + cmOffset);
 
             Vector3 arrow = target.transform.position + cmOffset - mainCamera.transform.position;//サブカメラにいて欲しい座標
             transform.parent.transform.position = arrow;
@@ -58,8 +58,11 @@ public class CameraController : MonoBehaviour
     {
         if (gl.gameState == GameLoop.GameState.result)//リザルト表示なら
         {
-            gameObject.GetComponent<Camera>().depth = 10;//カメラの深度をプラスする
-
+            gameObject.GetComponent<Camera>().depth = 10;      //サブカメラの深度をプラスして表示する。
+        }
+        else
+        {
+            gameObject.GetComponent<Camera>().depth = 0;    // サブカメラは表示の対象外
         }
     }
 }

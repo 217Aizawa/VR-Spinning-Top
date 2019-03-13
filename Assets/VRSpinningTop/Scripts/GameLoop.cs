@@ -9,7 +9,8 @@ using UnityEngine.XR;
 public class GameLoop : MonoBehaviour
 {
     public enum GameState { free, preCalibration, calibration, spinInHand, spinInAir, result };
-    public GameState gameState;
+
+    public GameState gameState = GameState.free;
     public SpinController spinController;//型名 変数名 (SpinController s)。gameObjectのSpinControllerとは違う
     public StringController stringController;//世界の中にあるgameObjectをここに入れる。
     public KinectController kinectController;//そうすることで、spinControllerの変数を使用することができる。
@@ -48,7 +49,6 @@ public class GameLoop : MonoBehaviour
     {
         gameState = GameState.free;
         stringController.setMotorMode(StringController.MotorMode.isFree);
-
     }
 
     // Update is called once per frame
@@ -69,7 +69,6 @@ public class GameLoop : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                //GameObject.Find("f").SetActive(false);
                     ChangeGameStateToNext();
                 }
                 stringController.setMotorMode(StringController.MotorMode.isFree);
@@ -95,6 +94,7 @@ public class GameLoop : MonoBehaviour
             case GameState.spinInHand:
                 if (SpinController.isThrown == true || Input.GetKeyDown(KeyCode.Space) )//投げられたら。
                 {
+                    SpinController.isThrown = true; // スペースキーで遷移したときに強制的に投げた状態にする
                     stringController.setMotorMode(StringController.MotorMode.isShowingResistance);
                     ChangeGameStateToNext();
                     
@@ -154,8 +154,16 @@ public class GameLoop : MonoBehaviour
                 stringController.setMotorMode(StringController.MotorMode.isRewinding);
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    gameState = GameState.free;     // ResetScene でシーンがリロードされるので、実際には不要
                     ResetScene();//追加
-                    gameState = GameState.free;
+                }
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    Debug.Log("Force to Return to precab");
+                    gameState = GameState.preCalibration;
+                    animationController.anim.StopPlayback();
+                    TurnOffAdivces();
+                    spinController.StopSuccessEffect();
                 }
                 break;
         }
@@ -174,7 +182,21 @@ public class GameLoop : MonoBehaviour
             komaBody.angularVelocity = Vector3.up * 3.14f;
         }*/
     }
-    void OnCollisionEnter(Collision collision)
+
+    void TurnOffAdivces()
+    {
+        Advise1.SetActive(false);
+        Advise2.SetActive(false);
+        Advise3.SetActive(false);
+        Advise4.SetActive(false);
+        Advise5.SetActive(false);
+        Advise6.SetActive(false);
+        Advise7.SetActive(false);
+        Advise8.SetActive(false);
+        Great.SetActive(false);
+    }
+
+void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
@@ -200,6 +222,7 @@ public class GameLoop : MonoBehaviour
         int currentState = (int)gameState;
         currentState = (currentState + 1) % Enum.GetNames(typeof(GameState)).Length;
         gameState = (GameState)Enum.ToObject(typeof(GameState), currentState);
+        Debug.Log("New Game State: " + gameState);
     }
 
     void ResetScene()
