@@ -50,4 +50,16 @@ public class AnimationController : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezeAll;
         }
     }
+
+    public void SuccessAnim()//成功アニメーション再生関数
+    {
+        if (SpinController.isThrown == true && countTime > 1)//isThrownかつ投げてから1秒以上経過していれば
+            anim.SetTrigger("Success");
+    }
+
+    public void FailAnim()//失敗アニメーション再生関数
+    {
+        if (SpinController.isThrown == true && countTime > 1)
+            anim.SetTrigger("Fail");
+    }
 }

@@ -97,7 +97,9 @@ public class GameLoop : MonoBehaviour
                 {
                     stringController.setMotorMode(StringController.MotorMode.isShowingResistance);
                     ChangeGameStateToNext();
-                    
+
+                    //isThrownの1秒後にアニメーション再生する。
+
                     //親子関係があると正常に動作しない
                     koma.transform.parent = null;//親子関係を解除する
 
@@ -121,10 +123,10 @@ public class GameLoop : MonoBehaviour
                     Vkoma.z = 0;
                     float komaSpeed = Vkoma.magnitude;//ベクトルの長さを返す。
 
-                    if (1.6 <= komaSpeed && komaSpeed <= 3.4)
+                    if (1.6 <= komaSpeed && komaSpeed <= 3.4)//加速度判定が変更されたので、数値も変更される
                     //最終的には、リザルト画面で表示させる。
                     {
-                        animationController.anim.SetTrigger("Success");//成功時のアニメーション
+                        animationController.SuccessAnim();//成功時のアニメーション
 
                         spinController.SetSuccessEffect(0);
                         Great.SetActive(true);
@@ -132,8 +134,8 @@ public class GameLoop : MonoBehaviour
                     }
                     else if (3.4 <= komaSpeed )
                     {
-                        if (afterTime > 6)
-                            animationController.anim.SetTrigger("Fail");//失敗時のアニメーション
+                        animationController.FailAnim();//失敗時のアニメーション
+
                         Advise1.SetActive(true);
                         //速すぎる
                         //adviseMoreSlow.SetActive(true);
@@ -141,8 +143,7 @@ public class GameLoop : MonoBehaviour
                     }
                     else
                     {
-                        if (afterTime > 6)
-                            animationController.anim.SetTrigger("Success");//成功時のアニメーション
+                        animationController.FailAnim();
                         //遅すぎる
                         //adviseMoreFast.SetActive(true);
                         Debug.Log("KomaSpeed" + komaSpeed);
