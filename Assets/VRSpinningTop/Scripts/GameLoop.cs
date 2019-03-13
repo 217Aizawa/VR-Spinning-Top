@@ -158,7 +158,7 @@ public class GameLoop : MonoBehaviour
                     gameState = GameState.free;     // ResetScene でシーンがリロードされるので、実際には不要
                     ResetScene();//追加
                 }
-                if (Input.GetKeyDown(KeyCode.R))
+                if (Input.GetKeyDown(KeyCode.A))
                 {
                     Debug.Log("Force to Return to precab");
                     gameState = GameState.preCalibration;
