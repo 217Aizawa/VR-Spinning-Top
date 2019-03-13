@@ -40,7 +40,7 @@ public class EncoderController : MonoBehaviour {
         ec.dt = Time.deltaTime;
         ec.count = (currentCount - formerCount);
         samples.Add(ec);
-        if( samples.Count > 10)
+        if( samples.Count > 2)
         {
             samples.RemoveAt(0);
         }
@@ -58,7 +58,7 @@ public class EncoderController : MonoBehaviour {
         {
             sum.count += item.count;
             sum.dt += item.dt;
-            if (sum.count > 5)
+            if (sum.count == 2)
                 break;
         }
         return sum.count / sum.dt;

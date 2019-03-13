@@ -58,6 +58,7 @@ public class GameLoop : MonoBehaviour
         GameObject koma = bodySourceView.KomaObj;
         Rigidbody komaBody = koma.GetComponentInChildren<Rigidbody>();
         afterTime += Time.deltaTime;
+
         switch (gameState)
         {
             // 体験開始時（紐はたるんでいる）

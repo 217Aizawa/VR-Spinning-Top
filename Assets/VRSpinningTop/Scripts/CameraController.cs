@@ -46,11 +46,6 @@ public class CameraController : MonoBehaviour
                 cmOffset = cmOffset * 0.5f;//PROJECTORmodeならばcmOffsetを0.5に
             
             cmOffset.y = 0.1f;
-<<<<<<< HEAD
-            //Debug.Log("cmOffset " + "/" + cmOffset);
-=======
-//            Debug.Log("cmOffset " + "/" + cmOffset);
->>>>>>> 33f783e890c967b2b87173de73e57ef64fc41d6e
 
             Vector3 arrow = target.transform.position + cmOffset - mainCamera.transform.position;//サブカメラにいて欲しい座標
             transform.parent.transform.position = arrow;

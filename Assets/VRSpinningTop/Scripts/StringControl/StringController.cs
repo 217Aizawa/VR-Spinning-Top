@@ -1,6 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+
+struct SpeedRecord
+{
+    public float timestamp;
+    public float speed;
+};
 
 public class StringController : MonoBehaviour {
     public enum MotorMode { isTrackingHand, isShowingResistance, isRewinding, isFree, isCalibrating };
@@ -8,7 +13,7 @@ public class StringController : MonoBehaviour {
     public MotorMode currentMode;       // 現在のモータモード
     public float InitialStringLength;   // 体験開始時の紐繰り出し長さ[mm]
     public float Kp;                    // 比例制御係数
-
+    
     public float targetLength;          // 目標繰り出し量（参照用に public）
     public float actualLength;          // 実際の繰り出し量（参照用）
 
@@ -18,6 +23,15 @@ public class StringController : MonoBehaviour {
     [Header("Serial Port")]
     public int portNumber;
 
+    [Header("Pulling Status")]
+    public bool isPulling;
+    public float timeStartup;      // ひきはじめまでの時間（最高引き速度の５０％に到達する時間）
+    public float timeTotal;        // 総引き時間
+    public float maxPullingSpeed;  // 最高引き速度
+
+    float timeZero;
+    List<SpeedRecord> records;
+
     // Use this for initialization
     void Start () {
         currentMode = MotorMode.isTrackingHand;
@@ -25,6 +39,8 @@ public class StringController : MonoBehaviour {
         serialPort = gameObject.GetComponent<SerialConnector>();
         serialPort.Connect(portNumber);
         enc.resetCount(InitialStringLength+1000);
+        records = new List<SpeedRecord>();
+        isPulling = false;
     }
 
     private void OnDestroy()
@@ -43,11 +59,45 @@ public class StringController : MonoBehaviour {
                 break;
 
             case MotorMode.isShowingResistance:
+                
+                SpeedRecord sr; // = new SpeedRecord();
+                sr.speed = -enc.getSpeed();                 // pull is negative, but we want positive value here
+                sr.timestamp = Time.fixedTime - timeZero;
+                records.Add(sr);
+
+                float pulledStringLength = -enc.getTotalStringLength();
+
+//                Debug.Log("Pull Speed " + sr + " Length " + pulledStringLength);
+
+                if( isPulling && pulledStringLength > 1.0f )
+                {
+                    isPulling = false;
+                    maxPullingSpeed = 0;
+                    foreach(SpeedRecord r in records)
+                    {
+                        if( maxPullingSpeed < r.speed )
+                        {
+                            maxPullingSpeed = r.speed;
+                        }
+                    }
+
+                    foreach (SpeedRecord r in records)
+                    {
+                        if (r.speed > maxPullingSpeed * 0.5f)
+                        {
+                            timeStartup = r.timestamp;
+                            break;
+                        }
+                    }
+
+                    timeTotal = records[records.Count - 1].timestamp;
+
+                    Debug.Log(timeStartup + " | " + timeTotal + " | " + maxPullingSpeed);
+                }
                 break;
 
             case MotorMode.isRewinding:
                 break;
-
         }
     }
 
@@ -79,7 +129,11 @@ public class StringController : MonoBehaviour {
                 break;
 
             case MotorMode.isShowingResistance:
-                serialPort.SendChar('C');
+                serialPort.SendChar('B');       // 'C' でブレーキの予定だったか、重すぎるのでフリーに
+                timeZero = Time.fixedTime;
+                records.Clear();
+                calibrateToLength(0);
+                isPulling = true;
                 break;
 
             case MotorMode.isRewinding:
@@ -113,4 +167,10 @@ public class StringController : MonoBehaviour {
         actualLength = currentLengthInMeter * 1000;
         enc.resetCount(actualLength);
     }
+
+    public float getSpeed()
+    {
+        return enc.getSpeed();
+    }
+
 }
