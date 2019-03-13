@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AnimationController : MonoBehaviour
 {
-    public SpinController spinController;
+    //public SpinController spinController;
     public KomaPhysics komaPhysics;//SpinningTopComplete2(1)
     Rigidbody rb;
     public Animator anim;
@@ -53,6 +53,7 @@ public class AnimationController : MonoBehaviour
 
     public void SuccessAnim()//成功アニメーション再生関数
     {
+        Debug.Log("Anim Call");
         if (SpinController.isThrown == true && countTime > 1)//isThrownかつ投げてから1秒以上経過していれば
             anim.SetTrigger("Success");
     }
