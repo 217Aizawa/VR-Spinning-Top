@@ -82,8 +82,13 @@ public class GameLoop : MonoBehaviour
                 break;
             // 紐を引きながらお客さんに手渡す
             case GameState.calibration:
-                if (Input.GetKeyDown(KeyCode.Space))
+                if(bodySourceView.handedness != 0)
+                    GameObject.FindGameObjectWithTag("KomaChild").transform.position = bodySourceView.handednessHandPos;
+
+                if (Input.GetKeyDown(KeyCode.Space))//利き手判定後にも遷移できるように
                 {
+                    if (bodySourceView.handedness == 0)
+                        bodySourceView.handedness = 1;
                     stringController.calibrateToLength(stringLength);
                     ChangeGameStateToNext();
                 }
@@ -93,6 +98,8 @@ public class GameLoop : MonoBehaviour
                 }
                 break;
             case GameState.spinInHand:
+                GameObject.FindGameObjectWithTag("KomaChild").transform.position = bodySourceView.handednessHandPos;
+
                 if (SpinController.isThrown == true || Input.GetKeyDown(KeyCode.Space) )//投げられたら。
                 {
                     SpinController.isThrown = true; // スペースキーで遷移したときに強制的に投げた状態にする
@@ -124,9 +131,10 @@ public class GameLoop : MonoBehaviour
                     Vkoma.z = 0;
                     float komaSpeed = Vkoma.magnitude;//ベクトルの長さを返す。
 
-                    if (1.6 <= komaSpeed && komaSpeed <= 3.4)//加速度判定が変更されたので、数値も変更される
+                    if (1.6 <= komaSpeed && komaSpeed <= 3.4 || true)//加速度判定が変更されたので、数値も変更される
                     //最終的には、リザルト画面で表示させる。
                     {
+                        Debug.Log("Animation Check" + animationController);
                         animationController.SuccessAnim();//成功時のアニメーション
 
                         spinController.SetSuccessEffect(0);
@@ -161,11 +169,16 @@ public class GameLoop : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.A))
                 {
-                    Debug.Log("Force to Return to precab");
+                    //Debug.Log("Force to Return to precab");
                     gameState = GameState.preCalibration;
-                    animationController.anim.StopPlayback();
+                    //animationController.anim.StopPlayback();
                     TurnOffAdivces();
                     spinController.StopSuccessEffect();
+                    //コマを利き手の子にする。
+                    bodySourceView.InstantiateKoma();
+                    SpinController.isThrown = false;//Spin In Hand時にtrueになりっぱなしなのでここでfalseにする
+                    komaBody.constraints = RigidbodyConstraints.None;
+                    Debug.Log("Force to Return to precab");
                 }
                 break;
         }

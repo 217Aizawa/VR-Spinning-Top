@@ -85,12 +85,13 @@ public class SpinController : MonoBehaviour
 
     void StartSuccessEffect()
     {
+        ForkParticlePlugin.Instance.SetEnable(true);
         ForkParticlePlugin.Instance.Test();
     }
 
     public void StopSuccessEffect()
     {
-        ForkParticlePlugin.Instance.InvalidateObjects();
+        ForkParticlePlugin.Instance.SetEnable(false);
     }
 
     public void ResetSpin()//初期化

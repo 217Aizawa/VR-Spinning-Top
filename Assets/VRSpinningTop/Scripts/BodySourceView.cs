@@ -164,7 +164,7 @@ public class BodySourceView : MonoBehaviour
                     {
                         trackedId = i;//IDを割り当てる
                         closestPosition = headPos;//一番近い人を覚える
-                        Debug.Log("trackedId" + " = " + trackedId);
+  //                      Debug.Log("trackedId" + " = " + trackedId);
                     }
                 }
             }
@@ -218,6 +218,8 @@ public class BodySourceView : MonoBehaviour
                 handednessHandPos = handRightPos;//右手を利き手に代入
             }
 
+
+
             if (Input.GetKeyDown(KeyCode.KeypadEnter))//利き手強制切り替えスクリプト（テンキーのEnterキー）
             {
                 Debug.Log("GetKeyDown Enter");
@@ -269,7 +271,7 @@ public class BodySourceView : MonoBehaviour
             }
             else
             {
-                Debug.Log("VR mode FALSE");
+               // Debug.Log("VR mode FALSE");
                 Vector3 posPro = Camera.transform.position;//プロジェクター用ベクター3
                 //Camera.transform.position = posHeadKinect;//このままだと地面に埋まった状態で生成されてしまう
                 OffsetToWorld = posPro - posHeadKinect;
@@ -405,20 +407,40 @@ public class BodySourceView : MonoBehaviour
         }
 
     }
+    public void InstantiateKoma()//追加
+    {
+        if(handedness == -1)//Left
+        {
+            HandKoma = GameObject.Find("HandLeft");
+            //CreatePrefab();
+            // KomaObj.transform.parent = HandKoma.transform;
+            KomaObj.transform.localPosition = Vector3.zero;
+            Debug.Log("Success Instatiate");
+        }
+        else//Right
+        {
+            HandKoma = GameObject.Find("HandRight");
+            //CreatePrefab();
+            // KomaObj.transform.parent = HandKoma.transform;
+            KomaObj.transform.localPosition = Vector3.zero;
+            Debug.Log("Success Instatiate");
+        }
+    }
 
     void CreatePrefab()//コマプレハブ生成関数
     {
         GameObject obj = GameObject.FindGameObjectWithTag("Koma");
 
         if (obj != null)
-            Destroy(obj);
+            return;
+//            Destroy(obj);
         //Instantiate(Object, Vector3, Quaternion, Parent.transform)
         //KomaObj = (GameObject)Instantiate(Koma, handednessWristPos, Quaternion.identity, WristKoma.transform);
-        KomaObj = (GameObject)Instantiate(Koma, handednessHandPos, Quaternion.identity, HandKoma.transform);
+        KomaObj = (GameObject)Instantiate(Koma, handednessHandPos, Quaternion.identity);
 
-        KomaObj.transform.SetParent(transform, false);//親のスケールの影響を受けないようにするコード。
+        //KomaObj.transform.SetParent(transform, false);//親のスケールの影響を受けないようにするコード。
         //KomaObj.transform.parent = WristKoma.transform;
-        KomaObj.transform.parent = HandKoma.transform;
+        //KomaObj.transform.parent = HandKoma.transform;
 
     }
     //Aizaws Branch

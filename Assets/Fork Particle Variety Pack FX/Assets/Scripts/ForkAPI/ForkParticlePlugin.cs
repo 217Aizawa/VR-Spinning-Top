@@ -166,4 +166,14 @@ public class ForkParticlePlugin : MonoBehaviour {
             obj.GetComponent<ForkParticleEffect>().PlayEffect();
         }
     }
+
+    public void SetEnable(bool enable)
+    {
+        for (int i = 0; i < effectsList.Count; i++)
+        {
+            GameObject obj = (GameObject)effectsList[i];
+            obj.GetComponent<ForkParticleEffect>().EnableEffect(enable);
+        }
+
+    }
 }
