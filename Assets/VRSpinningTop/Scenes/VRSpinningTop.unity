@@ -2268,6 +2268,10 @@ MonoBehaviour:
   targetLength: 0
   actualLength: 0
   portNumber: 1
+  isPulling: 0
+  timeStartup: 0
+  timeTotal: 0
+  maxPullingSpeed: 0
 --- !u!114 &1186589127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2292,8 +2296,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4826cea1627e9f40b67ae55cdc3b2b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItomakiRadius: 30
-  EncoderCounts: 100
+  ItomakiRadius: 5
+  EncoderCounts: 400
   currentCount: 0
 --- !u!114 &1186589129
 MonoBehaviour:
