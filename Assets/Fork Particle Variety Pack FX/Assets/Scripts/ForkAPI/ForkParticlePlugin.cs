@@ -142,7 +142,7 @@ public class ForkParticlePlugin : MonoBehaviour {
 		return bForkSDKShutdown;
 	}
 
-	void InvalidateObjects()
+	public void InvalidateObjects()
 	{
 		for (int i = 0; i < effectsList.Count; i++) {
 			GameObject obj = (GameObject)effectsList [i];
