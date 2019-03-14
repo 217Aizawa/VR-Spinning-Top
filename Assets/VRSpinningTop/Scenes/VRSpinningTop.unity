@@ -1284,7 +1284,7 @@ GameObject:
   - component: {fileID: 667240689}
   - component: {fileID: 667240688}
   m_Layer: 5
-  m_Name: Advise4
+  m_Name: PullSpeedS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1306,8 +1306,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -480, y: -450}
+  m_AnchoredPosition: {x: 0, y: 32.5}
+  m_SizeDelta: {x: -480, y: -435}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &667240688
 MonoBehaviour:
@@ -1331,7 +1331,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 8
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -1342,7 +1342,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Jet : \nVitesse de tirer\r : \nCommencer \xE0 dessiner : "
+  m_Text: "Vitesse de tirer\r : Plus lentement"
 --- !u!222 &667240689
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1447,6 +1447,10 @@ PrefabInstance:
     - target: {fileID: 4802706378792354, guid: 2a10d64885a463441959e7d082a7595e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4802706378792354, guid: 2a10d64885a463441959e7d082a7595e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0122
       objectReference: {fileID: 0}
     - target: {fileID: 4260210516411990, guid: 2a10d64885a463441959e7d082a7595e, type: 3}
       propertyPath: m_LocalScale.x
@@ -2473,7 +2477,7 @@ GameObject:
   - component: {fileID: 1384996194}
   - component: {fileID: 1384996193}
   m_Layer: 5
-  m_Name: Advise2
+  m_Name: JetS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2495,8 +2499,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -480, y: -450}
+  m_AnchoredPosition: {x: 0, y: 60}
+  m_SizeDelta: {x: -480, y: -420}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1384996193
 MonoBehaviour:
@@ -2520,7 +2524,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 8
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -2531,7 +2535,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Jet : \nVitesse de tirer\r : \nCommencer \xE0 dessiner : "
+  m_Text: 'Jet : Plus lentement'
 --- !u!222 &1384996194
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2669,7 +2673,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1536402672}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4, z: 4}
+  m_LocalPosition: {x: 0, y: 3.2, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3008,7 +3012,7 @@ GameObject:
   - component: {fileID: 1728781974}
   - component: {fileID: 1728781973}
   m_Layer: 5
-  m_Name: Advise6
+  m_Name: PullStartS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3030,8 +3034,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -480, y: -450}
+  m_AnchoredPosition: {x: 11.649998, y: 0}
+  m_SizeDelta: {x: -456.7, y: -450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1728781973
 MonoBehaviour:
@@ -3055,7 +3059,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 8
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -3066,7 +3070,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Jet : \nVitesse de tirer\r : \nCommencer \xE0 dessiner : "
+  m_Text: "Commencer \xE0 dessiner : Plus lentement"
 --- !u!222 &1728781974
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3166,7 +3170,7 @@ GameObject:
   - component: {fileID: 1802123382}
   - component: {fileID: 1802123381}
   m_Layer: 5
-  m_Name: Advise5
+  m_Name: PullStartF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3188,8 +3192,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -480, y: -450}
+  m_AnchoredPosition: {x: -0.0000019073, y: 0}
+  m_SizeDelta: {x: -468.5, y: -450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1802123381
 MonoBehaviour:
@@ -3213,7 +3217,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 8
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -3224,7 +3228,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Jet : \nVitesse de tirer\r : \nCommencer \xE0 dessiner : "
+  m_Text: "Commencer \xE0 dessiner : Plus rapide"
 --- !u!222 &1802123382
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3245,7 +3249,7 @@ GameObject:
   - component: {fileID: 1856084271}
   - component: {fileID: 1856084270}
   m_Layer: 5
-  m_Name: Advise3
+  m_Name: PullSpeedF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3267,8 +3271,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -480, y: -450}
+  m_AnchoredPosition: {x: 0, y: 32.5}
+  m_SizeDelta: {x: -480, y: -435}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1856084270
 MonoBehaviour:
@@ -3292,7 +3296,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 8
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -3303,7 +3307,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Jet : \nVitesse de tirer\r : \nCommencer \xE0 dessiner : "
+  m_Text: "Vitesse de tirer\r : Plus rapide"
 --- !u!222 &1856084271
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3324,7 +3328,7 @@ GameObject:
   - component: {fileID: 1889953704}
   - component: {fileID: 1889953703}
   m_Layer: 5
-  m_Name: Advise1
+  m_Name: JetF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3346,8 +3350,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -480, y: -450}
+  m_AnchoredPosition: {x: 0, y: 60}
+  m_SizeDelta: {x: -480, y: -420}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1889953703
 MonoBehaviour:
@@ -3371,7 +3375,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 8
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -3382,7 +3386,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Jet : \nVitesse de tirer\r : \nCommencer \xE0 dessiner : "
+  m_Text: 'Jet : Plus Rapide'
 --- !u!222 &1889953704
 CanvasRenderer:
   m_ObjectHideFlags: 0
