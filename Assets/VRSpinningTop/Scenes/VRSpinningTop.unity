@@ -1563,14 +1563,12 @@ MonoBehaviour:
   bodySourceView: {fileID: 1937581793}
   animationController: {fileID: 445599731}
   isHMD: 0
-  Advise1: {fileID: 1889953701}
-  Advise2: {fileID: 1384996191}
-  Advise3: {fileID: 1856084268}
-  Advise4: {fileID: 667240686}
-  Advise5: {fileID: 1802123379}
-  Advise6: {fileID: 1728781971}
-  Advise7: {fileID: 158567335}
-  Advise8: {fileID: 1748528126}
+  ThrowF: {fileID: 1889953701}
+  ThrowS: {fileID: 1384996191}
+  PullSpeedF: {fileID: 1856084268}
+  PullSpeedS: {fileID: 667240686}
+  PullStartF: {fileID: 1802123379}
+  PullStartS: {fileID: 1728781971}
   Great: {fileID: 1015928294}
   stringMachine: {fileID: 1186589124}
   hand: {x: 0, y: 0, z: 0}
@@ -2477,7 +2475,7 @@ GameObject:
   - component: {fileID: 1384996194}
   - component: {fileID: 1384996193}
   m_Layer: 5
-  m_Name: JetS
+  m_Name: ThrowS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3328,12 +3326,12 @@ GameObject:
   - component: {fileID: 1889953704}
   - component: {fileID: 1889953703}
   m_Layer: 5
-  m_Name: JetF
+  m_Name: ThrowF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1889953702
 RectTransform:
   m_ObjectHideFlags: 0

@@ -85,8 +85,8 @@ public class SpinController : MonoBehaviour
                     }
                     velocity /= velocities.Count;
                 }
-                Debug.Log(velocity);
-                Debug.Log(velocity.magnitude);
+                //Debug.Log(velocity);
+                //Debug.Log(velocity.magnitude);
 
                 velocity.x = velocity.x * -1;   //velocityのX軸の正負が反転しているのでここで正常に戻す。
 

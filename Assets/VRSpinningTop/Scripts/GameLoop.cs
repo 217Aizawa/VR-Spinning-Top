@@ -26,7 +26,7 @@ public class GameLoop : MonoBehaviour
     public GameObject PullSpeedF;
     public GameObject PullSpeedS;
     public GameObject PullStartF;
-    public GameObject PullStart;
+    public GameObject PullStartS;
     public GameObject Great;
 
     public GameObject stringMachine;//Unity上のStringController
@@ -125,7 +125,7 @@ public class GameLoop : MonoBehaviour
                 
 
                 // 投げ終わって2秒経過　or 糸を引ききったら結果表示に
-                if (afterTime > 3 || stringController.isPulling == false)
+                if (afterTime > 0.3 || stringController.isPulling == false)
                 {
                     Vector3 Vkoma = spinController.velocity;
                     Vkoma.z = 0;
@@ -146,7 +146,7 @@ public class GameLoop : MonoBehaviour
                     if (2.5 <= komaSpeed)//速すぎる
                     {
                         animationController.FailAnim();//失敗時のアニメーション
-                        //ThrowS.SetActive(true);
+                        ThrowS.SetActive(true);
                         Success = false;
                     }
                     else if (komaSpeed < 1.0)//遅すぎる
@@ -199,8 +199,8 @@ public class GameLoop : MonoBehaviour
                     spinController.StopSuccessEffect();
                     //コマを利き手の子にする。
                     bodySourceView.InstantiateKoma();
-                    SpinController.isThrown = false;//Spin In Hand時にtrueになりっぱなしなのでここでfalseにする
                     komaBody.constraints = RigidbodyConstraints.None;
+                    spinController.ResetSpin();
                 }
                 /*if (Great == true && afterTime > 5)
                     SceneManager.LoadScene("JudgeScene");*/
@@ -229,7 +229,7 @@ public class GameLoop : MonoBehaviour
         PullSpeedF.SetActive(false);
         PullSpeedS.SetActive(false);
         PullStartF.SetActive(false);
-        PullSpeedS.SetActive(false);
+        PullStartS.SetActive(false);
         Great.SetActive(false);
     }
 
