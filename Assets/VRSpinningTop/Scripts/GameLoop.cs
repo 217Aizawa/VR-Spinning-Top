@@ -155,7 +155,7 @@ public class GameLoop : MonoBehaviour
                         ThrowF.SetActive(true);
                         Success = false;
                     }
-
+                    /*
                     if (1 < pullTimeStartUp)
                     {
                         Success = false;
@@ -173,7 +173,7 @@ public class GameLoop : MonoBehaviour
                     {
                         Success = false;
                     }
-
+                    */
                     if (Success == true)//成功
                     {
                         animationController.SuccessAnim();
