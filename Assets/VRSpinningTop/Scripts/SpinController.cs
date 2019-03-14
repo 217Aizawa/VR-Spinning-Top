@@ -8,8 +8,7 @@ public class SpinController : MonoBehaviour
     public Vector3 velocity;//速度
     public float rotationSpeedZ = 0.0f;
     public float angleZ;
-    public Vector3 Axis;//軸の向き
-    public Vector3 currentForce, oldForce, v;   //取得してきた値
+    public Vector3 currentForce, oldForce;   //取得してきた値
 
     [Header("New Koma Device")]
     public bool useNewDevice;
@@ -26,52 +25,79 @@ public class SpinController : MonoBehaviour
     // 投げ出し判定加速度
     public float ThrowOffThreshold = 0.2f;//Inspector上の数値が優先される
 
+    List<Vector3> velocities;
+    List<Vector3> gravities;
+    Vector3 forceDifference;
+
     // Use this for initialization
     void Start()
     {
+        velocities = new List<Vector3>();
+        gravities = new List<Vector3>();
         ResetSpin();
         komaDeviceController.Connect(KomaPort);
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        Axis = oldForce;
-
         if (useNewDevice)
             currentForce = komaDeviceController.getAcceleration();
         else
             currentForce = StringToVector3(UDPReceiver.lastReceivedUDPPacket);
+
+        Vector3 currentGravity =
+            (0.9f < currentForce.magnitude && currentForce.magnitude < 1.1f) ?
+                currentGravity = currentForce :
+            (gravities.Count > 0) ?
+                currentGravity = gravities[0] : new Vector3(0, 0, 1);
         
-
         //currentForce = new Vector3( Input.acceleration.x, -Input.acceleration.z, Input.acceleration.y);
-        if (currentForce.magnitude < ThrowOffThreshold && isThrown != true)    // 投げ出し判定
+        if (isThrown != true)
         {
-            isThrown = true;
-            velocity = g_rotation * v;      // 最後に加えられていた力を打ち出し速度とする
-            velocity.x = velocity.x * -1;   //velocityのX軸の正負が反転しているのでここで正常に戻す。
+            gravities.Add(currentGravity);
+            if (gravities.Count > 5)
+                gravities.RemoveAt(0);
+                
+            Vector3 averageGravity = Vector3.zero;
+            foreach (Vector3 gv in gravities) averageGravity += gv;
+            averageGravity /= gravities.Count;
+            averageGravity.Normalize();
 
-            // ｚ軸の向きがぐるぐる回っていれば、ｚ軸の加速度（遠心力）として観測される
-            rotationSpeedZ = currentForce.z;
+            g_rotation = Quaternion.FromToRotation(new Vector3(0, 0, 1), averageGravity);//-old_f.x, old_f.y, -old_f.z)
 
-            // 投げ出し時のｚ軸の傾き（度）
-            angleZ = Vector3.Angle(g_rotation * new Vector3(0, 0, 1), new Vector3(0, 0, 1));        }
+            forceDifference = currentForce - averageGravity;              //　加えられている力（ローカル方向）
 
-        //if (isThrown) velocity = currentForce-old_f;
-        //else if (currentForce.magnitude <= 1) old_f = currentForce;
-        else if (isThrown != true)  // 投げ出し判定前（重力方向測定）
-        {
-            if (0.9f < currentForce.magnitude && currentForce.magnitude < 1.1f)
-                oldForce = currentForce;
-            g_rotation = Quaternion.FromToRotation(new Vector3(0,0,1), new Vector3(oldForce.x, oldForce.y, oldForce.z));//-old_f.x, old_f.y, -old_f.z)
-            v = currentForce - oldForce;              //　加えられている力（ローカル方向）
-        }
+            velocities.Add(forceDifference);
+            if (velocities.Count > 5)
+                velocities.RemoveAt(0);
 
-//        Debug.Log("koma vel." + velocity);
+            if (currentForce.magnitude < ThrowOffThreshold)    // 投げ出し判定
+            {
+                Debug.Log("Throw detected by " + currentForce.magnitude);
+                isThrown = true;
+                velocity = Vector3.zero;
+                if (velocities.Count > 0)
+                {
+                    foreach (Vector3 v in velocities)
+                    {
+                        velocity += v;
+                        Debug.Log("Vel: " + v);
+                    }
+                    velocity /= velocities.Count;
+                }
+                Debug.Log(velocity);
+                Debug.Log(velocity.magnitude);
 
-        //velocity = new Vector3(0, 0, -5);//変数velocityにVector3構造体をセットする。
-        if(isThrown == true)
-        {
+                velocity.x = velocity.x * -1;   //velocityのX軸の正負が反転しているのでここで正常に戻す。
+
+                // ｚ軸の向きがぐるぐる回っていれば、ｚ軸の加速度（遠心力）として観測される
+                rotationSpeedZ = currentForce.z;
+
+                // 投げ出し時のｚ軸の傾き（度）
+                angleZ = Vector3.Angle(g_rotation * new Vector3(0, 0, 1), new Vector3(0, 0, 1));
+            }
+
+            oldForce = currentForce;
         }
     }
 
@@ -95,7 +121,8 @@ public class SpinController : MonoBehaviour
     {
         isThrown = false;
         velocity = Vector3.zero;//zero = (0, 0, 0)
-        Axis = Vector3.up;
+        velocities.Clear();
+        gravities.Clear();
     }
 
     private static Vector3 StringToVector3(string input)
