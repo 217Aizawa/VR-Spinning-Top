@@ -18,16 +18,15 @@ public class GameLoop : MonoBehaviour
     public AnimationController animationController;
     public bool isHMD = true;
     private float afterTime = 0;//投げ終わってからの時間
+    bool Success;
 
     //投げ出し、引く速さ、引き始めの順番
-    public GameObject Advise1;//速、速、速
-    public GameObject Advise2;//速、速、遅
-    public GameObject Advise3;//速、遅、速
-    public GameObject Advise4;//速、遅、遅
-    public GameObject Advise5;//遅、速、速
-    public GameObject Advise6;//遅、速、遅
-    public GameObject Advise7;//遅、遅、速
-    public GameObject Advise8;//遅、遅、遅
+    public GameObject ThrowF;
+    public GameObject ThrowS;
+    public GameObject PullSpeedF;
+    public GameObject PullSpeedS;
+    public GameObject PullStartF;
+    public GameObject PullStart;
     public GameObject Great;
 
     public GameObject stringMachine;//Unity上のStringController
@@ -143,29 +142,45 @@ public class GameLoop : MonoBehaviour
                     stringController.setMotorMode(StringController.MotorMode.isFree);
                     ChangeGameStateToNext();
 
-                    if (1.6 <= komaSpeed && komaSpeed <= 3.4 || true)//加速度判定が変更されたので、数値も変更される
-                    //最終的には、リザルト画面で表示させる。
+                    Success = true;
+                    if (2.5 <= komaSpeed)//速すぎる
                     {
-                        animationController.SuccessAnim();//成功時のアニメーション
+                        animationController.FailAnim();//失敗時のアニメーション
+                        //ThrowS.SetActive(true);
+                        Success = false;
+                    }
+                    else if (komaSpeed < 1.0)//遅すぎる
+                    {
+                        animationController.FailAnim();
+                        ThrowF.SetActive(true);
+                        Success = false;
+                    }
 
+                    if (1 < pullTimeStartUp)
+                    {
+                        Success = false;
+                    }
+                    else if (pullTimeStartUp < 3)
+                    {
+                        Success = false;
+                    }
+
+                    if (10.0 < pullSpeed)
+                    {
+                        Success = false;
+                    }
+                    else if (pullSpeed < 5)
+                    {
+                        Success = false;
+                    }
+
+                    if (Success == true)//成功
+                    {
+                        animationController.SuccessAnim();
                         spinController.SetSuccessEffect(0);
                         Great.SetActive(true);
                     }
-                    else if (3.4 <= komaSpeed )
-                    {
-                        animationController.FailAnim();//失敗時のアニメーション
 
-                        Advise1.SetActive(true);
-                        //速すぎる
-                        //adviseMoreSlow.SetActive(true);
-                    }
-                    else
-                    {
-                        animationController.FailAnim();
-                        //遅すぎる
-                        //adviseMoreFast.SetActive(true);
-                        //Great.SetActive(true);
-                    }
                 }
                 break;
             case GameState.result:
@@ -209,18 +224,16 @@ public class GameLoop : MonoBehaviour
 
     void TurnOffAdivces()
     {
-        Advise1.SetActive(false);
-        Advise2.SetActive(false);
-        Advise3.SetActive(false);
-        Advise4.SetActive(false);
-        Advise5.SetActive(false);
-        Advise6.SetActive(false);
-        Advise7.SetActive(false);
-        Advise8.SetActive(false);
+        ThrowF.SetActive(false);
+        ThrowS.SetActive(false);
+        PullSpeedF.SetActive(false);
+        PullSpeedS.SetActive(false);
+        PullStartF.SetActive(false);
+        PullSpeedS.SetActive(false);
         Great.SetActive(false);
     }
 
-void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {

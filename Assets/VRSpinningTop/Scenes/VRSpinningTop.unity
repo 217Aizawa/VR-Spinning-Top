@@ -3333,7 +3333,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1889953702
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3618,10 +3618,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   rotationSpeedZ: 0
   angleZ: 0
-  Axis: {x: 0, y: 0, z: 0}
   currentForce: {x: 0, y: 0, z: 0}
   oldForce: {x: 0, y: 0, z: 0}
-  v: {x: 0, y: 0, z: 0}
   useNewDevice: 1
   komaDeviceController: {fileID: 2034248247}
   KomaPort: 4
