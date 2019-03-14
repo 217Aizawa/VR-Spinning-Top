@@ -102,7 +102,7 @@ public class GameLoop : MonoBehaviour
 
                 if (SpinController.isThrown == true || Input.GetKeyDown(KeyCode.Space) )//投げられたら。
                 {
-                    SpinController.isThrown = true; // スペースキーで遷移したときに強制的に投げた状態にする
+                    //SpinController.isThrown = true; // スペースキーで遷移したときに強制的に投げた状態にする
                     stringController.setMotorMode(StringController.MotorMode.isShowingResistance);
                     ChangeGameStateToNext();
 
@@ -121,25 +121,35 @@ public class GameLoop : MonoBehaviour
                 }
                 break;
             case GameState.spinInAir:
-                // 投げ終わって３秒経過したら結果表示に
-                if (afterTime > 3)
+   
+                //コマの成功・失敗判定のパラメータ
+                
+
+                // 投げ終わって2秒経過　or 糸を引ききったら結果表示に
+                if (afterTime > 3 || stringController.isPulling == false)
                 {
-                    stringController.setMotorMode(StringController.MotorMode.isFree);
-                    ChangeGameStateToNext();
-                    
                     Vector3 Vkoma = spinController.velocity;
                     Vkoma.z = 0;
                     float komaSpeed = Vkoma.magnitude;//ベクトルの長さを返す。
+                    float komaRotationSpped = spinController.rotationSpeedZ;
+                    float komaAngle = spinController.angleZ;
+                    float pullTimeStartUp = stringController.timeStartup;
+                    float pullTimeTotal = stringController.timeTotal;
+                    float pullSpeed = stringController.maxPullingSpeed;
+                    Debug.Log("KomaSpeed" + "/" + komaSpeed + "\n" +"RotationSpeed " + "/" + komaRotationSpped + "\n" + "Angle" + "/"
+                         + komaAngle + "\n" +  "TimeStartUp" + "/" + pullTimeStartUp + "\n" + "TimeTotal" + pullTimeTotal + "\n" + "Speed" + "/" + pullSpeed);
+
+
+                    stringController.setMotorMode(StringController.MotorMode.isFree);
+                    ChangeGameStateToNext();
 
                     if (1.6 <= komaSpeed && komaSpeed <= 3.4 || true)//加速度判定が変更されたので、数値も変更される
                     //最終的には、リザルト画面で表示させる。
                     {
-                        Debug.Log("Animation Check" + animationController);
                         animationController.SuccessAnim();//成功時のアニメーション
 
                         spinController.SetSuccessEffect(0);
                         Great.SetActive(true);
-                        Debug.Log("KomaSpeed" + komaSpeed);
                     }
                     else if (3.4 <= komaSpeed )
                     {
@@ -148,14 +158,12 @@ public class GameLoop : MonoBehaviour
                         Advise1.SetActive(true);
                         //速すぎる
                         //adviseMoreSlow.SetActive(true);
-                        Debug.Log("KomaSpeed" + komaSpeed);
                     }
                     else
                     {
                         animationController.FailAnim();
                         //遅すぎる
                         //adviseMoreFast.SetActive(true);
-                        Debug.Log("KomaSpeed" + komaSpeed);
                         //Great.SetActive(true);
                     }
                 }
@@ -169,8 +177,8 @@ public class GameLoop : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.A))
                 {
-                    //Debug.Log("Force to Return to precab");
-                    gameState = GameState.preCalibration;
+                    //gameState = GameState.preCalibration;
+                    gameState = GameState.spinInHand;
                     //animationController.anim.StopPlayback();
                     TurnOffAdivces();
                     spinController.StopSuccessEffect();
@@ -178,8 +186,9 @@ public class GameLoop : MonoBehaviour
                     bodySourceView.InstantiateKoma();
                     SpinController.isThrown = false;//Spin In Hand時にtrueになりっぱなしなのでここでfalseにする
                     komaBody.constraints = RigidbodyConstraints.None;
-                    Debug.Log("Force to Return to precab");
                 }
+                /*if (Great == true && afterTime > 5)
+                    SceneManager.LoadScene("JudgeScene");*/
                 break;
         }
         
@@ -237,7 +246,7 @@ void OnCollisionEnter(Collision collision)
         int currentState = (int)gameState;
         currentState = (currentState + 1) % Enum.GetNames(typeof(GameState)).Length;
         gameState = (GameState)Enum.ToObject(typeof(GameState), currentState);
-        Debug.Log("New Game State: " + gameState);
+        // Debug.Log("New Game State: " + gameState);
     }
 
     void ResetScene()

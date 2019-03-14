@@ -53,7 +53,7 @@ public class AnimationController : MonoBehaviour
 
     public void SuccessAnim()//成功アニメーション再生関数
     {
-        Debug.Log("Anim Call");
+
         if (SpinController.isThrown == true && countTime > 1)//isThrownかつ投げてから1秒以上経過していれば
             anim.SetTrigger("Success");
     }

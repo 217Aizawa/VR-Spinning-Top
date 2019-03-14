@@ -193,7 +193,7 @@ public class BodySourceView : MonoBehaviour
                 riseHand = false;
                 CreatePrefab();//子としてコマを生成する
                 KomaObj.transform.localPosition = Vector3.zero;//検証
-                Debug.Log("Handedness Left");
+
             }
             else if (riseHand == true && headPos.y < handRightPos.y && 3 <= rightHandTime)
             {
@@ -204,7 +204,6 @@ public class BodySourceView : MonoBehaviour
                 riseHand = false;
                 CreatePrefab();
                 KomaObj.transform.localPosition = Vector3.zero;//検証
-                Debug.Log("Handedness Right");
             }
             //利き手の手首位置を返し続けるためのif文
             if (handedness == -1)
@@ -391,7 +390,7 @@ public class BodySourceView : MonoBehaviour
         if(headPos.y < handLeftPos.y)
         {
             leftHandTime += Time.deltaTime;//毎フレームの時間を加算する
-            Debug.Log("LeftCount Start");
+            //Debug.Log("LeftCount Start");
 
             rightHandTime -= Time.deltaTime;//もう一方の挙手時間を減らす。そうすることで両手を上げても時間を相殺しあう。
         }
@@ -402,7 +401,7 @@ public class BodySourceView : MonoBehaviour
         if(headPos.y < handRightPos.y)
         {
             rightHandTime += Time.deltaTime;//毎フレームの時間を加算する
-            Debug.Log("RightCount Start");
+            //Debug.Log("RightCount Start");
             leftHandTime -= Time.deltaTime;
         }
 

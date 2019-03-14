@@ -53,12 +53,9 @@ public class SpinController : MonoBehaviour
 
             // ｚ軸の向きがぐるぐる回っていれば、ｚ軸の加速度（遠心力）として観測される
             rotationSpeedZ = currentForce.z;
-            Debug.Log("Observed Z rotation: " + rotationSpeedZ);
 
             // 投げ出し時のｚ軸の傾き（度）
-            angleZ = Vector3.Angle(g_rotation * new Vector3(0, 0, 1), new Vector3(0, 0, 1));
-            Debug.Log("Oberved Z slant: " + angleZ);
-        }
+            angleZ = Vector3.Angle(g_rotation * new Vector3(0, 0, 1), new Vector3(0, 0, 1));        }
 
         //if (isThrown) velocity = currentForce-old_f;
         //else if (currentForce.magnitude <= 1) old_f = currentForce;

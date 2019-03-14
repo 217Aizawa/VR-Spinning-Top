@@ -120,7 +120,7 @@ public class StringController : MonoBehaviour {
         if (serialPort == null)
             return;
 
-        Debug.Log("Motor Switching to " + currentMode);
+        //Debug.Log("Motor Switching to " + currentMode);
 
         switch (currentMode)
         {
