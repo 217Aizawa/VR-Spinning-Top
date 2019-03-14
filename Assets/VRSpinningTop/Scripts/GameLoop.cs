@@ -155,25 +155,29 @@ public class GameLoop : MonoBehaviour
                         ThrowF.SetActive(true);
                         Success = false;
                     }
-                    /*
-                    if (1 < pullTimeStartUp)
+                    
+                    if (3 < pullTimeStartUp)//遅すぎ
                     {
+                        PullStartF.SetActive(true);
                         Success = false;
                     }
-                    else if (pullTimeStartUp < 3)
+                    else if (pullTimeStartUp < 0.5)//速すぎ
                     {
+                        PullStartS.SetActive(true);
                         Success = false;
                     }
 
-                    if (10.0 < pullSpeed)
+                    if (10.0 < pullSpeed)//速すぎ
                     {
+                        PullSpeedS.SetActive(true);
                         Success = false;
                     }
-                    else if (pullSpeed < 5)
+                    else if (pullSpeed < 5)//遅すぎ
                     {
+                        PullSpeedF.SetActive(true);
                         Success = false;
                     }
-                    */
+                    
                     if (Success == true)//成功
                     {
                         animationController.SuccessAnim();
