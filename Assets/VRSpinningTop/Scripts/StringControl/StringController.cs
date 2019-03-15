@@ -5,6 +5,7 @@ struct SpeedRecord
 {
     public float timestamp;
     public float speed;
+    public float length;
 };
 
 public class StringController : MonoBehaviour {
@@ -59,15 +60,21 @@ public class StringController : MonoBehaviour {
                 break;
 
             case MotorMode.isShowingResistance:
-                
-                SpeedRecord sr; // = new SpeedRecord();
-                sr.speed = -enc.getSpeed();                 // pull is negative, but we want positive value here
-                sr.timestamp = Time.fixedTime - timeZero;
-                records.Add(sr);
 
                 float pulledStringLength = -enc.getTotalStringLength();
 
-//                Debug.Log("Pull Speed " + sr + " Length " + pulledStringLength);
+                SpeedRecord sr; // = new SpeedRecord();
+                sr.speed = -enc.getSpeed();                 // pull is negative, but we want positive value here
+                 if (sr.speed < 0)
+                    enc.resetCount(0);
+                sr.timestamp = Time.fixedTime - timeZero;
+                sr.length = pulledStringLength;
+
+                records.Add(sr);
+
+               
+
+                Debug.Log("Pull Speed " + sr.speed + " Length " + pulledStringLength);
 
                 if( isPulling && pulledStringLength > 1.0f )
                 {
@@ -83,6 +90,9 @@ public class StringController : MonoBehaviour {
 
                     foreach (SpeedRecord r in records)
                     {
+                        if (r.length == 0)
+                            continue;
+
                         if (r.speed > maxPullingSpeed * 0.5f)
                         {
                             timeStartup = r.timestamp;

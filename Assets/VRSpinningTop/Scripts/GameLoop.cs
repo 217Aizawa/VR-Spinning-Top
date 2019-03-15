@@ -37,6 +37,9 @@ public class GameLoop : MonoBehaviour
 
     public float stringLength;
 
+    public bool isDebugging;
+
+
     private void Awake()
     {
         Judge();
@@ -125,7 +128,7 @@ public class GameLoop : MonoBehaviour
                 
 
                 // 投げ終わって2秒経過　or 糸を引ききったら結果表示に
-                if (afterTime > 0.3 || stringController.isPulling == false)
+                if (afterTime > 3 || stringController.isPulling == false)
                 {
                     Vector3 Vkoma = spinController.velocity;
                     //Vkoma.z = 0;
@@ -169,13 +172,13 @@ public class GameLoop : MonoBehaviour
                         Success = false;
                     }
 
-                    if (10.0 < pullSpeed)//速すぎ
+                    if (5000 < pullSpeed)//速すぎ
                     {
                         animationController.FailAnim();
                         PullSpeedS.SetActive(true);
                         Success = false;
                     }
-                    else if (pullSpeed < 5)//遅すぎ
+                    else if (pullSpeed < 3000)//遅すぎ
                     {
                         animationController.FailAnim();
                         PullSpeedF.SetActive(true);
@@ -198,7 +201,7 @@ public class GameLoop : MonoBehaviour
                     gameState = GameState.free;     // ResetScene でシーンがリロードされるので、実際には不要
                     ResetScene();//追加
                 }
-                if (Input.GetKeyDown(KeyCode.A))
+                if (Input.GetKeyDown(KeyCode.A) || isDebugging )
                 {
                     //gameState = GameState.preCalibration;
                     gameState = GameState.spinInHand;
@@ -209,6 +212,7 @@ public class GameLoop : MonoBehaviour
                     bodySourceView.InstantiateKoma();
                     komaBody.constraints = RigidbodyConstraints.None;
                     spinController.ResetSpin();
+                    stringController.setMotorMode(StringController.MotorMode.isTrackingHand);
                 }
                 /*if (Great == true && afterTime > 5)
                     SceneManager.LoadScene("JudgeScene");*/
