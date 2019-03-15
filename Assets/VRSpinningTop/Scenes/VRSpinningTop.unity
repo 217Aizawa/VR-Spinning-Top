@@ -2613,7 +2613,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1536402672}
-  m_Text: SVP prendre une Toupie.
+  m_Text: SVP prendre la Toupie.
   m_OffsetZ: 0
   m_CharacterSize: 0.01
   m_LineSpacing: 1

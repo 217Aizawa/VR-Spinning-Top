@@ -70,7 +70,7 @@ public class GameLoop : MonoBehaviour
                 //komaBody.rotation = spinController.g_rotation * Quaternion.AngleAxis(90, Vector3.left);
                 //(GameObject.Find("f")).GetComponent<Transform>().rotation = Quaternion.FromToRotation(Vector3.up, new Vector3(-spinController.f.x, spinController.f.y, -spinController.f.z));
 
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space) || bodySourceView.handedness != 0)
                 {
                     ChangeGameStateToNext();
                 }
