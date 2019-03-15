@@ -74,7 +74,7 @@ public class StringController : MonoBehaviour {
 
                
 
-                Debug.Log("Pull Speed " + sr.speed + " Length " + pulledStringLength);
+ //               Debug.Log("Pull Speed " + sr.speed + " Length " + pulledStringLength);
 
                 if( isPulling && pulledStringLength > 1.0f )
                 {

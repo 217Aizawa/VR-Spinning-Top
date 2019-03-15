@@ -68,13 +68,14 @@ public class SpinController : MonoBehaviour
             forceDifference = currentForce - averageGravity;              //　加えられている力（ローカル方向）
 
             velocities.Add(forceDifference);
-            if (velocities.Count > 10)
+            if (velocities.Count > 20)
                 velocities.RemoveAt(0);
 
             if (currentForce.magnitude < ThrowOffThreshold)    // 投げ出し判定
             {
                 Debug.Log("投げ出し検知加速度 " + currentForce.magnitude);
                 isThrown = true;
+                Debug.Log(isThrown);
                 velocity = Vector3.zero;
                 if (velocities.Count > 0)
                 {

@@ -26,12 +26,12 @@ public class AnimationController : MonoBehaviour
         if(SpinController.isThrown == true)
             countTime += Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.Backspace))
+        /*if (Input.GetKeyDown(KeyCode.Backspace))
         {
             //anim.SetTrigger("Fail");
             //anim.SetTrigger("Success");
             rb.constraints = RigidbodyConstraints.FreezePosition;//ポジション固定
-        }
+        }*/
 
         if (SpinController.isThrown == true && countTime > 1)//isThrownかつ投げてから1秒以上経過していれば
         {

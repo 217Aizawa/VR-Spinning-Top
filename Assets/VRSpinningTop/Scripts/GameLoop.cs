@@ -84,7 +84,7 @@ public class GameLoop : MonoBehaviour
                 break;
             // 紐を引きながらお客さんに手渡す
             case GameState.calibration:
-                if(bodySourceView.handedness != 0)
+                if (bodySourceView.handedness != 0)
                     GameObject.FindGameObjectWithTag("KomaChild").transform.position = bodySourceView.handednessHandPos;
 
                 if (Input.GetKeyDown(KeyCode.Space))//利き手判定後にも遷移できるように
@@ -98,8 +98,13 @@ public class GameLoop : MonoBehaviour
                 {
                     stringController.setMotorMode(StringController.MotorMode.isTrackingHand);
                 }
+
+                if (Input.GetKey(KeyCode.Backspace))//JudgeSceneに遷移
+                    SceneManager.LoadScene("JudgeScene");
+
                 break;
             case GameState.spinInHand:
+                //animationController.anim.SetTrigger("Idle");
                 GameObject.FindGameObjectWithTag("KomaChild").transform.position = bodySourceView.handednessHandPos;
 
                 if (SpinController.isThrown == true || Input.GetKeyDown(KeyCode.Space) )//投げられたら。
@@ -113,7 +118,7 @@ public class GameLoop : MonoBehaviour
                     //親子関係があると正常に動作しない
                     koma.transform.parent = null;//親子関係を解除する
 
-                    Debug.Log("isThrown");
+                    //Debug.Log("isThrown");
                     komaBody.isKinematic = false;
                     komaBody.useGravity = true;
                     komaBody.velocity = spinController.velocity;
@@ -128,7 +133,7 @@ public class GameLoop : MonoBehaviour
                 
 
                 // 投げ終わって2秒経過　or 糸を引ききったら結果表示に
-                if (afterTime > 3 || stringController.isPulling == false)
+                if (afterTime > 0.3 || stringController.isPulling == false)
                 {
                     Vector3 Vkoma = spinController.velocity;
                     //Vkoma.z = 0;
@@ -146,7 +151,7 @@ public class GameLoop : MonoBehaviour
                     ChangeGameStateToNext();
 
                     Success = true;
-                    if (2.5 <= komaSpeed)//速すぎる
+                    if (3.0 <= komaSpeed)//速すぎる
                     {
                         animationController.FailAnim();//失敗時のアニメーション
                         ThrowS.SetActive(true);
@@ -204,7 +209,7 @@ public class GameLoop : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.A) || isDebugging )
                 {
                     //gameState = GameState.preCalibration;
-                    gameState = GameState.spinInHand;
+                    gameState = GameState.spinInHand;//デバッグ用
                     //animationController.anim.StopPlayback();
                     TurnOffAdivces();
                     spinController.StopSuccessEffect();
@@ -214,8 +219,6 @@ public class GameLoop : MonoBehaviour
                     spinController.ResetSpin();
                     stringController.setMotorMode(StringController.MotorMode.isTrackingHand);
                 }
-                /*if (Great == true && afterTime > 5)
-                    SceneManager.LoadScene("JudgeScene");*/
                 break;
         }
         
