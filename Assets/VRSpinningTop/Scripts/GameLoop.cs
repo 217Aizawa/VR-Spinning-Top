@@ -128,7 +128,7 @@ public class GameLoop : MonoBehaviour
                 if (afterTime > 0.3 || stringController.isPulling == false)
                 {
                     Vector3 Vkoma = spinController.velocity;
-                    Vkoma.z = 0;
+                    //Vkoma.z = 0;
                     float komaSpeed = Vkoma.magnitude;//ベクトルの長さを返す。
                     float komaRotationSpped = spinController.rotationSpeedZ;
                     float komaAngle = spinController.angleZ;
