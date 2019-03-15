@@ -68,25 +68,24 @@ public class SpinController : MonoBehaviour
             forceDifference = currentForce - averageGravity;              //　加えられている力（ローカル方向）
 
             velocities.Add(forceDifference);
-            if (velocities.Count > 5)
+            if (velocities.Count > 10)
                 velocities.RemoveAt(0);
 
             if (currentForce.magnitude < ThrowOffThreshold)    // 投げ出し判定
             {
-                Debug.Log("Throw detected by " + currentForce.magnitude);
+                Debug.Log("投げ出し検知加速度 " + currentForce.magnitude);
                 isThrown = true;
                 velocity = Vector3.zero;
                 if (velocities.Count > 0)
                 {
                     foreach (Vector3 v in velocities)
                     {
-                        velocity += v;
-   //                     Debug.Log("Vel: " + v);
+                        if (velocity.magnitude < v.magnitude)
+                            velocity = v;
+                        Debug.Log("Vel: " + v + "Mag: "+v.magnitude);
                     }
-                    velocity /= velocities.Count;
                 }
-                //Debug.Log(velocity);
-                //Debug.Log(velocity.magnitude);
+                Debug.Log(velocity.magnitude);
 
                 velocity.x = velocity.x * -1;   //velocityのX軸の正負が反転しているのでここで正常に戻す。
 
