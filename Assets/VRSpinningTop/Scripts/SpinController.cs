@@ -81,7 +81,7 @@ public class SpinController : MonoBehaviour
                     foreach (Vector3 v in velocities)
                     {
                         velocity += v;
-                        Debug.Log("Vel: " + v);
+   //                     Debug.Log("Vel: " + v);
                     }
                     velocity /= velocities.Count;
                 }

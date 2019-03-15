@@ -422,7 +422,7 @@ public class BodySourceView : MonoBehaviour
             //CreatePrefab();
             // KomaObj.transform.parent = HandKoma.transform;
             KomaObj.transform.localPosition = Vector3.zero;
-            Debug.Log("Success Instatiate");
+   //         Debug.Log("Success Instatiate");
         }
     }
 

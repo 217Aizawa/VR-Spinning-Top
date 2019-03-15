@@ -135,8 +135,8 @@ public class GameLoop : MonoBehaviour
                     float pullTimeStartUp = stringController.timeStartup;
                     float pullTimeTotal = stringController.timeTotal;
                     float pullSpeed = stringController.maxPullingSpeed;
-                    Debug.Log("KomaSpeed" + "/" + komaSpeed + "\n" +"RotationSpeed " + "/" + komaRotationSpped + "\n" + "Angle" + "/"
-                         + komaAngle + "\n" +  "TimeStartUp" + "/" + pullTimeStartUp + "\n" + "TimeTotal" + pullTimeTotal + "\n" + "Speed" + "/" + pullSpeed);
+                    Debug.Log("KomaSpeed" + ":" + komaSpeed + " / " +"RotationSpeed " + ":" + komaRotationSpped + " " + "Angle" + ":" + komaAngle + "\n"
+                        +  "TimeStartUp" + ":" + pullTimeStartUp + "/ " + "TimeTotal : " + pullTimeTotal + " / " + "Speed : " + pullSpeed);
 
 
                     stringController.setMotorMode(StringController.MotorMode.isFree);
@@ -158,22 +158,26 @@ public class GameLoop : MonoBehaviour
                     
                     if (3 < pullTimeStartUp)//遅すぎ
                     {
+                        animationController.FailAnim();
                         PullStartF.SetActive(true);
                         Success = false;
                     }
                     else if (pullTimeStartUp < 0.5)//速すぎ
                     {
+                        animationController.FailAnim();
                         PullStartS.SetActive(true);
                         Success = false;
                     }
 
                     if (10.0 < pullSpeed)//速すぎ
                     {
+                        animationController.FailAnim();
                         PullSpeedS.SetActive(true);
                         Success = false;
                     }
                     else if (pullSpeed < 5)//遅すぎ
                     {
+                        animationController.FailAnim();
                         PullSpeedF.SetActive(true);
                         Success = false;
                     }
