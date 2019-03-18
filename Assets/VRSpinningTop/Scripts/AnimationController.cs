@@ -63,4 +63,8 @@ public class AnimationController : MonoBehaviour
         if (SpinController.isThrown == true && countTime > 0.3)
             anim.SetTrigger("Fail");
     }
+    public void IdleAnim()
+    {
+        anim.SetTrigger("Idle");
+    }
 }

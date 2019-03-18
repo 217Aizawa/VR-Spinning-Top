@@ -87,7 +87,7 @@ public class GameLoop : MonoBehaviour
                 if (bodySourceView.handedness != 0)
                     GameObject.FindGameObjectWithTag("KomaChild").transform.position = bodySourceView.handednessHandPos;
 
-                if (Input.GetKeyDown(KeyCode.Space) || bodySourceView.handedness != 0)//利き手判定後にも遷移できるように
+                if (Input.GetKeyDown(KeyCode.Space))// || bodySourceView.handedness != 0)//利き手判定後にも遷移できるように
                 {
                     if (bodySourceView.handedness == 0)
                         bodySourceView.handedness = 1;
@@ -155,7 +155,7 @@ public class GameLoop : MonoBehaviour
                     ChangeGameStateToNext();
 
                     Success = true;
-                    if (3.0 <= komaSpeed)//速すぎる
+                    /*if (3.0 <= komaSpeed)//速すぎる
                     {
                         animationController.FailAnim();//失敗時のアニメーション
                         ThrowS.SetActive(true);
@@ -193,7 +193,7 @@ public class GameLoop : MonoBehaviour
                         PullSpeedF.SetActive(true);
                         Success = false;
                     }
-                    
+                    */
                     if (Success == true)//成功
                     {
                         animationController.SuccessAnim();
@@ -222,6 +222,7 @@ public class GameLoop : MonoBehaviour
                     komaBody.constraints = RigidbodyConstraints.None;
                     spinController.ResetSpin();
                     stringController.setMotorMode(StringController.MotorMode.isTrackingHand);
+                    animationController.IdleAnim();
                 }
                 break;
         }

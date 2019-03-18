@@ -1,0 +1,155 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SpinController : MonoBehaviour
+{
+    public static bool isThrown;//投げられたかの判定
+    public Vector3 velocity;//速度
+    public float rotationSpeedZ = 0.0f;
+    public float angleZ;
+    public Vector3 currentForce, oldForce;   //取得してきた値
+
+    [Header("New Koma Device")]
+    public bool useNewDevice;
+    public KomaDeviceController komaDeviceController;
+    public int KomaPort;
+
+    [Space(10)]
+
+    //vはローカルな方向
+    //fは加速度方向
+    //old_fは安定している重力方向
+    public Quaternion g_rotation,g; //本体とｇの回転
+
+    // 投げ出し判定加速度
+    public float ThrowOffThreshold = 0.2f;//Inspector上の数値が優先される
+
+    List<Vector3> velocities;
+    List<Vector3> gravities;
+    Vector3 forceDifference;
+
+    // Use this for initialization
+    void Start()
+    {
+        velocities = new List<Vector3>();
+        gravities = new List<Vector3>();
+        ResetSpin();
+        komaDeviceController.Connect(KomaPort);
+    }
+
+    void FixedUpdate()
+    {
+        if (useNewDevice)
+            currentForce = komaDeviceController.getAcceleration();
+        else
+            currentForce = StringToVector3(UDPReceiver.lastReceivedUDPPacket);
+
+        Vector3 currentGravity =
+            (0.9f < currentForce.magnitude && currentForce.magnitude < 1.1f) ?
+                currentGravity = currentForce :
+            (gravities.Count > 0) ?
+                currentGravity = gravities[0] : new Vector3(0, 0, 1);
+
+        if (isThrown != true)
+        {
+            gravities.Add(currentGravity);
+            if (gravities.Count > 5)
+                gravities.RemoveAt(0);
+
+            Vector3 averageGravity = Vector3.zero;
+            foreach (Vector3 gv in gravities) averageGravity += gv;
+            averageGravity /= gravities.Count;
+            averageGravity.Normalize();
+
+            g_rotation = Quaternion.FromToRotation(new Vector3(0, 0, 1), averageGravity);//-old_f.x, old_f.y, -old_f.z)
+
+            forceDifference = currentForce - averageGravity;              //　加えられている力（ローカル方向）
+
+            velocities.Add(forceDifference);
+            if (velocities.Count > 20)
+                velocities.RemoveAt(0);
+
+
+            if (currentForce.magnitude < ThrowOffThreshold)    // 投げ出し判定
+            {
+                Debug.Log("投げ出し検知加速度 " + currentForce.magnitude);
+                isThrown = true;
+                Debug.Log(isThrown);
+                velocity = Vector3.zero;
+                if (velocities.Count > 1)
+                {
+//                    velocities.RemoveRange(velocities.Count - 5, 4);
+                    foreach (Vector3 v in velocities)
+                    {
+                        if (velocity.magnitude < v.magnitude)
+                            velocity = v;
+                        // Debug.Log("Vel: " + v + "Mag: " + v.magnitude);
+                    }
+                }
+                // Debug.Log(velocity.magnitude);
+
+                velocity.x = velocity.x * -1;   //velocityのX軸の正負が反転しているのでここで正常に戻す。
+
+                // ｚ軸の向きがぐるぐる回っていれば、ｚ軸の加速度（遠心力）として観測される
+                rotationSpeedZ = currentForce.z;
+
+                // 投げ出し時のｚ軸の傾き（度）
+                angleZ = Vector3.Angle(g_rotation * new Vector3(0, 0, 1), new Vector3(0, 0, 1));
+            }
+            else
+            {
+                velocities.Add(forceDifference);
+                if (velocities.Count > 100)
+                    velocities.RemoveAt(0);
+            }
+
+            oldForce = currentForce;
+        }
+    }
+
+    public void SetSuccessEffect(float delay = 0.0f)
+    {
+        Invoke("StartSuccessEffect", delay);
+    }
+
+    void StartSuccessEffect()
+    {
+        ForkParticlePlugin.Instance.SetEnable(true);
+        ForkParticlePlugin.Instance.Test();
+    }
+
+    public void StopSuccessEffect()
+    {
+        ForkParticlePlugin.Instance.SetEnable(false);
+    }
+
+    public void ResetSpin()//初期化
+    {
+        isThrown = false;
+        velocity = Vector3.zero;//zero = (0, 0, 0)
+        velocities.Clear();
+        gravities.Clear();
+    }
+
+    private static Vector3 StringToVector3(string input)
+    {
+        var elements = input.Trim('(', ')').Split(','); // 前後に丸括弧があれば削除し、カンマで分割
+        var elementCount = Mathf.Min(elements.Length, 3); // ループ回数をelementsの数以下かつ3以下にする
+        var result = Vector3.zero;
+
+        /*var elements = input.Trim('(', ')').Split(','); // 前後に丸括弧があれば削除し、カンマで分割
+        var result = Vector3.zero;
+        var elementCount = Mathf.Min(elements.Length, 3); // ループ回数をelementsの数以下かつ3以下にする
+        */
+        for (var i = 0; i < elementCount; i++)
+        {
+            float value;
+
+            float.TryParse(elements[i], out value); // 変換に失敗したときに例外が出る方が望ましければ、Parseを使うのがいいでしょう
+            result[i] = value;
+        }
+
+        return result;
+    }
+}
