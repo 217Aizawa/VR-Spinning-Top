@@ -51,7 +51,6 @@ public class SpinController : MonoBehaviour
             (gravities.Count > 0) ?
                 currentGravity = gravities[0] : new Vector3(0, 0, 1);
         
-        //currentForce = new Vector3( Input.acceleration.x, -Input.acceleration.z, Input.acceleration.y);
         if (isThrown != true)
         {
             gravities.Add(currentGravity);
@@ -77,16 +76,17 @@ public class SpinController : MonoBehaviour
                 isThrown = true;
                 Debug.Log(isThrown);
                 velocity = Vector3.zero;
-                if (velocities.Count > 0)
+                if (velocities.Count > 1)
                 {
+//                    velocities.RemoveRange(velocities.Count - 5, 4);
                     foreach (Vector3 v in velocities)
                     {
                         if (velocity.magnitude < v.magnitude)
                             velocity = v;
-                        Debug.Log("Vel: " + v + "Mag: "+v.magnitude);
+                        // Debug.Log("Vel: " + v + "Mag: " + v.magnitude);
                     }
                 }
-                Debug.Log(velocity.magnitude);
+                // Debug.Log(velocity.magnitude);
 
                 velocity.x = velocity.x * -1;   //velocityのX軸の正負が反転しているのでここで正常に戻す。
 
@@ -95,6 +95,12 @@ public class SpinController : MonoBehaviour
 
                 // 投げ出し時のｚ軸の傾き（度）
                 angleZ = Vector3.Angle(g_rotation * new Vector3(0, 0, 1), new Vector3(0, 0, 1));
+            }
+            else
+            {
+                velocities.Add(forceDifference);
+                if (velocities.Count > 100)
+                    velocities.RemoveAt(0);
             }
 
             oldForce = currentForce;
