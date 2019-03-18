@@ -43,7 +43,7 @@ public class GameLoop : MonoBehaviour
     private void Awake()
     {
         Judge();
-        //ModeSelect(); //デバッグ用
+        ModeSelect(); //デバッグ用
     }
 
     // Use this for initialization
@@ -136,8 +136,8 @@ public class GameLoop : MonoBehaviour
                 //コマの成功・失敗判定のパラメータ
                 
 
-                // 投げ終わって2秒経過　or 糸を引ききったら結果表示に
-                if (afterTime > 0.3 || stringController.isPulling == false)
+                // 投げ終わって2秒経過　or 糸を引ききったら結果表示に0.3
+                if (afterTime > 3 || stringController.isPulling == false)
                 {
                     Vector3 Vkoma = spinController.velocity;
                     //Vkoma.z = 0;
@@ -155,33 +155,33 @@ public class GameLoop : MonoBehaviour
                     ChangeGameStateToNext();
 
                     Success = true;
-                    /*if (3.0 <= komaSpeed)//速すぎる
+                    if (4.5 <= komaSpeed)//速すぎる
                     {
                         animationController.FailAnim();//失敗時のアニメーション
                         ThrowS.SetActive(true);
                         Success = false;
                     }
-                    else if (komaSpeed < 1.0)//遅すぎる
+                    else if (komaSpeed < 1.5)//遅すぎる
                     {
                         animationController.FailAnim();
                         ThrowF.SetActive(true);
                         Success = false;
                     }
                     
-                    if (0.3 < pullTimeStartUp)//遅すぎ0.2
+                    if (0.8 < pullTimeStartUp)//遅すぎ0.2
                     {
                         animationController.FailAnim();
                         PullStartF.SetActive(true);
                         Success = false;
                     }
-                    else if (pullTimeStartUp < 0.2)//速すぎ0.3
+                    else if (pullTimeStartUp < 0.4)//速すぎ0.3
                     {
                         animationController.FailAnim();
                         PullStartS.SetActive(true);
                         Success = false;
                     }
 
-                    if (5000 < pullSpeed)//速すぎ
+                    if (7000 < pullSpeed)//速すぎ
                     {
                         animationController.FailAnim();
                         PullSpeedS.SetActive(true);
@@ -193,7 +193,7 @@ public class GameLoop : MonoBehaviour
                         PullSpeedF.SetActive(true);
                         Success = false;
                     }
-                    */
+                    
                     if (Success == true)//成功
                     {
                         animationController.SuccessAnim();

@@ -1342,7 +1342,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Vitesse de tirer\r : Plus lentement"
+  m_Text: "Vitesse de tirage\r : Plus lentement"
 --- !u!222 &667240689
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1386,7 +1386,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4861284235651590, guid: 2a10d64885a463441959e7d082a7595e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.4
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4861284235651590, guid: 2a10d64885a463441959e7d082a7595e, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1562,7 +1562,7 @@ MonoBehaviour:
   kinectController: {fileID: 1646389738}
   bodySourceView: {fileID: 1937581793}
   animationController: {fileID: 445599731}
-  isHMD: 1
+  isHMD: 0
   ThrowF: {fileID: 1889953701}
   ThrowS: {fileID: 1384996191}
   PullSpeedF: {fileID: 1856084268}
@@ -2604,7 +2604,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!102 &1536402673
 TextMesh:
   serializedVersion: 3
@@ -2613,7 +2613,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1536402672}
-  m_Text: SVP prendre la Toupie.
+  m_Text: Prenez la Toupie SVP.
   m_OffsetZ: 0
   m_CharacterSize: 0.01
   m_LineSpacing: 1
@@ -2981,6 +2981,13 @@ PrefabInstance:
       propertyPath: m_FontData.m_MinSize
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5814564792055123747, guid: c1634dea5c76e2540b40b3843518f3a5,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Felicitation
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 5814564792055123744, guid: c1634dea5c76e2540b40b3843518f3a5,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3069,7 +3076,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Commencer \xE0 dessiner :Plus lentement"
+  m_Text: "Commencer \xE0 tirer :\nPlus tard"
 --- !u!222 &1728781974
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3227,7 +3234,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Commencer \xE0 dessiner :Plus rapide"
+  m_Text: "Commencez \xE0 tirer :\nPlus t\xF4t"
 --- !u!222 &1802123382
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3306,7 +3313,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Vitesse de tirer\r : Plus rapide"
+  m_Text: 'Vitesse de tirage : Plus rapide'
 --- !u!222 &1856084271
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3624,7 +3631,7 @@ MonoBehaviour:
   KomaPort: 4
   g_rotation: {x: 0, y: 0, z: 0, w: 0}
   g: {x: 0, y: 0, z: 0, w: 0}
-  ThrowOffThreshold: 0.6
+  ThrowOffThreshold: 0.3
 --- !u!114 &2034248247
 MonoBehaviour:
   m_ObjectHideFlags: 0
