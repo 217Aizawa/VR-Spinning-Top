@@ -43,7 +43,7 @@ public class GameLoop : MonoBehaviour
     private void Awake()
     {
         Judge();
-        ModeSelect();
+        //ModeSelect(); //デバッグ用
     }
 
     // Use this for initialization
@@ -87,7 +87,7 @@ public class GameLoop : MonoBehaviour
                 if (bodySourceView.handedness != 0)
                     GameObject.FindGameObjectWithTag("KomaChild").transform.position = bodySourceView.handednessHandPos;
 
-                if (Input.GetKeyDown(KeyCode.Space))//利き手判定後にも遷移できるように
+                if (Input.GetKeyDown(KeyCode.Space) || bodySourceView.handedness != 0)//利き手判定後にも遷移できるように
                 {
                     if (bodySourceView.handedness == 0)
                         bodySourceView.handedness = 1;
@@ -109,7 +109,7 @@ public class GameLoop : MonoBehaviour
 
                 if (SpinController.isThrown == true || Input.GetKeyDown(KeyCode.Space) )//投げられたら。
                 {
-                    //SpinController.isThrown = true; // スペースキーで遷移したときに強制的に投げた状態にする
+                    SpinController.isThrown = true; // スペースキーで遷移したときに強制的に投げた状態にする
                     stringController.setMotorMode(StringController.MotorMode.isShowingResistance);
                     ChangeGameStateToNext();
 
@@ -126,6 +126,10 @@ public class GameLoop : MonoBehaviour
                     
                     //koma.GetComponent<Rigidbody>().velocity = spinController.velocity;//スピンコントローラの速度を、コマに代入
                 }
+
+                if (Input.GetKey(KeyCode.Backspace))//JudgeSceneに遷移
+                    SceneManager.LoadScene("JudgeScene");
+
                 break;
             case GameState.spinInAir:
    
@@ -164,13 +168,13 @@ public class GameLoop : MonoBehaviour
                         Success = false;
                     }
                     
-                    if (3 < pullTimeStartUp)//遅すぎ
+                    if (0.3 < pullTimeStartUp)//遅すぎ0.2
                     {
                         animationController.FailAnim();
                         PullStartF.SetActive(true);
                         Success = false;
                     }
-                    else if (pullTimeStartUp < 0.5)//速すぎ
+                    else if (pullTimeStartUp < 0.2)//速すぎ0.3
                     {
                         animationController.FailAnim();
                         PullStartS.SetActive(true);
@@ -208,8 +212,8 @@ public class GameLoop : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.A) || isDebugging )
                 {
-                    //gameState = GameState.preCalibration;
-                    gameState = GameState.spinInHand;//デバッグ用
+                    gameState = GameState.preCalibration;
+                    //gameState = GameState.spinInHand;//デバッグ用
                     //animationController.anim.StopPlayback();
                     TurnOffAdivces();
                     spinController.StopSuccessEffect();
@@ -248,13 +252,13 @@ public class GameLoop : MonoBehaviour
         Great.SetActive(false);
     }
 
-    void OnCollisionEnter(Collision collision)
+    /*void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
             Debug.Log("touch Ground");
         }
-    }
+    }*/
     
     public void WindingDistance()//巻取り距離
     {

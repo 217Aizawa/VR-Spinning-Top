@@ -54,13 +54,13 @@ public class AnimationController : MonoBehaviour
     public void SuccessAnim()//成功アニメーション再生関数
     {
 
-        if (SpinController.isThrown == true && countTime > 3)//isThrownかつ投げてから1秒以上経過していれば
+        if (SpinController.isThrown == true && countTime > 0.3)//isThrownかつ投げてから1秒以上経過していれば
             anim.SetTrigger("Success");
     }
 
     public void FailAnim()//失敗アニメーション再生関数
     {
-        if (SpinController.isThrown == true && countTime > 3)
+        if (SpinController.isThrown == true && countTime > 0.3)
             anim.SetTrigger("Fail");
     }
 }

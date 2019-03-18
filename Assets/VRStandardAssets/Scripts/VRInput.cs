@@ -56,13 +56,11 @@ namespace VRStandardAssets.Utils
         {
             if (m_InteractiveItem.IsOver)//視線を外した後にも、前の情報が残っている。
             {
-                Debug.Log("Is Over");
                 if (OnDown != null)
                     OnDown();
             }
             else if (m_InteractiveItem.IsOver != true)
             {
-                Debug.Log("Now else");
                 if (OnUp != null)
                     OnUp();
             }
@@ -75,13 +73,11 @@ namespace VRStandardAssets.Utils
 
             if (m_InteractiveItem.IsOver)//視線を外した後にも、前の情報が残っている。
             {
-                Debug.Log("Is Over");
                 if (OnDown != null)
                     OnDown();
             }
             else if (m_InteractiveItem.IsOver != true)
             {
-                Debug.Log("Now else");
                 if (OnUp != null)
                     OnUp();
             }
@@ -90,7 +86,6 @@ namespace VRStandardAssets.Utils
             {
                 // When Fire1 is pressed record the position of the mouse.
                 m_MouseDownPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-                Debug.Log("Mouse Button Down");
 
                 // If anything has subscribed to OnDown call it.
                 if (OnDown != null)
@@ -135,7 +130,7 @@ namespace VRStandardAssets.Utils
                     // If it's not a double click, it's a single click.
                     // If anything has subscribed to OnClick call it.
                     if (OnClick != null)
-                        OnClick();//Debug.Log("OnClick");
+                        OnClick();
                 }
 
                 // Record the time when Fire1 is released.

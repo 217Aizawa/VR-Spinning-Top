@@ -14,7 +14,7 @@ public class QuitController : MonoBehaviour
     void Update()
     {
         if (Input.GetKey("escape"))
-            UnityEditor.EditorApplication.isPlaying = false;
-        //Application.Quit();
+            UnityEngine.Application.Quit();
+        //UnityEditor.EditorApplication.isPlaying = false;
     }
 }

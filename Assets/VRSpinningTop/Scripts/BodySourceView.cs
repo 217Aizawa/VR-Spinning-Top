@@ -296,7 +296,7 @@ public class BodySourceView : MonoBehaviour
     {
         Vector3 globalPosition = GetVector3FromJoint(joint);
 
-        GameLoop gl = gameLoop.GetComponent<GameLoop>();
+        //GameLoop gl = gameLoop.GetComponent<GameLoop>();
         /*        if (!gl.isHMD)
                 {
                     localPosition.x *= gl.SpreadFactor;
@@ -316,18 +316,21 @@ public class BodySourceView : MonoBehaviour
         
         for (Kinect.JointType jt = Kinect.JointType.SpineBase; jt <= Kinect.JointType.ThumbRight; jt++)
         {
-            GameObject jointObj = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            
-            LineRenderer lr = jointObj.AddComponent<LineRenderer>();
-            lr.SetVertexCount(2);
-            lr.material = BoneMaterial;
-            lr.SetWidth(0.05f, 0.05f);
+            if (jt == Kinect.JointType.HandLeft || jt == Kinect.JointType.HandRight)
+            {
+                GameObject jointObj = GameObject.CreatePrimitive(PrimitiveType.Cube);
+
+                LineRenderer lr = jointObj.AddComponent<LineRenderer>();
+                lr.SetVertexCount(2);
+                lr.material = BoneMaterial;
+                lr.SetWidth(0.05f, 0.05f);
 
 
-            
-            jointObj.transform.localScale = new Vector3(0.025f, 0.025f, 0.025f);//KinectBodyの大きさを設定できる 0.3f, 0.3f, 0.3f
-            jointObj.name = jt.ToString();
-            jointObj.transform.parent = body.transform;//body.transform
+
+                jointObj.transform.localScale = new Vector3(0.025f, 0.025f, 0.025f);//KinectBodyの大きさを設定できる 0.3f, 0.3f, 0.3f
+                jointObj.name = jt.ToString();
+                jointObj.transform.parent = body.transform;//body.transform
+            }
 
         }
 
@@ -338,26 +341,33 @@ public class BodySourceView : MonoBehaviour
     {
         for (Kinect.JointType jt = Kinect.JointType.SpineBase; jt <= Kinect.JointType.ThumbRight; jt++)
         {
-            Kinect.Joint sourceJoint = body.Joints[jt];
-            Kinect.Joint? targetJoint = null;
-            
-            if(_BoneMap.ContainsKey(jt))
+            if (jt == Kinect.JointType.HandLeft || jt == Kinect.JointType.HandRight)
             {
-                targetJoint = body.Joints[_BoneMap[jt]];
-            }
-            
-            Transform jointObj = bodyObject.transform.Find(jt.ToString());
-            jointObj.localPosition = GetVector3FromJointWithOffset(sourceJoint);//Bodyを表示
-            
-            LineRenderer lr = jointObj.GetComponent<LineRenderer>();
-            if(targetJoint.HasValue)
-            {
-                lr.SetPosition(0, jointObj.localPosition);
-                lr.SetPosition(1, GetVector3FromJointWithOffset(targetJoint.Value));
-                lr.SetColors(GetColorForState (sourceJoint.TrackingState), GetColorForState(targetJoint.Value.TrackingState));
-            }
-            else
-            {
+                Kinect.Joint sourceJoint = body.Joints[jt];
+                Kinect.Joint? targetJoint = null;
+
+                if (_BoneMap.ContainsKey(jt))
+                {
+                    targetJoint = body.Joints[_BoneMap[jt]];
+                }
+
+                Transform jointObj = bodyObject.transform.Find(jt.ToString());
+                jointObj.localPosition = GetVector3FromJointWithOffset(sourceJoint);//Bodyを表示
+
+
+                LineRenderer lr = jointObj.GetComponent<LineRenderer>();
+                /*
+                if(targetJoint.HasValue)
+                {
+                    lr.SetPosition(0, jointObj.localPosition);
+                    lr.SetPosition(1, GetVector3FromJointWithOffset(targetJoint.Value));
+                    lr.SetColors(GetColorForState (sourceJoint.TrackingState), GetColorForState(targetJoint.Value.TrackingState));
+                }
+                else
+                {
+                    lr.enabled = false;
+                }
+                */
                 lr.enabled = false;
             }
         }
