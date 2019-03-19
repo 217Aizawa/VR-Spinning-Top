@@ -20,6 +20,8 @@ public class GameLoop : MonoBehaviour
     private float afterTime = 0;//投げ終わってからの時間
     bool Success;
 
+    public GameObject Camera;
+
     //投げ出し、引く速さ、引き始めの順番
     public GameObject VisorHUD;
     public GameObject Image;
@@ -47,7 +49,7 @@ public class GameLoop : MonoBehaviour
         Judge();
         //ModeSelect(); //デバッグ用
         
-        if (JudgeController.isHeight == "tall")
+        if (JudgeController.isHeight == "tall")//PROJECTOR
         {
             bodySourceView.KomaObj.transform.position = new Vector3(0, 2.05f, 1);
         }
@@ -60,6 +62,10 @@ public class GameLoop : MonoBehaviour
         {
             bodySourceView.KomaObj.transform.position = new Vector3(0, 1.32f, 1);
 
+        }
+        else if (JudgeController.isJudge = true && JudgeController.isHeight != null)
+        {
+            bodySourceView.KomaObj.transform.position = Camera.transform.position + new Vector3(0, 0.5f, 0.5f);
         }
     }
 
@@ -328,15 +334,6 @@ public class GameLoop : MonoBehaviour
         {
             isHMD = false;
             XRSettings.enabled = false;
-        }
-
-        if(isHMD == true)
-        {
-            VisorHUD.transform.position = new Vector3(0, 0, 0.6f);
-        }
-        else
-        {
-            
         }
     }
 

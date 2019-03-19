@@ -70,6 +70,8 @@ public class BodySourceView : MonoBehaviour
         { Kinect.JointType.Neck, Kinect.JointType.Head },
     };
 
+
+
     void Start()
     {
         

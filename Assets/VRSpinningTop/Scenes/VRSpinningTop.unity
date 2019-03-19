@@ -1504,6 +1504,7 @@ MonoBehaviour:
   bodySourceView: {fileID: 1937581793}
   animationController: {fileID: 445599731}
   isHMD: 0
+  Camera: {fileID: 73311030}
   VisorHUD: {fileID: 610846873}
   Image: {fileID: 1476730968}
   ThrowF: {fileID: 1889953701}
@@ -3495,6 +3496,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 687048550}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1932859470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932859469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc14a64b368e8e249bc4b201a950344a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Obj: {fileID: 0}
 --- !u!1 &1937581790
 GameObject:
   m_ObjectHideFlags: 0
