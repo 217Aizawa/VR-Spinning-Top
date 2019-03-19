@@ -45,7 +45,22 @@ public class GameLoop : MonoBehaviour
     private void Awake()
     {
         Judge();
-        ModeSelect(); //デバッグ用
+        //ModeSelect(); //デバッグ用
+
+        if (JudgeController.isHeight == "tall")
+        {
+            bodySourceView.KomaObj.transform.position = new Vector3(0, 2.05f, 1);
+        }
+        else if (JudgeController.isHeight == "middle")
+        {
+            bodySourceView.KomaObj.transform.position = new Vector3(0, 1.75f, 1);
+
+        }
+        else if (JudgeController.isHeight == "short")
+        {
+            bodySourceView.KomaObj.transform.position = new Vector3(0, 1.32f, 1);
+
+        }
     }
 
     // Use this for initialization

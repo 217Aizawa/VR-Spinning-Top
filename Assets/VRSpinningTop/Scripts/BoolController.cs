@@ -26,7 +26,7 @@ public class BoolController : MonoBehaviour
         if (!JudgeController.isJudge)//PROJECTOR MODE
             timeCount += Time.deltaTime;
         
-        if(timeCount >= 3)//4秒経過したら次のシーンに遷移する
+        if(timeCount >= 0.5)//3秒経過したら次のシーンに遷移する
         {
             SceneManager.LoadScene(2);
         }
