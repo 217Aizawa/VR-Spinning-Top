@@ -46,7 +46,7 @@ public class GameLoop : MonoBehaviour
     {
         Judge();
         //ModeSelect(); //デバッグ用
-
+        
         if (JudgeController.isHeight == "tall")
         {
             bodySourceView.KomaObj.transform.position = new Vector3(0, 2.05f, 1);
@@ -162,9 +162,9 @@ public class GameLoop : MonoBehaviour
                 if (afterTime > 3 || stringController.isPulling == false)
                 {
                     if (isHMD)
-                        VisorHUD.transform.localPosition = new Vector3(0,0,0.6f);
+                        VisorHUD.transform.localPosition = new Vector3(0,0,0.8f);
                     else
-                        VisorHUD.transform.localPosition = new Vector3(0, 0, 0.4f);
+                        VisorHUD.transform.localPosition = new Vector3(0, 0, 0.5f);
 
                     Image.SetActive(true);
 

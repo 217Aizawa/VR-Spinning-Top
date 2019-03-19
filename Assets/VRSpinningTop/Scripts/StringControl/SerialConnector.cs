@@ -73,7 +73,8 @@ public class SerialConnector : MonoBehaviour {
             }
             catch (System.Exception)
             {
-                throw;
+                
+                break;
             }
         }
     }

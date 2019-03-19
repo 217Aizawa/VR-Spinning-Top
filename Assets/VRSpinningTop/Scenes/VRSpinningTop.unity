@@ -1503,7 +1503,7 @@ MonoBehaviour:
   kinectController: {fileID: 1646389738}
   bodySourceView: {fileID: 1937581793}
   animationController: {fileID: 445599731}
-  isHMD: 1
+  isHMD: 0
   VisorHUD: {fileID: 610846873}
   Image: {fileID: 1476730968}
   ThrowF: {fileID: 1889953701}
