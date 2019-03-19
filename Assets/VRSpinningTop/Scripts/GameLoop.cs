@@ -48,8 +48,12 @@ public class GameLoop : MonoBehaviour
     {
         Judge();
         //ModeSelect(); //デバッグ用
-        
-        if (JudgeController.isHeight == "tall")//PROJECTOR
+        if (JudgeController.isJudge == true && JudgeController.isHeight != null )
+        {
+            Debug.Log("Done");
+            bodySourceView.KomaObj.transform.position = Camera.transform.position + new Vector3(0, 0.6f, 0.3f);//0.5
+        }
+        else if (JudgeController.isHeight == "tall")//PROJECTOR
         {
             bodySourceView.KomaObj.transform.position = new Vector3(0, 2.05f, 1);
         }
@@ -63,10 +67,7 @@ public class GameLoop : MonoBehaviour
             bodySourceView.KomaObj.transform.position = new Vector3(0, 1.32f, 1);
 
         }
-        else if (JudgeController.isJudge = true && JudgeController.isHeight != null)
-        {
-            bodySourceView.KomaObj.transform.position = Camera.transform.position + new Vector3(0, 0.5f, 0.5f);
-        }
+        
     }
 
     // Use this for initialization

@@ -10,7 +10,7 @@ public class TextHeight : MonoBehaviour
     {
         if (JudgeController.isHeight == "tall")
         {
-            Text.transform.position = new Vector3(0, 2.85f, 4);
+            Text.transform.position = new Vector3(0, 3.0f, 4);
         }
         else if (JudgeController.isHeight == "middle")
         {
