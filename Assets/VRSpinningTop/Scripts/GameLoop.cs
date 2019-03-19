@@ -21,6 +21,8 @@ public class GameLoop : MonoBehaviour
     bool Success;
 
     //投げ出し、引く速さ、引き始めの順番
+    public GameObject VisorHUD;
+    public GameObject Image;
     public GameObject ThrowF;
     public GameObject ThrowS;
     public GameObject PullSpeedF;
@@ -101,7 +103,12 @@ public class GameLoop : MonoBehaviour
 
                 if (Input.GetKey(KeyCode.Backspace))//JudgeSceneに遷移
                     SceneManager.LoadScene("JudgeScene");
-
+                if (Input.GetKey(KeyCode.V))
+                {
+                    SpinController.isThrown = true;
+                    Debug.Log("IsThrown True");
+                }
+                SpinController.isThrown = false;
                 break;
             case GameState.spinInHand:
                 //animationController.anim.SetTrigger("Idle");
@@ -139,6 +146,13 @@ public class GameLoop : MonoBehaviour
                 // 投げ終わって2秒経過　or 糸を引ききったら結果表示に0.3
                 if (afterTime > 3 || stringController.isPulling == false)
                 {
+                    if (isHMD)
+                        VisorHUD.transform.localPosition = new Vector3(0,0,0.6f);
+                    else
+                        VisorHUD.transform.localPosition = new Vector3(0, 0, 0.4f);
+
+                    Image.SetActive(true);
+
                     Vector3 Vkoma = spinController.velocity;
                     //Vkoma.z = 0;
                     float komaSpeed = Vkoma.magnitude;//ベクトルの長さを返す。
@@ -244,6 +258,7 @@ public class GameLoop : MonoBehaviour
 
     void TurnOffAdivces()
     {
+        Image.SetActive(false);
         ThrowF.SetActive(false);
         ThrowS.SetActive(false);
         PullSpeedF.SetActive(false);
@@ -293,10 +308,20 @@ public class GameLoop : MonoBehaviour
         {
             isHMD = JudgeController.isJudge;
             XRSettings.enabled = true;
+
         }else
         {
-            //isHMD = false;
+            isHMD = false;
             XRSettings.enabled = false;
+        }
+
+        if(isHMD == true)
+        {
+            VisorHUD.transform.position = new Vector3(0, 0, 0.6f);
+        }
+        else
+        {
+            
         }
     }
 
