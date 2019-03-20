@@ -191,6 +191,7 @@ public class GameLoop : MonoBehaviour
                     ChangeGameStateToNext();
 
                     Success = true;
+                    /*
                     if (4.5 <= komaSpeed)//速すぎる
                     {
                         animationController.FailAnim();//失敗時のアニメーション
@@ -229,7 +230,7 @@ public class GameLoop : MonoBehaviour
                         PullSpeedF.SetActive(true);
                         Success = false;
                     }
-                    
+                    */
                     if (Success == true)//成功
                     {
                         animationController.SuccessAnim();

@@ -12,7 +12,7 @@ public class CamraHeight : MonoBehaviour
         
         if (JudgeController.isHeight == "tall")
         {
-            cameraParent.transform.position = new Vector3(0, 1.7f, 0);
+            cameraParent.transform.position = new Vector3(0, 1.7f, 0f);
         }
         else if(JudgeController.isHeight == "middle")
         {

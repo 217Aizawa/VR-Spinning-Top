@@ -243,7 +243,7 @@ public class BodySourceView : MonoBehaviour
                 //WristKoma = GameObject.Find("WristLeft");
                 HandKoma = GameObject.Find("HandLeft");
 
-                Debug.Log("Converted LeftHandedness");
+                //Debug.Log("Converted LeftHandedness");
                 //KomaObj.transform.parent = WristKoma.transform;//正常に動作する
                 KomaObj.transform.parent = HandKoma.transform;
 
@@ -255,7 +255,7 @@ public class BodySourceView : MonoBehaviour
                 //WristKoma = GameObject.Find("WristRight");
                 HandKoma = GameObject.Find("HandRight");
 
-                Debug.Log("Converted RightHandedness");
+                //Debug.Log("Converted RightHandedness");
                 //KomaObj.transform.parent = WristKoma.transform;
                 KomaObj.transform.parent = HandKoma.transform;
 
@@ -276,7 +276,6 @@ public class BodySourceView : MonoBehaviour
                 Vector3 posPro = Camera.transform.position;//プロジェクター用ベクター3
                 //Camera.transform.position = posHeadKinect;//このままだと地面に埋まった状態で生成されてしまう
                 OffsetToWorld = posPro - posHeadKinect;
-
             }
             //sendSkeleton(data[trackedId]);
             
@@ -426,7 +425,7 @@ public class BodySourceView : MonoBehaviour
             //CreatePrefab();
             // KomaObj.transform.parent = HandKoma.transform;
             KomaObj.transform.localPosition = Vector3.zero;
-            Debug.Log("Success Instatiate");
+           // Debug.Log("Success Instatiate");
         }
         else//Right
         {
