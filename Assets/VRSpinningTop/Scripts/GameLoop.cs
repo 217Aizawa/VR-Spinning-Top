@@ -191,21 +191,21 @@ public class GameLoop : MonoBehaviour
                     ChangeGameStateToNext();
 
                     Success = true;
-                    /*
-                    if (4.5 <= komaSpeed)//速すぎる
+                    
+                    if (3.0f <= komaSpeed)//速すぎる
                     {
                         animationController.FailAnim();//失敗時のアニメーション
                         ThrowS.SetActive(true);
                         Success = false;
                     }
-                    else if (komaSpeed < 1.5)//遅すぎる
+                    else if (komaSpeed < 1.2f)//遅すぎる
                     {
                         animationController.FailAnim();
                         ThrowF.SetActive(true);
                         Success = false;
                     }
                     
-                    if (0.8 < pullTimeStartUp)//遅すぎ0.2
+                    if (0.75 < pullTimeStartUp)//遅すぎ0.2
                     {
                         animationController.FailAnim();
                         PullStartF.SetActive(true);
@@ -218,19 +218,19 @@ public class GameLoop : MonoBehaviour
                         Success = false;
                     }
 
-                    if (7000 < pullSpeed)//速すぎ
+                    if (3500 < pullSpeed)//速すぎ
                     {
                         animationController.FailAnim();
                         PullSpeedS.SetActive(true);
                         Success = false;
                     }
-                    else if (pullSpeed < 3000)//遅すぎ
+                    else if (pullSpeed < 1000)//遅すぎ
                     {
                         animationController.FailAnim();
                         PullSpeedF.SetActive(true);
                         Success = false;
                     }
-                    */
+                    
                     if (Success == true)//成功
                     {
                         animationController.SuccessAnim();
