@@ -48,7 +48,7 @@ public class GameLoop : MonoBehaviour
     {
         Judge();
         //ModeSelect(); //デバッグ用
-        if (JudgeController.isJudge == true && JudgeController.isHeight != null )
+        /*if (JudgeController.isJudge == true && JudgeController.isHeight != null )
         {
             Debug.Log("Done");
             bodySourceView.KomaObj.transform.position = Camera.transform.position + new Vector3(0, 0.6f, 0.3f);//0.5
@@ -66,7 +66,7 @@ public class GameLoop : MonoBehaviour
         {
             bodySourceView.KomaObj.transform.position = new Vector3(0, 1.32f, 1);
 
-        }
+        }*/
         
     }
 
@@ -75,6 +75,27 @@ public class GameLoop : MonoBehaviour
     {
         gameState = GameState.free;
         stringController.setMotorMode(StringController.MotorMode.isFree);
+        if (JudgeController.isJudge == true && JudgeController.isHeight != null)
+        {
+            bodySourceView.KomaObj.transform.position = Camera.transform.position + new Vector3(0, 0.6f, 0.3f);//0.5
+        }
+        else
+        {
+            bodySourceView.KomaObj.transform.position = new Vector3(0, 1.2f, 1); 
+        }
+        /*else if (JudgeController.isHeight == "tall")//PROJECTOR
+        {
+            bodySourceView.KomaObj.transform.position = new Vector3(0, 2.05f, 1);
+        }
+        else if (JudgeController.isHeight == "middle")
+        {
+            bodySourceView.KomaObj.transform.position = new Vector3(0, 1.75f, 1);
+
+        }
+        else if (JudgeController.isHeight == "short")
+        {
+            bodySourceView.KomaObj.transform.position = new Vector3(0, 1.32f, 1);
+        }*/
     }
 
     // Update is called once per frame
@@ -125,12 +146,7 @@ public class GameLoop : MonoBehaviour
 
                 if (Input.GetKey(KeyCode.Backspace))//JudgeSceneに遷移
                     SceneManager.LoadScene("JudgeScene");
-                if (Input.GetKey(KeyCode.V))
-                {
-                    SpinController.isThrown = true;
-                    Debug.Log("IsThrown True");
-                }
-                SpinController.isThrown = false;
+                 SpinController.isThrown = false;
                 break;
             case GameState.spinInHand:
                 //animationController.anim.SetTrigger("Idle");
