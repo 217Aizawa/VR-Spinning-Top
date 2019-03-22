@@ -13,6 +13,10 @@ public class BodySourceView : MonoBehaviour
     public GameObject Koma;
     //GameObject WristKoma;
     GameObject HandKoma;
+
+    public Vector3 playerPositionCenter;        // プレイヤーが立っていると想定する場所。この場所に一番近い人を Kinect の検出対象とする。y 座標は無視。
+
+
     public GameObject KomaObj;
     public GameObject Text;//3Dテキスト
 
@@ -74,7 +78,7 @@ public class BodySourceView : MonoBehaviour
 
     void Start()
     {
-        
+        playerPositionCenter.y = 0;
     }
 
   
@@ -127,7 +131,7 @@ public class BodySourceView : MonoBehaviour
                 _Bodies.Remove(trackingId);
             }
         }
-        Vector3 closestPosition = Vector3.zero;
+        float closestDist = 99999;
         GameLoop gl = gameLoop.GetComponent<GameLoop>();
 
         //foreach(var body in data) ボディ取り出し
@@ -160,13 +164,18 @@ public class BodySourceView : MonoBehaviour
                 }
 
                 // closest player detection
-                if (Mathf.Abs(headPos.x) < 0.6f)//&& gl.state != GameLoop.GameState.End)(1.0f)
+                Vector3 headPosOnGround = headPos;
+                headPosOnGround.y = 0;
+
+                float aplayerDist = (playerPositionCenter - headPosOnGround).sqrMagnitude;
+                if ( Mathf.Abs(headPos.x) < 5.0f )//&& gl.state != GameLoop.GameState.End)(1.0f)
                 {
-                    if (closestPosition == Vector3.zero || Mathf.Abs(closestPosition.z) > Mathf.Abs(headPos.z))
+                    if (aplayerDist < closestDist)
                     {
                         trackedId = i;//IDを割り当てる
-                        closestPosition = headPos;//一番近い人を覚える
-  //                      Debug.Log("trackedId" + " = " + trackedId);
+                        closestDist = aplayerDist;//一番近い人を覚える
+//                        Debug.Log("trackedId" + " = " + trackedId);
+//                        Debug.Log(i + ":" + headPos.x + ":" + headPos.y + ":" + headPos.z);
                     }
                 }
             }
@@ -223,16 +232,13 @@ public class BodySourceView : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.KeypadEnter))//利き手強制切り替えスクリプト（テンキーのEnterキー）
             {
-                Debug.Log("GetKeyDown Enter");
                 if (handedness == -1)//左手なら
                 {
                     handedness = 1;
-                    Debug.Log("Converted RightHandedness");
                 }
                 else if (handedness == 1)//右手なら
                 {
                     handedness = -1;
-                    Debug.Log("Converted LeftHandedness");
                 }
             }
 
@@ -284,7 +290,7 @@ public class BodySourceView : MonoBehaviour
 
     private Vector3 GetVector3FromJoint(Kinect.Joint joint)//座標を返す関数 KinectのJointを受け取る
     {
-        Vector3 localPosition = new Vector3(joint.Position.X * 1, joint.Position.Y * 1, joint.Position.Z * -1);//KinectとUnityの世界は約10倍違う(メートルに直す)
+        Vector3 localPosition = new Vector3(joint.Position.X, joint.Position.Y, -joint.Position.Z );//いまは表示系のスケールで無理やり合わせている。ここの単位は多分 [10cm]
         Vector3 globalPosition = gameObject.transform.TransformPoint(localPosition);//Kinect座標をグローバル(Unity)座標に変換
 
         return globalPosition;

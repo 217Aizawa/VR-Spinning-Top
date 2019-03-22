@@ -33,19 +33,26 @@ public class CameraController : MonoBehaviour
             target = GameObject.FindWithTag("KomaChild");
 
             cmOffset = mainCamera.transform.position - target.transform.position;
+            //Debug.Log("cmOffset" + "/" + cmOffset);
 
             //cmOffset.Normalize();
-            
-            //本番用 isJudge.ver
-            cmOffset.y = 0.3f;
-            cmOffset.Normalize();
+
+            //本番用
 
 
-            if (JudgeController.isJudge || gl.isHMD)//VRmodeならばcmoOffsetを1.5に
-                cmOffset = cmOffset * 1f; 
-            else
-                cmOffset = cmOffset * 0.7f;//PROJECTORmodeならばcmOffsetを0.5に
-            
+
+            if (JudgeController.isJudge || gl.isHMD)//VRmodeならば、結果表示カメラは１ｍ先
+            {
+                cmOffset.y = 0.3f;
+                cmOffset = cmOffset.normalized * 1f;
+            }
+            else //PROJECTORmodeならば、結果表示カメラは60ｃｍ先
+            {
+                cmOffset = cmOffset.normalized * 0.2f;
+                cmOffset.y = -0.2f;//0f
+                Debug.Log("cmOffset" + "/" + cmOffset);
+            }
+
 
             Vector3 arrow = target.transform.position + cmOffset - mainCamera.transform.position;//サブカメラにいて欲しい座標
             transform.parent.transform.position = arrow;

@@ -120,6 +120,10 @@ public class GameLoop : MonoBehaviour
                     ChangeGameStateToNext();
                 }
                 stringController.setMotorMode(StringController.MotorMode.isFree);
+
+                if(Input.GetKeyDown(KeyCode.Backspace))
+                    SceneManager.LoadScene("JudgeScene");
+
                 break;
             // 紐巻取り（紐を十分短く）　利き手判定
             case GameState.preCalibration:
@@ -152,7 +156,7 @@ public class GameLoop : MonoBehaviour
                 //animationController.anim.SetTrigger("Idle");
                 GameObject.FindGameObjectWithTag("KomaChild").transform.position = bodySourceView.handednessHandPos;
 
-                if (SpinController.isThrown == true || Input.GetKeyDown(KeyCode.Space) )//投げられたら。
+                if (SpinController.isThrown == true || Input.GetKeyDown(KeyCode.T) )//投げられたら。
                 {
                     SpinController.isThrown = true; // スペースキーで遷移したときに強制的に投げた状態にする
                     stringController.setMotorMode(StringController.MotorMode.isShowingResistance);
@@ -181,7 +185,7 @@ public class GameLoop : MonoBehaviour
                 //コマの成功・失敗判定のパラメータ
                 
 
-                // 投げ終わって2秒経過　or 糸を引ききったら結果表示に0.3
+                // 投げ終わって3秒経過　or 糸を引ききったら結果表示に
                 if (afterTime > 3 || stringController.isPulling == false)
                 {
                     if (isHMD)
@@ -258,7 +262,7 @@ public class GameLoop : MonoBehaviour
                 break;
             case GameState.result:
                 stringController.setMotorMode(StringController.MotorMode.isRewinding);
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.S))
                 {
                     gameState = GameState.free;     // ResetScene でシーンがリロードされるので、実際には不要
                     ResetScene();//追加

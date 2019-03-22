@@ -28,7 +28,7 @@ public class TextHeight : MonoBehaviour
         }
         else
         {
-            Text.transform.position = new Vector3(0, 3, 4);
+            Text.transform.position = new Vector3(0, 2, 4);
 
         }
     }
