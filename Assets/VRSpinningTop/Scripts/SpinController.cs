@@ -72,9 +72,8 @@ public class SpinController : MonoBehaviour
 
             if (currentForce.magnitude < ThrowOffThreshold)    // 投げ出し判定
             {
-                Debug.Log("投げ出し検知加速度 " + currentForce.magnitude);
+                //Debug.Log("投げ出し検知加速度 " + currentForce.magnitude);
                 isThrown = true;
-                Debug.Log(isThrown);
                 velocity = Vector3.zero;
                 if (velocities.Count > 1)
                 {

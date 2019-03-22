@@ -73,6 +73,7 @@ public class GameLoop : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        animationController.IdleAnim();
         gameState = GameState.free;
         stringController.setMotorMode(StringController.MotorMode.isFree);
         if (JudgeController.isJudge == true && JudgeController.isHeight != null)
@@ -203,15 +204,15 @@ public class GameLoop : MonoBehaviour
                     float pullTimeStartUp = stringController.timeStartup;
                     float pullTimeTotal = stringController.timeTotal;
                     float pullSpeed = stringController.maxPullingSpeed;
-                    Debug.Log("KomaSpeed" + ":" + komaSpeed + " / " +"RotationSpeed " + ":" + komaRotationSpped + " " + "Angle" + ":" + komaAngle + "\n"
-                        +  "TimeStartUp" + ":" + pullTimeStartUp + "/ " + "TimeTotal : " + pullTimeTotal + " / " + "Speed : " + pullSpeed);
+                    /*Debug.Log("KomaSpeed" + ":" + komaSpeed + " / " +"RotationSpeed " + ":" + komaRotationSpped + " " + "Angle" + ":" + komaAngle + "\n"
+                        +  "TimeStartUp" + ":" + pullTimeStartUp + "/ " + "TimeTotal : " + pullTimeTotal + " / " + "Speed : " + pullSpeed);*/
 
 
                     stringController.setMotorMode(StringController.MotorMode.isFree);
                     ChangeGameStateToNext();
 
                     Success = true;
-                    
+                    /*
                     if (3.0f <= komaSpeed)//速すぎる
                     {
                         animationController.FailAnim();//失敗時のアニメーション
@@ -250,7 +251,7 @@ public class GameLoop : MonoBehaviour
                         PullSpeedF.SetActive(true);
                         Success = false;
                     }
-                    
+                    */
                     if (Success == true)//成功
                     {
                         animationController.SuccessAnim();

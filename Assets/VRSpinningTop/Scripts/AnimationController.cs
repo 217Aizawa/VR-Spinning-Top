@@ -56,12 +56,15 @@ public class AnimationController : MonoBehaviour
 
         if (SpinController.isThrown == true && countTime > 3)//isThrownかつ投げてから1秒以上経過していれば
             anim.SetTrigger("Success");
+        Debug.Log("Anim");
     }
 
     public void FailAnim()//失敗アニメーション再生関数
     {
         if (SpinController.isThrown == true && countTime > 3)
             anim.SetTrigger("Fail");
+        Debug.Log("Anim");
+
     }
     public void IdleAnim()
     {

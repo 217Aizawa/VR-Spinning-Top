@@ -50,7 +50,6 @@ public class CameraController : MonoBehaviour
             {
                 cmOffset = cmOffset.normalized * 0.2f;
                 cmOffset.y = -0.2f;//0f
-                Debug.Log("cmOffset" + "/" + cmOffset);
             }
 
 

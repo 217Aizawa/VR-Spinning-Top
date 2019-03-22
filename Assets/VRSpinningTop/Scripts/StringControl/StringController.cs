@@ -102,7 +102,7 @@ public class StringController : MonoBehaviour {
 
                     timeTotal = records[records.Count - 1].timestamp;
 
-                    Debug.Log(timeStartup + " | " + timeTotal + " | " + maxPullingSpeed);
+                    //Debug.Log(timeStartup + " | " + timeTotal + " | " + maxPullingSpeed);
                 }
                 break;
 
