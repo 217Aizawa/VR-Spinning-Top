@@ -82,7 +82,7 @@ public class GameLoop : MonoBehaviour
         }
         else
         {
-            bodySourceView.KomaObj.transform.position = new Vector3(0, 1.2f, 1); 
+            bodySourceView.KomaObj.transform.position = new Vector3(0, 1.2f, 1);
         }
         /*else if (JudgeController.isHeight == "tall")//PROJECTOR
         {
@@ -212,7 +212,7 @@ public class GameLoop : MonoBehaviour
                     ChangeGameStateToNext();
 
                     Success = true;
-                    /*
+                    
                     if (3.0f <= komaSpeed)//速すぎる
                     {
                         animationController.FailAnim();//失敗時のアニメーション
@@ -251,7 +251,7 @@ public class GameLoop : MonoBehaviour
                         PullSpeedF.SetActive(true);
                         Success = false;
                     }
-                    */
+                    
                     if (Success == true)//成功
                     {
                         animationController.SuccessAnim();

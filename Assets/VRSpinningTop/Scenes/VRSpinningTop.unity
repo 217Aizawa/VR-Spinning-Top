@@ -3672,7 +3672,7 @@ MonoBehaviour:
   gameLoop: {fileID: 773101332}
   Camera: {fileID: 1175884684}
   Koma: {fileID: 1046440975728644, guid: 2a10d64885a463441959e7d082a7595e, type: 3}
-  playerPositionCenter: {x: 0, y: 1.3, z: 0.3}
+  playerPositionCenter: {x: 0, y: 0.3, z: -2.2}
   KomaObj: {fileID: 1932859469}
   Text: {fileID: 1536402672}
   headPos: {x: 0, y: 0, z: 0}

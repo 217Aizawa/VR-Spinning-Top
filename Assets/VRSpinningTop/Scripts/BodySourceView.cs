@@ -78,7 +78,7 @@ public class BodySourceView : MonoBehaviour
 
     void Start()
     {
-        playerPositionCenter.y = 0;
+        //playerPositionCenter.y = 0;
     }
 
   
@@ -145,9 +145,7 @@ public class BodySourceView : MonoBehaviour
             if (data[i].IsTracked)
             {
                 //get kinect coodinate without offset　[i] ボディ型、Joints{  } JointTypeからJointへの辞書　JointはVector3のようなもの
-                headPos = GetVector3FromJointWithOffset(data[i].Joints[Kinect.JointType.Head]);
-                handLeftPos = GetVector3FromJointWithOffset(data[i].Joints[Kinect.JointType.HandLeft]);
-                handRightPos = GetVector3FromJointWithOffset(data[i].Joints[Kinect.JointType.HandRight]);
+                Vector3 absoluteHeadPos = GetVector3FromJoint(data[i].Joints[Kinect.JointType.Head]);
 
                 // found new body
                 if (!_Bodies.ContainsKey(data[i].TrackingId))
@@ -155,7 +153,7 @@ public class BodySourceView : MonoBehaviour
                     _Bodies[data[i].TrackingId] = CreateBodyObject(data[i].TrackingId);
                 }
 
-                if (Mathf.Abs(headPos.x) < 0.3f)//&& Mathf.Abs(position.z) < 1.5f)//xの絶対値が両側30センチ＆zは絶対値を取らなくてよい。人が居たら開始
+                if (Mathf.Abs(absoluteHeadPos.x) < 0.3f)//&& Mathf.Abs(position.z) < 1.5f)//xの絶対値が両側30センチ＆zは絶対値を取らなくてよい。人が居たら開始
                 {
                     /*if (!gl.isHMD)
                     {
@@ -164,18 +162,18 @@ public class BodySourceView : MonoBehaviour
                 }
 
                 // closest player detection
-                Vector3 headPosOnGround = headPos;
+                Vector3 headPosOnGround = absoluteHeadPos;
                 headPosOnGround.y = 0;
 
                 float aplayerDist = (playerPositionCenter - headPosOnGround).sqrMagnitude;
-                if ( Mathf.Abs(headPos.x) < 5.0f )//&& gl.state != GameLoop.GameState.End)(1.0f)
+                if ( Mathf.Abs(absoluteHeadPos.x) < 5.0f )//&& gl.state != GameLoop.GameState.End)(1.0f)
                 {
+                    Debug.Log(i + ":" + absoluteHeadPos.x + ":" + absoluteHeadPos.y + ":" + absoluteHeadPos.z);
                     if (aplayerDist < closestDist)
                     {
                         trackedId = i;//IDを割り当てる
                         closestDist = aplayerDist;//一番近い人を覚える
 //                        Debug.Log("trackedId" + " = " + trackedId);
-//                        Debug.Log(i + ":" + headPos.x + ":" + headPos.y + ":" + headPos.z);
                     }
                 }
             }
@@ -189,6 +187,10 @@ public class BodySourceView : MonoBehaviour
         //VR画面で使う
         if (trackedId != -1 && data[trackedId] != null)//Kinectで認識したら
         {
+            headPos = GetVector3FromJointWithOffset(data[trackedId].Joints[Kinect.JointType.Head]);
+            handLeftPos = GetVector3FromJointWithOffset(data[trackedId].Joints[Kinect.JointType.HandLeft]);
+            handRightPos = GetVector3FromJointWithOffset(data[trackedId].Joints[Kinect.JointType.HandRight]);
+
             RefreshBodyObject(data[trackedId], _Bodies[data[trackedId].TrackingId]);//body
 
             LeftHandCounter();//挙手時間計測
@@ -228,6 +230,11 @@ public class BodySourceView : MonoBehaviour
                 handednessHandPos = handRightPos;//右手を利き手に代入
             }
 
+            if (!SpinController.isThrown)
+            {
+                CreatePrefab();
+                GameObject.FindGameObjectWithTag("Koma").transform.position = handednessHandPos;
+            }
 
 
             if (Input.GetKeyDown(KeyCode.KeypadEnter))//利き手強制切り替えスクリプト（テンキーのEnterキー）
