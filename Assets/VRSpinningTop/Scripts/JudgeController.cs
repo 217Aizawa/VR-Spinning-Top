@@ -22,6 +22,7 @@ public class JudgeController : MonoBehaviour
         if (Input.GetKey(KeyCode.V))
         {
             isJudge = true;//static bool
+            Debug.Log("V");
         }
         else if (Input.GetKey(KeyCode.P))
         {
@@ -31,17 +32,18 @@ public class JudgeController : MonoBehaviour
 
         if(isJudge)
         {
-            if (Input.GetKey(KeyCode.Keypad1))//テンキー1
+            if (Input.GetKey(KeyCode.Alpha1))//テンキー1
             {
                 isHeight = "tall";
                 SceneManager.LoadScene(1);
+                Debug.Log("tall");
             }
-            else if (Input.GetKey(KeyCode.Keypad2))
+            else if (Input.GetKey(KeyCode.Alpha2))
             {
                 isHeight = "middle";
                 SceneManager.LoadScene(1);
             }
-            else if (Input.GetKey(KeyCode.Keypad3))
+            else if (Input.GetKey(KeyCode.Alpha3))
             {
                 isHeight = "short";
                 SceneManager.LoadScene(1);

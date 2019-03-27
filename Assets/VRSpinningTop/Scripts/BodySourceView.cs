@@ -168,7 +168,7 @@ public class BodySourceView : MonoBehaviour
                 float aplayerDist = (playerPositionCenter - headPosOnGround).sqrMagnitude;
                 if ( Mathf.Abs(absoluteHeadPos.x) < 5.0f )//&& gl.state != GameLoop.GameState.End)(1.0f)
                 {
-                    Debug.Log(i + ":" + absoluteHeadPos.x + ":" + absoluteHeadPos.y + ":" + absoluteHeadPos.z);
+                    //Debug.Log(i + ":" + absoluteHeadPos.x + ":" + absoluteHeadPos.y + ":" + absoluteHeadPos.z);
                     if (aplayerDist < closestDist)
                     {
                         trackedId = i;//IDを割り当てる
@@ -196,8 +196,10 @@ public class BodySourceView : MonoBehaviour
             LeftHandCounter();//挙手時間計測
             RightHandCounter();
 
+            Debug.Log(handRightPos.y + "/" + headPos.y);
+
             //利き手判定スクリプト（左手）
-            if (riseHand == true && headPos.y < handLeftPos.y && 1 <= leftHandTime)
+            if (riseHand == true && headPos.y * 0.7f < handLeftPos.y && 1 <= leftHandTime)
             {
                 Text.SetActive(false);
                 //WristKoma = GameObject.Find("WristLeft");
@@ -208,7 +210,7 @@ public class BodySourceView : MonoBehaviour
                 KomaObj.transform.localPosition = Vector3.zero;//検証
 
             }
-            else if (riseHand == true && headPos.y < handRightPos.y && 1 <= rightHandTime)
+            else if (riseHand == true && headPos.y * 0.7f < handRightPos.y && 1 <= rightHandTime)
             {
                 Text.SetActive(false);
                 //WristKoma = GameObject.Find("WristRight");
@@ -230,7 +232,7 @@ public class BodySourceView : MonoBehaviour
                 handednessHandPos = handRightPos;//右手を利き手に代入
             }
 
-            if (!SpinController.isThrown)
+            if (!SpinController.isThrown && gameLoop.GetComponent<GameLoop>().gameState != GameLoop.GameState.free )
             {
                 CreatePrefab();
                 GameObject.FindGameObjectWithTag("Koma").transform.position = handednessHandPos;
@@ -411,7 +413,7 @@ public class BodySourceView : MonoBehaviour
      
     public void LeftHandCounter()//左手が上がっている時間をカウントする関数
     {
-        if(headPos.y < handLeftPos.y)
+        if(headPos.y * 0.7f < handLeftPos.y)
         {
             leftHandTime += Time.deltaTime;//毎フレームの時間を加算する
             //Debug.Log("LeftCount Start");
@@ -422,7 +424,7 @@ public class BodySourceView : MonoBehaviour
 
     public void RightHandCounter()//右手が上がっている時間をカウントする関数
     {
-        if(headPos.y < handRightPos.y)
+        if(headPos.y * 0.7f < handRightPos.y)
         {
             rightHandTime += Time.deltaTime;//毎フレームの時間を加算する
             //Debug.Log("RightCount Start");
