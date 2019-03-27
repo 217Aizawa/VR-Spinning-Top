@@ -28,8 +28,8 @@ public class JudgeController : MonoBehaviour
         {
             isJudge = false;
             //SceneManager.LoadScene(1);StartScene
-            SceneManager.LoadScene(2);//VRST
-
+            SceneManager.LoadScene(2);//VRS
+            
         }
 
         if (isJudge)
@@ -55,6 +55,6 @@ public class JudgeController : MonoBehaviour
 
     public void HeightSetting()
     {
-        
+
     }
 }
