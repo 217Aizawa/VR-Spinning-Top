@@ -82,7 +82,7 @@ public class GameLoop : MonoBehaviour
         }
         else
         {
-            bodySourceView.KomaObj.transform.position = new Vector3(0, 1.2f, 1);
+            bodySourceView.KomaObj.transform.position = new Vector3(0, 1.2f, 1);//0/1.2/1
         }
         /*else if (JudgeController.isHeight == "tall")//PROJECTOR
         {
@@ -134,6 +134,7 @@ public class GameLoop : MonoBehaviour
                 break;
             // 紐を引きながらお客さんに手渡す
             case GameState.calibration:
+                animationController.IdleAnim();
                 if (bodySourceView.handedness != 0)
                     GameObject.FindGameObjectWithTag("KomaChild").transform.position = bodySourceView.handednessHandPos;
 
@@ -254,8 +255,8 @@ public class GameLoop : MonoBehaviour
                     
                     if (Success == true)//成功
                     {
+                        spinController.SetSuccessEffect(0.5f);
                         animationController.SuccessAnim();
-                        spinController.SetSuccessEffect(0);
                         Great.SetActive(true);
                     }
 
