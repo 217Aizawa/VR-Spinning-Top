@@ -27,10 +27,12 @@ public class JudgeController : MonoBehaviour
         else if (Input.GetKey(KeyCode.P))
         {
             isJudge = false;
-            SceneManager.LoadScene(1);
+            //SceneManager.LoadScene(1);StartScene
+            SceneManager.LoadScene(2);//VRST
+
         }
 
-        if(isJudge)
+        if (isJudge)
         {
             if (Input.GetKey(KeyCode.Alpha1))//テンキー1
             {

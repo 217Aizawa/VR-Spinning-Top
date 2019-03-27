@@ -73,7 +73,7 @@ public class GameLoop : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        animationController.IdleAnim();
+        //animationController.IdleAnim();
         gameState = GameState.free;
         stringController.setMotorMode(StringController.MotorMode.isFree);
         if (JudgeController.isJudge == true && JudgeController.isHeight != null)
@@ -134,6 +134,8 @@ public class GameLoop : MonoBehaviour
                 break;
             // 紐を引きながらお客さんに手渡す
             case GameState.calibration:
+                animationController.anim.SetTrigger("Idle");
+
                 if (bodySourceView.handedness != 0)
                     GameObject.FindGameObjectWithTag("KomaChild").transform.position = bodySourceView.handednessHandPos;
 
@@ -168,7 +170,6 @@ public class GameLoop : MonoBehaviour
                     //親子関係があると正常に動作しない
                     koma.transform.parent = null;//親子関係を解除する
 
-                    //Debug.Log("isThrown");
                     komaBody.isKinematic = false;
                     komaBody.useGravity = true;
                     komaBody.velocity = spinController.velocity;

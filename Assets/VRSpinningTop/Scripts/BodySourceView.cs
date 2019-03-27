@@ -196,7 +196,7 @@ public class BodySourceView : MonoBehaviour
             LeftHandCounter();//挙手時間計測
             RightHandCounter();
 
-            Debug.Log(handRightPos.y + "/" + headPos.y);
+            //Debug.Log(handRightPos.y + "/" + headPos.y);
 
             //利き手判定スクリプト（左手）
             if (riseHand == true && headPos.y * 0.7f < handLeftPos.y && 1 <= leftHandTime)
