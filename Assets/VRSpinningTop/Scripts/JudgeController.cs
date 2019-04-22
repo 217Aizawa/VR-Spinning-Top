@@ -10,7 +10,7 @@ public class JudgeController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        isJudge = false;
+        GameLoop.isHMD = false;
     }
 
     // Update is called once per frame
@@ -21,18 +21,16 @@ public class JudgeController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.V))
         {
-            isJudge = true;//static bool
-            Debug.Log("V");
+            GameLoop.isHMD = true;
         }
         else if (Input.GetKey(KeyCode.P))
         {
-            isJudge = false;
-            //SceneManager.LoadScene(1);StartScene
-            SceneManager.LoadScene(2);//VRS
+            GameLoop.isHMD = false;
+            SceneManager.LoadScene(2);
             
         }
 
-        if (isJudge)
+        if (GameLoop.isHMD)
         {
             if (Input.GetKey(KeyCode.Alpha1))//テンキー1
             {

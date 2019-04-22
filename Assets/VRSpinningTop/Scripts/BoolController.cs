@@ -10,7 +10,7 @@ public class BoolController : MonoBehaviour
 
     private void Awake()
     {
-        if (JudgeController.isJudge)
+        if (GameLoop.isHMD)
         {
             XRSettings.enabled = true;
         }
@@ -23,7 +23,7 @@ public class BoolController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!JudgeController.isJudge)//PROJECTOR MODE
+        if (!GameLoop.isHMD)//PROJECTOR MODE
             timeCount += Time.deltaTime;
         
         if(timeCount >= 3)//3秒経過したら次のシーンに遷移する

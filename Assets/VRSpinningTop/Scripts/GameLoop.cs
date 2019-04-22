@@ -16,7 +16,7 @@ public class GameLoop : MonoBehaviour
     public KinectController kinectController;//そうすることで、spinControllerの変数を使用することができる。
     public BodySourceView bodySourceView;
     public AnimationController animationController;
-    public bool isHMD = true;
+    public static bool isHMD = true;
     private float afterTime = 0;//投げ終わってからの時間
     bool Success;
 
@@ -67,7 +67,7 @@ public class GameLoop : MonoBehaviour
             bodySourceView.KomaObj.transform.position = new Vector3(0, 1.32f, 1);
 
         }*/
-        
+
     }
 
     // Use this for initialization
@@ -76,7 +76,7 @@ public class GameLoop : MonoBehaviour
         //animationController.IdleAnim();
         gameState = GameState.free;
         stringController.setMotorMode(StringController.MotorMode.isFree);
-        if (JudgeController.isJudge == true && JudgeController.isHeight != null)
+        if (GameLoop.isHMD == true && JudgeController.isHeight != null)
         {
             bodySourceView.KomaObj.transform.position = Camera.transform.position + new Vector3(0, 0.6f, 0.3f);//0.5
         }
@@ -134,12 +134,7 @@ public class GameLoop : MonoBehaviour
                 break;
             // 紐を引きながらお客さんに手渡す
             case GameState.calibration:
-<<<<<<< HEAD
-                animationController.anim.SetTrigger("Idle");
-
-=======
                 animationController.IdleAnim();
->>>>>>> 01cfed013d47f1edc9b0bbe4594fc27190e8d47d
                 if (bodySourceView.handedness != 0)
                     GameObject.FindGameObjectWithTag("KomaChild").transform.position = bodySourceView.handednessHandPos;
 
@@ -178,7 +173,7 @@ public class GameLoop : MonoBehaviour
                     komaBody.useGravity = true;
                     komaBody.velocity = spinController.velocity;
                     komaBody.angularVelocity = Vector3.up * 3.14f;//追加
-                    
+
                     //koma.GetComponent<Rigidbody>().velocity = spinController.velocity;//スピンコントローラの速度を、コマに代入
                 }
 
@@ -187,9 +182,9 @@ public class GameLoop : MonoBehaviour
 
                 break;
             case GameState.spinInAir:
-   
+
                 //コマの成功・失敗判定のパラメータ
-                
+
 
                 // 投げ終わって3秒経過　or 糸を引ききったら結果表示に
                 if (afterTime > 3 || stringController.isPulling == false)
@@ -217,7 +212,7 @@ public class GameLoop : MonoBehaviour
                     ChangeGameStateToNext();
 
                     Success = true;
-                    
+
                     if (3.0f <= komaSpeed)//速すぎる
                     {
                         animationController.FailAnim();//失敗時のアニメーション
@@ -230,7 +225,7 @@ public class GameLoop : MonoBehaviour
                         ThrowF.SetActive(true);
                         Success = false;
                     }
-                    
+
                     if (0.75 < pullTimeStartUp)//遅すぎ0.2
                     {
                         animationController.FailAnim();
@@ -256,7 +251,7 @@ public class GameLoop : MonoBehaviour
                         PullSpeedF.SetActive(true);
                         Success = false;
                     }
-                    
+
                     if (Success == true)//成功
                     {
                         spinController.SetSuccessEffect(0.5f);
@@ -289,7 +284,7 @@ public class GameLoop : MonoBehaviour
                 }
                 break;
         }
-        
+
         //WindingDistance();
 
         /*if (Input.GetKeyDown("space"))
@@ -324,7 +319,7 @@ public class GameLoop : MonoBehaviour
             Debug.Log("touch Ground");
         }
     }*/
-    
+
     public void WindingDistance()//巻取り距離
     {
         windingDevice = stringMachine.transform.position;
@@ -353,14 +348,12 @@ public class GameLoop : MonoBehaviour
 
     void Judge()//JudgeSceneのキー入力を基に表示方法を切り替える
     {
-        if (JudgeController.isJudge)
+        if (GameLoop.isHMD)
         {
-            isHMD = JudgeController.isJudge;
             XRSettings.enabled = true;
 
         }else
         {
-            isHMD = false;
             XRSettings.enabled = false;
         }
     }

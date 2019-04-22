@@ -13,7 +13,7 @@ public class CamraHeight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (gameLoop.isHMD)
+        if (GameLoop.isHMD)
         {
             if (JudgeController.isHeight == "tall")
             {

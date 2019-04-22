@@ -22,7 +22,7 @@ public class TextHeight : MonoBehaviour
             Text.transform.position = new Vector3(0, 2.05f, 4);
         }
         */
-        if (JudgeController.isJudge == true && JudgeController.isHeight != null)
+        if (GameLoop.isHMD == true && JudgeController.isHeight != null)
         {
             Text.transform.position = new Vector3(0, 3.2f, 4);
         }

@@ -279,7 +279,7 @@ public class BodySourceView : MonoBehaviour
             // Get the head position without offsetting to Oculus
             // and use it to determine the offset
             Vector3 posHeadKinect = GetVector3FromJoint(data[trackedId].Joints[Kinect.JointType.Head]);
-            if (gl.isHMD)
+            if (GameLoop.isHMD)
             {
                 Vector3 posOculus = Camera.transform.position;
                 OffsetToWorld = posOculus - posHeadKinect;//Oculusの位置を基準にKinectの座標をずらす。

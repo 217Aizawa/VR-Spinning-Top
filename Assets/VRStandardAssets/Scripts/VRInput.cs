@@ -54,12 +54,12 @@ namespace VRStandardAssets.Utils
 
         private void GazeInput()
         {
-            if (m_InteractiveItem.IsOver)//視線を外した後にも、前の情報が残っている。
+            if (m_InteractiveItem.IsOver)
             {
                 if (OnDown != null)
                     OnDown();
             }
-            else if (m_InteractiveItem.IsOver != true)
+            else
             {
                 if (OnUp != null)
                     OnUp();
@@ -71,7 +71,7 @@ namespace VRStandardAssets.Utils
             // Set the default swipe to be none.
             SwipeDirection swipe = SwipeDirection.NONE;
 
-            if (m_InteractiveItem.IsOver)//視線を外した後にも、前の情報が残っている。
+            if (m_InteractiveItem.IsOver)//視線がUI上にあれば
             {
                 if (OnDown != null)
                     OnDown();

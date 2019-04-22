@@ -41,18 +41,16 @@ public class CameraController : MonoBehaviour
 
 
 
-            if (JudgeController.isJudge || gl.isHMD)//VRmodeならば、結果表示カメラは１ｍ先
+            if (GameLoop.isHMD)//VRmodeならば
             {
                 cmOffset.y = 0.3f;
                 cmOffset = cmOffset.normalized * 1f;
             }
-            else //PROJECTORmodeならば、結果表示カメラは60ｃｍ先
+            else
             {
-                cmOffset = cmOffset.normalized * 0.2f;
                 cmOffset.y = -0.2f;//0f
+                cmOffset = cmOffset.normalized * 0.2f;
             }
-
-
             Vector3 arrow = target.transform.position + cmOffset - mainCamera.transform.position;//サブカメラにいて欲しい座標
             transform.parent.transform.position = arrow;
             transform.LookAt(target.transform);
