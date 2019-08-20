@@ -171,8 +171,8 @@ namespace Oculus.Platform
 
     public static void SetUpdateNotificationCallback(Message<Models.Room>.Callback callback)
     {
-        Callback.SetNotificationCallback(
-          Message.MessageType.Notification_Room_RoomUpdate,
+            Callback.SetNotificationCallback(
+              Message.MessageType.Notification_Room_RoomUpdate,
           callback
         );
     }
@@ -180,8 +180,8 @@ namespace Oculus.Platform
     [Obsolete("Deprecated in favor of SetRoomInviteAcceptedNotificationCallback")]
     public static void SetRoomInviteNotificationCallback(Message<string>.Callback callback)
     {
-        Callback.SetNotificationCallback(
-          Message.MessageType.Notification_Room_InviteAccepted,
+            Callback.SetNotificationCallback(
+              Message.MessageType.Notification_Room_InviteAccepted,
           callback
         );
     }
@@ -189,8 +189,8 @@ namespace Oculus.Platform
     // Be notified when someone you've invited has accepted your invitation.
     public static void SetRoomInviteAcceptedNotificationCallback(Message<string>.Callback callback)
     {
-      Callback.SetNotificationCallback(
-        Message.MessageType.Notification_Room_InviteAccepted,
+            Callback.SetNotificationCallback(
+              Message.MessageType.Notification_Room_InviteAccepted,
         callback
       );
     }
@@ -199,8 +199,8 @@ namespace Oculus.Platform
     // You can also poll for room invites using Notifications.GetRoomInviteNotifications.
     public static void SetRoomInviteReceivedNotificationCallback(Message<Models.RoomInviteNotification>.Callback callback)
     {
-      Callback.SetNotificationCallback(
-        Message.MessageType.Notification_Room_InviteReceived,
+            Callback.SetNotificationCallback(
+              Message.MessageType.Notification_Room_InviteReceived,
         callback
       );
     }
@@ -211,8 +211,8 @@ namespace Oculus.Platform
   {
     public static void SetStatusUpdateNotificationCallback(Message<Models.LivestreamingStatus>.Callback callback)
     {
-      Callback.SetNotificationCallback(
-        Message.MessageType.Notification_Livestreaming_StatusChange,
+            Callback.SetNotificationCallback(
+              Message.MessageType.Notification_Livestreaming_StatusChange,
         callback
       );
     }
@@ -312,8 +312,8 @@ namespace Oculus.Platform
 
     public static void SetMatchFoundNotificationCallback(Message<Models.Room>.Callback callback)
     {
-      Callback.SetNotificationCallback(
-        Message.MessageType.Notification_Matchmaking_MatchFound,
+            Callback.SetNotificationCallback(
+              Message.MessageType.Notification_Matchmaking_MatchFound,
         callback
       );
     }
@@ -427,16 +427,16 @@ namespace Oculus.Platform
 
     public static void SetPeerConnectRequestCallback(Message<Models.NetworkingPeer>.Callback callback)
     {
-      Callback.SetNotificationCallback(
-        Message.MessageType.Notification_Networking_PeerConnectRequest,
+            Callback.SetNotificationCallback(
+              Message.MessageType.Notification_Networking_PeerConnectRequest,
         callback
       );
     }
 
     public static void SetConnectionStateChangedCallback(Message<Models.NetworkingPeer>.Callback callback)
     {
-      Callback.SetNotificationCallback(
-        Message.MessageType.Notification_Networking_ConnectionStateChange,
+            Callback.SetNotificationCallback(
+              Message.MessageType.Notification_Networking_ConnectionStateChange,
         callback
       );
     }
@@ -495,8 +495,8 @@ namespace Oculus.Platform
     {
       if (Core.IsInitialized())
       {
-        Callback.SetNotificationCallback(
-          Message.MessageType.Notification_Voip_ConnectRequest,
+                Callback.SetNotificationCallback(
+                  Message.MessageType.Notification_Voip_ConnectRequest,
           callback
         );
       }
@@ -506,8 +506,8 @@ namespace Oculus.Platform
     {
       if (Core.IsInitialized())
       {
-        Callback.SetNotificationCallback(
-          Message.MessageType.Notification_Voip_StateChange,
+                Callback.SetNotificationCallback(
+                  Message.MessageType.Notification_Voip_StateChange,
           callback
         );
       }
@@ -551,8 +551,8 @@ namespace Oculus.Platform
     {
       if (Core.IsInitialized())
       {
-        Callback.SetNotificationCallback(
-          Message.MessageType.Notification_Voip_SystemVoipState,
+                Callback.SetNotificationCallback(
+                  Message.MessageType.Notification_Voip_SystemVoipState,
           callback
         );
       }

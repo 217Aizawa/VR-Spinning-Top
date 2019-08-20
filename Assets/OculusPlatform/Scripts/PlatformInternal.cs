@@ -157,9 +157,9 @@ namespace Oculus.Platform
     {
       public static void SetHttpTransferUpdateCallback(Message<Models.HttpTransferUpdate>.Callback callback)
       {
-        Callback.SetNotificationCallback(
-          Message.MessageType.Notification_HTTP_Transfer,
-          callback
+                Callback.SetNotificationCallback(
+                  Message.MessageType.Notification_HTTP_Transfer,
+        callback
         );
       }
     }

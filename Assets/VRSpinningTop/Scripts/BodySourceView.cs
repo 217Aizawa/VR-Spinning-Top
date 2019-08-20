@@ -132,7 +132,7 @@ public class BodySourceView : MonoBehaviour
             }
         }
         float closestDist = 99999;
-        GameLoop gl = gameLoop.GetComponent<GameLoop>();
+        //GameLoop gl = gameLoop.GetComponent<GameLoop>();追加
 
         //foreach(var body in data) ボディ取り出し
         for (int i = 0; i < data.Length; i++)

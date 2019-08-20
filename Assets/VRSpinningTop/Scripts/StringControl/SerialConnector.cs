@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.IO.Ports; // for RS-232C
+﻿using UnityEngine;
 using System.Threading;
+using System.IO.Ports;
 
 public class SerialConnector : MonoBehaviour {
 

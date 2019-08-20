@@ -32,6 +32,7 @@ public class SpinController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        StartSuccessEffect();//削除
         velocities = new List<Vector3>();
         gravities = new List<Vector3>();
         ResetSpin();
